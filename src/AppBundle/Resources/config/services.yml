@@ -1,0 +1,13 @@
+services:
+  appbundle.tblprefix_subscriber:
+    class: AppBundle\Subscriber\TablePrefixSubscriber
+    arguments: ['%database_prefix%']
+    tags:
+      - { name: doctrine.event_subscriber }
+  
+  admin.category:
+    class: AppBundle\Admin\CategoryAdmin
+    arguments: [~, AppBundle\Entity\Category, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Category }
+    public: true
