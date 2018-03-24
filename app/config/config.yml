@@ -74,8 +74,8 @@ doctrine:
                     ApplicationSonataUserBundle: ~
                     SonataUserBundle: ~
                     FOSUserBundle: ~
-                    SonataPageBundle: ~
-                    ApplicationSonataPageBundle: ~
+                    # SonataPageBundle: ~
+                    # ApplicationSonataPageBundle: ~
                     SonataNotificationBundle: ~
                     ApplicationSonataNotificationBundle: ~
                     AppBundle: ~
@@ -290,172 +290,172 @@ sonata_seo:
             'xmlns:og':           http://opengraphprotocol.org/schema/
             #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
 
-cmf_routing:
-    chain:
-        routers_by_id:
-            # enable the DynamicRouter with high priority to allow overwriting configured routes with content
-            # cmf_routing.dynamic_router: 200
-            # enable the symfony default router with a lower priority
-            sonata.page.router: 50
-            router.default: 100            
-    # dynamic:
-    #     route_provider_service_id: appbundle.route_provider
-    #     # persistence:
-    #     #     phpcr:
-    #     #         enabled: true
+# cmf_routing:
+#     chain:
+#         routers_by_id:
+#             # enable the DynamicRouter with high priority to allow overwriting configured routes with content
+#             # cmf_routing.dynamic_router: 200
+#             # enable the symfony default router with a lower priority
+#             sonata.page.router: 50
+#             router.default: 100            
+#     # dynamic:
+#     #     route_provider_service_id: appbundle.route_provider
+#     #     # persistence:
+#     #     #     phpcr:
+#     #     #         enabled: true
 
-sonata_page:
-    slugify_service:   sonata.core.slugify.cocur # old BC value is sonata.core.slugify.native
-    multisite: host
-    use_streamed_response: true # set the value to false in debug mode or if the reverse proxy does not handle streamed response
-    ignore_route_patterns:
-        - ^(.*)admin(.*)   # ignore admin route, ie route containing 'admin'
-        - ^_(.*)          # ignore symfony routes
+# sonata_page:
+#     slugify_service:   sonata.core.slugify.cocur # old BC value is sonata.core.slugify.native
+#     multisite: host
+#     use_streamed_response: true # set the value to false in debug mode or if the reverse proxy does not handle streamed response
+#     ignore_route_patterns:
+#         - ^(.*)admin(.*)   # ignore admin route, ie route containing 'admin'
+#         - ^_(.*)          # ignore symfony routes
 
-    ignore_routes:
-        - sonata_page_cache_esi
-        - sonata_page_cache_ssi
-        - sonata_page_js_sync_cache
-        - sonata_page_js_async_cache
-        - sonata_cache_esi
-        - sonata_cache_ssi
-        - sonata_cache_js_async
-        - sonata_cache_js_sync
-        - sonata_cache_apc
+#     ignore_routes:
+#         - sonata_page_cache_esi
+#         - sonata_page_cache_ssi
+#         - sonata_page_js_sync_cache
+#         - sonata_page_js_async_cache
+#         - sonata_cache_esi
+#         - sonata_cache_ssi
+#         - sonata_cache_js_async
+#         - sonata_cache_js_sync
+#         - sonata_cache_apc
 
-    # router_auto_register:
-    #     enabled: true
-    #     priority: 150
+#     # router_auto_register:
+#     #     enabled: true
+#     #     priority: 150
 
-    ignore_uri_patterns:
-        - ^/admin\/   # ignore admin route, ie route containing 'admin'
+#     ignore_uri_patterns:
+#         - ^/admin\/   # ignore admin route, ie route containing 'admin'
 
-    page_defaults:
-        homepage: {decorate: false} # disable decoration for homepage, key - is a page route
+#     page_defaults:
+#         homepage: {decorate: false} # disable decoration for homepage, key - is a page route
 
-    default_template: default # template key from templates section, used as default for pages
-    templates:
-        default:
-            path: '@ApplicationSonataPage/demo_layout.html.twig'
-            name: 'default'
-            containers:
-                header:
-                    name: Header
-                content_top:
-                    name: Top content
-                content:
-                    name: Main content
-                content_bottom:
-                    name: Bottom content
-                footer:
-                    name: Footer
-            matrix:
-                layout: |
-                    HHHHHHHH
-                    TTTTBBBB
-                    TTTTBBBB
-                    TTTTBBBB
-                    TTTTBBBB
-                    CCCCCCCC
-                    CCCCCCCC
-                    FFFFFFFF
+#     default_template: default # template key from templates section, used as default for pages
+#     templates:
+#         default:
+#             path: '@ApplicationSonataPage/demo_layout.html.twig'
+#             name: 'default'
+#             containers:
+#                 header:
+#                     name: Header
+#                 content_top:
+#                     name: Top content
+#                 content:
+#                     name: Main content
+#                 content_bottom:
+#                     name: Bottom content
+#                 footer:
+#                     name: Footer
+#             matrix:
+#                 layout: |
+#                     HHHHHHHH
+#                     TTTTBBBB
+#                     TTTTBBBB
+#                     TTTTBBBB
+#                     TTTTBBBB
+#                     CCCCCCCC
+#                     CCCCCCCC
+#                     FFFFFFFF
 
-                mapping:
-                    H: header
-                    T: content_top
-                    C: content
-                    B: content_bottom
-                    F: footer
+#                 mapping:
+#                     H: header
+#                     T: content_top
+#                     C: content
+#                     B: content_bottom
+#                     F: footer
 
-        2columns:
-            path: '@ApplicationSonataPage/demo_2columns_layout.html.twig'
-            name: '2 columns layout'
-            inherits_containers: default
-            containers:
-                left_col:
-                    name: Left column
-                    blocks:
-                        - sonata.media.block.media
-                        - sonata.media.block.gallery
-                        - sonata.media.block.feature_media
-                content:
-                    name: Main content
-                    blocks:
-                        - sonata.media.block.media
-                right_col:
-                    name: Right column
-                    blocks:
-                        - sonata.news.block.recent_posts
-                        - sonata.order.block.recent_orders
-                        - sonata.product.block.recent_products
-            matrix:
-                layout: |
+#         2columns:
+#             path: '@ApplicationSonataPage/demo_2columns_layout.html.twig'
+#             name: '2 columns layout'
+#             inherits_containers: default
+#             containers:
+#                 left_col:
+#                     name: Left column
+#                     blocks:
+#                         - sonata.media.block.media
+#                         - sonata.media.block.gallery
+#                         - sonata.media.block.feature_media
+#                 content:
+#                     name: Main content
+#                     blocks:
+#                         - sonata.media.block.media
+#                 right_col:
+#                     name: Right column
+#                     blocks:
+#                         - sonata.news.block.recent_posts
+#                         - sonata.order.block.recent_orders
+#                         - sonata.product.block.recent_products
+#             matrix:
+#                 layout: |
 
-                    HHHHHHHHHH
-                    TTTTTTTTTT
-                    TTTTTTTTTT
-                    LLLCCCCRRR
-                    LLLCCCCRRR
-                    BBBBBBBBBB
-                    BBBBBBBBBB
-                    FFFFFFFFFF
+#                     HHHHHHHHHH
+#                     TTTTTTTTTT
+#                     TTTTTTTTTT
+#                     LLLCCCCRRR
+#                     LLLCCCCRRR
+#                     BBBBBBBBBB
+#                     BBBBBBBBBB
+#                     FFFFFFFFFF
 
-                mapping:
-                    H: header
-                    T: content_top
-                    L: left_col
-                    R: right_col
-                    C: content
-                    B: content_bottom
-                    F: footer
+#                 mapping:
+#                     H: header
+#                     T: content_top
+#                     L: left_col
+#                     R: right_col
+#                     C: content
+#                     B: content_bottom
+#                     F: footer
 
-        3columns:
-            path: '@ApplicationSonataPage/demo_3columns_layout.html.twig'
-            name: '3 columns layout'
-            containers:
-                left_col:
-                    name: Left column
-                    blocks:
-                        - sonata.media.block.media
-                        - sonata.media.block.gallery
-                        - sonata.media.block.feature_media
-                mid_col:
-                    name: Left column
-                    blocks:
-                        - sonata.media.block.media
-                        - sonata.media.block.gallery
-                        - sonata.media.block.feature_media
-                right_col:
-                    name: Right column
-                    blocks:
-                        - sonata.news.block.recent_posts
-                        - sonata.order.block.recent_orders
-                        - sonata.product.block.recent_products
-            matrix:
-                layout: |
-                    LLLMMMMRRR
-                    LLLMMMMRRR
-                    LLLMMMMRRR
-                    LLLMMMMRRR
-                    LLLMMMMRRR
+#         3columns:
+#             path: '@ApplicationSonataPage/demo_3columns_layout.html.twig'
+#             name: '3 columns layout'
+#             containers:
+#                 left_col:
+#                     name: Left column
+#                     blocks:
+#                         - sonata.media.block.media
+#                         - sonata.media.block.gallery
+#                         - sonata.media.block.feature_media
+#                 mid_col:
+#                     name: Left column
+#                     blocks:
+#                         - sonata.media.block.media
+#                         - sonata.media.block.gallery
+#                         - sonata.media.block.feature_media
+#                 right_col:
+#                     name: Right column
+#                     blocks:
+#                         - sonata.news.block.recent_posts
+#                         - sonata.order.block.recent_orders
+#                         - sonata.product.block.recent_products
+#             matrix:
+#                 layout: |
+#                     LLLMMMMRRR
+#                     LLLMMMMRRR
+#                     LLLMMMMRRR
+#                     LLLMMMMRRR
+#                     LLLMMMMRRR
 
-                mapping:
-                    L: left_col
-                    R: right_col
-                    M: mid_col
+#                 mapping:
+#                     L: left_col
+#                     R: right_col
+#                     M: mid_col
 
-    direct_publication: false # or %kernel.debug% if you want to publish in dev mode (but not in prod)
+#     direct_publication: false # or %kernel.debug% if you want to publish in dev mode (but not in prod)
 
-    # manage the http errors
-    catch_exceptions:
-        not_found: [404]    # render 404 page with "not_found" key (name generated: _page_internal_error_{key})
-        fatal:     [500]    # so you can use the same page for different http errors or specify specific page for each error
+#     # manage the http errors
+#     catch_exceptions:
+#         not_found: [404]    # render 404 page with "not_found" key (name generated: _page_internal_error_{key})
+#         fatal:     [500]    # so you can use the same page for different http errors or specify specific page for each error
 
-    class:
-        page: Application\Sonata\PageBundle\Entity\Page # This is an optional value
-        snapshot: Application\Sonata\PageBundle\Entity\Snapshot
-        block: Application\Sonata\PageBundle\Entity\Block
-        site: Application\Sonata\PageBundle\Entity\Site
+#     class:
+#         page: Application\Sonata\PageBundle\Entity\Page # This is an optional value
+#         snapshot: Application\Sonata\PageBundle\Entity\Snapshot
+#         block: Application\Sonata\PageBundle\Entity\Block
+#         site: Application\Sonata\PageBundle\Entity\Site
 
 sonata_cache:
     caches:

@@ -40,12 +40,12 @@ class AppKernel extends Kernel
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
-            new Sonata\PageBundle\SonataPageBundle(),
+            // new Sonata\PageBundle\SonataPageBundle(),
             new Sonata\CacheBundle\SonataCacheBundle(),
             new Sonata\NotificationBundle\SonataNotificationBundle(),
-            new Application\Sonata\PageBundle\ApplicationSonataPageBundle(),
+            // new Application\Sonata\PageBundle\ApplicationSonataPageBundle(),
             new Application\Sonata\NotificationBundle\ApplicationSonataNotificationBundle(),
-            new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
+            // new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
 
             new AppBundle\AppBundle(),
         ];
