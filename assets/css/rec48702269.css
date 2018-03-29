@@ -1,0 +1,37 @@
+#rec48702269 .t-btn:not(.t-animate_no-hover):hover{ 
+  background-color: #fae2d5 !important; 
+  color: #ae94a9 !important;	
+}
+
+#rec48702269 .t-btn:not(.t-animate_no-hover){ 
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; 
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;	
+}
+
+#rec48702269 .t-menu__link-item{ 
+  position: relative;	
+}
+#rec48702269 .t-menu__link-item::after { 
+  content: ''; 
+  position: absolute; 
+  left: 0;	
+  top: 50%;	
+  width: 0%;	
+  border-bottom: 2px solid #0000FF; 
+  -webkit-transition: all 0.3s ease; 
+  transition: all 0.3s ease;
+}
+
+#rec48702269 .t-menu__link-item.t-active::after {
+  width: 100%;
+  border-bottom: 2px solid #0000FF;
+}
+
+#rec48702269 .t-menu__link-item:not(.t-active):not(.tooltipstered):hover::after {	
+  width: 100%;	
+}
+
+@supports (overflow:-webkit-marquee) and (justify-content:inherit)
+{ 
+  #rec48702269 .t-menu__link-item, #rec48702269 .t-menu__link-item.t-active { opacity: 1 !important; }
+}
