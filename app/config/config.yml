@@ -474,10 +474,10 @@ sonata_cache:
         #         - {host: 127.0.0.1, port: 27017, user: username, password: pASS'}
         #         - {host: 127.0.0.2}
 
-        memcached:
-            prefix: pilot     # prefix to ensure there is no clash between instances
-            servers:
-                - {host: memcahed, port: 11211, weight: 0}
+        # memcached:
+        #     prefix: pilot     # prefix to ensure there is no clash between instances
+        #     servers:
+        #         - {host: memcahed, port: 11211, weight: 0}
 
         # predis:
         #     servers:
