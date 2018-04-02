@@ -11,3 +11,10 @@ services:
     tags:
       - { name: sonata.admin, manager_type: orm, label: Category }
     public: true
+
+  admin.feedback:
+    class: AppBundle\Admin\FeedbackAdmin
+    arguments: [~, AppBundle\Entity\Feedback, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Регистрация, group: Обратная связь }
+    public: true

@@ -24,29 +24,14 @@ class AppKernel extends Kernel
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
 
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-            new Sonata\NewsBundle\SonataNewsBundle(),
             new Sonata\UserBundle\SonataUserBundle(),
             new Sonata\MediaBundle\SonataMediaBundle(),
-            new Sonata\IntlBundle\SonataIntlBundle(),
-            new Sonata\FormatterBundle\SonataFormatterBundle(),
-            new Sonata\ClassificationBundle\SonataClassificationBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-
-            new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
-            new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
-            // new Sonata\PageBundle\SonataPageBundle(),
-            new Sonata\CacheBundle\SonataCacheBundle(),
-            new Sonata\NotificationBundle\SonataNotificationBundle(),
-            // new Application\Sonata\PageBundle\ApplicationSonataPageBundle(),
-            new Application\Sonata\NotificationBundle\ApplicationSonataNotificationBundle(),
-            // new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
-
             new AppBundle\AppBundle(),
         ];
 

@@ -1,0 +1,4 @@
+feedback_create:
+    path:     /api/feedback
+    defaults: { _controller: "AppBundle:Default:create" }
+    requirements: { _method: post }
