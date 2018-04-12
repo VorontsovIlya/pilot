@@ -1,6 +1,3 @@
-// var $ = require('jquery');
-
-// require('./blocks-2.7');
 
 $(document).ready(function() {
   t228_highlight();
@@ -37,3 +34,4 @@ $(document).ready(function() {
 $(document).ready(function() { 
   t228_createMobileMenu('48702269'); 
 }); 
+

@@ -27,6 +27,22 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/main", name="mainpage")
+     */
+
+    public function mainAction(Request $request)
+    {
+        $entity = new Feedback();
+        $form = $this->createCreateForm($entity);
+        
+        return $this->render('AppBundle:Page:home.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'entity' => $entity,
+            'form' => $form->createView()            
+        ]);
+    }
+
     private function createCreateForm(Feedback $entity){
         $form = $this->createForm(FeedbackType::class, $entity, array(
             'action' => $this->generateUrl('feedback_create'),
@@ -43,11 +59,11 @@ class DefaultController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);       
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-        }
+        // if ($form->isValid()) {
+        //     $em = $this->getDoctrine()->getManager();
+        //     $em->persist($entity);
+        //     $em->flush();
+        // }
 
         $response = new Response();
         $response->setContent(json_encode(array(

@@ -27,6 +27,7 @@
     <script src="{{ asset('template/hammer.min.js') }}"></script>
     <script src="{{ asset('template/tilda-zoom-2.0.min.js') }}"></script>
     <script src="{{ asset('template/tilda-forms-1.0.min.js') }}"></script>
+    
     <link rel="stylesheet" href="{{ asset('build/global.css') }}" type="text/css" media="all">
     <script src="{{ asset('build/app.js') }}"></script>
   </head>
@@ -604,8 +605,8 @@
               <div class="t-width t-width_8 t698__mainblock">
                 <div class="t-cover__wrapper t-valign_middle" style="height:100vh;">
                   <div class="t698__mainwrapper" data-hook-content="covercontent">
-                    <div class="t698__title t-title t-title_xs t-animate t-animate_started" data-animate-style="zoomin" data-animate-group="yes" data-animate-order="1" style="transition-delay: 0s;" field="title">Мероприятие БЕСПЛАТНОЕ! Успейте зарегистрироваться!</div>
-                    <div class="t698__descr t-descr t-descr_md t-animate t-animate_started" data-animate-style="zoomin" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="transition-delay: 0.3s;" field="descr">Количество мест ограничено!</div>
+                    <div class="t698__title t-title t-title_xs t-animate t-animate_started" data-animate-style="zoomin" data-animate-group="yes" data-animate-order="1" style="transition-delay: 0s;" field="title">Мероприятие БЕСПЛАТНОЕ! Регистрация ЗАКРЫТА!</div>
+                    <div class="t698__descr t-descr t-descr_md t-animate t-animate_started" data-animate-style="zoomin" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="transition-delay: 0.3s;" field="descr">Свободных мест НЕТ!</div>
                     <div>
                       {{ form_start(form, {'attr': {
                         'class': 't-form js-form-proccess t-form_inputs-total_4',
@@ -618,7 +619,8 @@
                       }})}}
                         {{ form_widget(form._token) }}
                         <div class="js-successbox t-form__successbox t-text t-text_md" style="display:none;color:#ffffff;background-color:#363064;">Спасибо! Вы успешно зарегистрированы на мероприятие!</div>
-                        <div class="t-form__inputsbox">
+                        <div class="js-successbox t-form__successbox t-text t-text_md" style="  color:#ffffff;background-color:#363064;">Вы чуть-чуть не успели!</div>
+                        <div class="t-form__inputsbox" style="display:none;">
                           <div class="t-input-group t-input-group_nm">
                             <div class="t-input-block">
                               {{ form_widget(form.name, { 'attr': {
@@ -704,7 +706,7 @@
                       {{ form_end(form) }}
                       <style>#rec48681581 input::-webkit-input-placeholder {color:#000000; opacity: 0.5;}	#rec48681581 input::-moz-placeholder {color:#000000; opacity: 0.5;}	#rec48681581 input:-moz-placeholder {color:#000000; opacity: 0.5;}	#rec48681581 input:-ms-input-placeholder {color:#000000; opacity: 0.5;}	#rec48681581 textarea::-webkit-input-placeholder {color:#000000; opacity: 0.5;}	#rec48681581 textarea::-moz-placeholder {color:#000000; opacity: 0.5;}	#rec48681581 textarea:-moz-placeholder {color:#000000; opacity: 0.5;}	#rec48681581 textarea:-ms-input-placeholder {color:#000000; opacity: 0.5;}</style>
                     </div>
-                    <div class="t698__form-bottom-text t-text t-text_xs" field="text">Приступая к заполнению формы, вы соглашаетесь с <a href="http://russhow.biz/sites/default/files/lk.pdf" target="_blank" style="">положением об обработке и защите персональных данных</a></div>
+                    <div class="t698__form-bottom-text t-text t-text_xs" style="display: none;" field="text">Приступая к заполнению формы, вы соглашаетесь с <a href="http://russhow.biz/sites/default/files/lk.pdf" target="_blank" style="">положением об обработке и защите персональных данных</a></div>
                   </div>
                 </div>
               </div>
