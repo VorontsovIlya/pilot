@@ -2,3 +2,15 @@ feedback_create:
     path:     /api/feedback
     defaults: { _controller: "AppBundle:Default:create" }
     requirements: { _method: post }
+
+page_level0:
+    path:   /
+    defaults: { _controller: "AppBundle:Default:level0" }
+
+page_level1:
+    path:   /{slug}/
+    defaults: { _controller: "AppBundle:Default:level1" }    
+
+page_level2:
+    path:   /{slug}/{slug_0}
+    defaults: { _controller: "AppBundle:Default:level2" }

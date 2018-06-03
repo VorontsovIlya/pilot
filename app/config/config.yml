@@ -38,6 +38,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+        - "AppBundle::Form/ckeditor_widget.html.twig"
 
 # Doctrine Configuration
 doctrine:
@@ -70,7 +72,8 @@ doctrine:
                     ApplicationSonataUserBundle: ~
                     SonataUserBundle: ~
                     FOSUserBundle: ~
-                    AppBundle: ~
+                    AppBundle: ~                
+                quote_strategy: app.orm.quote_strategy
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -128,6 +131,10 @@ sonata_media:
             # directory:  "%kernel.root_dir%/../public/uploads/media" #flex
             directory:  "%kernel.root_dir%/../web/uploads/media" #non-flex
             create:     false
+    providers:
+        image:
+            allowed_extensions: ['jpg', 'png', 'gif', 'jpeg']
+            allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png', 'image/gif']
 
 fos_user:
     db_driver:      orm # can be orm or odm
@@ -153,44 +160,6 @@ sonata_user:
     class:
         user: Application\Sonata\UserBundle\Entity\User
         group: Application\Sonata\UserBundle\Entity\Group
-
-ivory_ck_editor:
-    default_config: default
-    configs:
-        default:
-            inline: true
-            allowedContent: true
-            toolbar: [ [ "Cut", "Copy", "PasteText","PasteFromWord"], ["Undo", "Redo"], ["Link", "Unlink"], ["Image", "SpecialChar","Table"],["TextColor", "BGColor"], ["Maximize","Source"], "/",["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "-", "RemoveFormat"], ["BulletedList","NumberedList"] , [ "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock" ],["Styles", "Format", "Font", "FontSize"] ]
-            filebrowserBrowseRoute: admin_sonata_media_media_ckeditor_browser
-            filebrowserImageBrowseRoute: admin_sonata_media_media_ckeditor_browser
-            # Display images by default when clicking the image dialog browse button
-            filebrowserImageBrowseRouteParameters:
-                provider: sonata.media.provider.image
-            filebrowserUploadRoute: admin_sonata_media_media_ckeditor_upload
-            filebrowserUploadRouteParameters:
-                provider: sonata.media.provider.file
-            # Upload file as image when sending a file from the image dialog
-            filebrowserImageUploadRoute: admin_sonata_media_media_ckeditor_upload
-            filebrowserImageUploadRouteParameters:
-                provider: sonata.media.provider.image
-                context: default
-        news:
-            inline: true
-            allowedContent: true
-            toolbar: [ [ "Cut", "Copy", "PasteText","PasteFromWord"], ["Undo", "Redo"], ["Link", "Unlink"], ["Image", "SpecialChar","Table"],["TextColor", "BGColor"], ["Maximize","Source"], "/",["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "-", "RemoveFormat"], ["BulletedList","NumberedList"] , [ "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock" ],["Styles", "Format", "Font", "FontSize"] ]
-            filebrowserBrowseRoute: admin_sonata_media_media_ckeditor_browser
-            filebrowserImageBrowseRoute: admin_sonata_media_media_ckeditor_browser
-            # Display images by default when clicking the image dialog browse button
-            filebrowserImageBrowseRouteParameters:
-                provider: sonata.media.provider.image
-            filebrowserUploadRoute: admin_sonata_media_media_ckeditor_upload
-            filebrowserUploadRouteParameters:
-                provider: sonata.media.provider.file
-            # Upload file as image when sending a file from the image dialog
-            filebrowserImageUploadRoute: admin_sonata_media_media_ckeditor_upload
-            filebrowserImageUploadRouteParameters:
-                provider: sonata.media.provider.image
-                context: default
 
 sonata_seo:
     encoding:         UTF-8
@@ -224,3 +193,9 @@ sonata_seo:
             'xmlns':              http://www.w3.org/1999/xhtml
             'xmlns:og':           http://opengraphprotocol.org/schema/
             #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
+
+fos_ck_editor:
+    input_sync: true        
+    configs:
+        config_t470:
+            toolbar: [ ["Bold", "-", "Source"], ["Maximize"] ]            

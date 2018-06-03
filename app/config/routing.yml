@@ -19,9 +19,13 @@ sonata_user_admin_resetting:
     resource: '@SonataUserBundle/Resources/config/routing/admin_resetting.xml'
     prefix: /admin/resetting
 
-# news:
-#     resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
-#     prefix: /news
+gallery:
+    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+    prefix: /media/gallery
+
+media:
+    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+    prefix: /media
 
 appbundle:
     resource: "@AppBundle/Resources/config/routing.yml"

@@ -196,7 +196,7 @@ class Feedback
     {
         if(!$this->getCreatedAt())
         {
-            $this->created_at = new \DateTime();
+            $this->createdAt = new \DateTime();
         }
     }
 
@@ -213,7 +213,7 @@ class Feedback
     public static function getTypes()
     {
         return [
-            'Артист' => 'artist', 
+            'Артист' => 'artist',
             'Менеджер артиста' => 'manager'
         ];
     }

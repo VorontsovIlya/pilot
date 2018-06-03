@@ -1,0 +1,47 @@
+<div id="rec{{ id }}" class="r t-rec t-rec_pt_150 t-rec_pb_150" style="padding-top:150px;padding-bottom:150px;background-color:#fae2d5; "
+  data-record-type="547" data-bg-color="#fae2d5" data-animationappear="off" data-offset-top="4765">
+  <!-- T547 -->
+  <div class="t547">
+    <div class="t-section__container t-container">
+      <div class="t-col t-col_12">
+        <div class="t-section__topwrapper t-align_center">
+          {% if params.custstrattr01 %}
+            <div class="t-section__title t-title t-title_xs t-animate t-animate_started" data-animate-style="fadein" data-animate-group="yes"
+              field="btitle" data-animate-start-time="1521974262869">
+              <div style="color:#363064;" data-customstyle="yes">{{ params.custstrattr01 }}</div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="t-container t547__container">
+      
+      {% set lines = (params.custtextattr01|splitlines) %}
+      {% for line in lines %}
+        {% set line = line | split('|') %}
+        {% set style = '' %}
+        {% if line[0] == 'R' %}
+          {% set style = 't547__flipped' %}
+        {% endif %}
+        <div class="t547__item">
+          <div class="t-width t-width_8 t547__mainblock">
+            <div class="t547__col {{ style }} t-animate t-animate__chain_first-in-row t-animate_started t-animate__chain_showed" data-animate-style="fadein"
+              data-animate-chain="yes" data-animate-start-time="1521974264231" style="transition-delay: 0.96s;">
+              <div class="t547__block">
+                <div class="t547__title t-name t-name_lg" field="li_title__1521925047178" style="color:#363064;">{{ line[1]|raw }}</div>
+                {% if line[2] is defined %}
+                  <div class="t547__descr t-text t-text_xs" field="li_descr__1521925047178" style="color:#363064;">{{ line[2]|raw }}</div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="t-animate t-animate_started" data-animate-style="fadein" data-animate-group="yes" data-animate-order="1" style="transition-delay: 0.16s;">
+              <div class="t547__line" style="background-color:#ae94a9;"></div>
+              <div class="t547__circle" style="background-color:#ae94a9;border: 2px solid #ae94a9;"></div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>

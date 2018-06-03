@@ -1,0 +1,61 @@
+<div id="rec{{ id }}" class="r t-rec" style=" " data-animationappear="off" data-record-type="492" data-offset-top="2700">
+  <!-- T492 -->
+  <div class="t492">
+    {% if params.custboolattr01 %}
+      <div class="t492__blockimgmobile" style="display:none;background-color:#e3ebee;">
+        <img src="{% path params.custmediattr01, 'reference' %}" class="t492__imgmobile">
+      </div>
+    {% endif %}
+    <table class="t492__blocktable" style="background-color:#e3ebee;" data-height-correct-vh="yes">
+      <tbody>
+        <tr>
+          <td class="t492__blocktext">
+            <div class="t492__textwrapper">
+              {% if params.custstrattr01 %}
+                <div class="t-title t-title_xxs t-animate t-animate_started" data-animate-style="fadein" data-animate-group="yes" data-animate-order="1"
+                  field="title" style="transition-delay: 0s;">
+                  <div style="color:#363064;" data-customstyle="yes">{{ params.custstrattr01 }}</div>
+                </div>
+              {% endif %}
+              {% if params.custtextattr01 %}  
+                <div class="t-descr t-descr_md t-animate t-animate_started" data-animate-style="fadein" data-animate-group="yes" data-animate-order="2"
+                  data-animate-delay="0.3" field="descr" style="transition-delay: 0.3s;">{{ params.custtextattr01|raw }}</div>
+              {% endif %}
+              {% if params.custboolattr02 %}
+                <div class="t492__btn-container">
+                  <div class="t492__btn-wrapper">
+                    <a href="{{ params.custstrattr02 }}" target="_blank" class="t-btn t-animate t-animate_started" data-animate-style="fadeinup"
+                      data-animate-group="yes" data-animate-order="3" data-animate-delay="0.5" style="color: rgb(255, 255, 255); background-color: rgb(54, 48, 100); border-radius: 7px;">
+                      <table style="width:100%; height:100%;">
+                        <tbody>
+                          <tr>
+                            <td>{{ params.custstrattr03 }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </a>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </td>
+
+            <td class="t492__blockimg t-bgimg loaded" bgimgfield="img" data-original="{{ asset('template/_MG_7371.jpg') }}" style="background-image: url({% path params.custmediattr01, 'reference' %});"
+              src=""></td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <style>
+    #rec{{ id }} .t-btn:not(.t-animate_no-hover):hover {
+      background-color: #f6b9c6 !important;
+      color: #ffffff !important;
+    }
+
+    #rec{{ id }} .t-btn:not(.t-animate_no-hover) {
+      -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+  </style>
+</div>

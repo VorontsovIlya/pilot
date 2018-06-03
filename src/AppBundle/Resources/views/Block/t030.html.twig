@@ -1,0 +1,21 @@
+<div id="rec{{ id }}" class="r t-rec t-rec_pt_105 t-rec_pb_30" style="padding-top:105px;padding-bottom:30px;background-color:{{ params.custstrattr04 }}; "
+  data-record-type="43" data-bg-color="{{ params.custstrattr04 }}" data-animationappear="off" data-offset-top="3796">
+  <!-- T030 -->
+  <div class="t030">
+    <div class="t-container t-align_center">
+      <div class="t-col t-col_10 t-prefix_1">
+        {% if params.custstrattr01 %}
+          <div class="t030__title t-title t-title_xxs t-animate t-animate_started" data-animate-style="zoomin" data-animate-group="yes"
+            field="title" style="transition-delay: 0s;">
+            <div style="color:{{ params.custstrattr03 }};" data-customstyle="yes">{{ params.custstrattr01 }}</div>
+          </div>
+        {% endif %}
+        {% if params.custstrattr02 %}
+          <div class="t030__descr t-descr t-descr_md t-animate t-animate_started" data-animate-style="zoomin" data-animate-group="yes" field="descr" style="transition-delay: 0.3s;">
+            <div style="color:{{ params.custstrattr03 }};" data-customstyle="yes">{{ params.custstrattr02 }}</div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

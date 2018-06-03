@@ -1,0 +1,18 @@
+AppBundle\Entity\Page:
+  type: entity
+  table: null
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    path:
+      type: string
+      length: 255
+    blocks:
+      type: text
+    title:
+      type: string
+      length: 255

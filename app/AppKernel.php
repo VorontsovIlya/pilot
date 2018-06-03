@@ -22,8 +22,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-
-            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new FOS\CKEditorBundle\FOSCKEditorBundle(),            
             new Sonata\UserBundle\SonataUserBundle(),
             new Sonata\MediaBundle\SonataMediaBundle(),
             new FOS\UserBundle\FOSUserBundle(),

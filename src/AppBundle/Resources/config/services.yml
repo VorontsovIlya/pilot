@@ -1,4 +1,5 @@
 services:
+
   appbundle.tblprefix_subscriber:
     class: AppBundle\Subscriber\TablePrefixSubscriber
     arguments: ['%database_prefix%']
@@ -18,3 +19,115 @@ services:
     tags:
       - { name: sonata.admin, manager_type: orm, label: Регистрация, group: Обратная связь }
     public: true
+  
+  admin.page:
+    class: AppBundle\Admin\PageAdmin
+    arguments: [~, AppBundle\Entity\Page, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Страницы, group: Структура }
+    public: true
+
+  admin.block.t030:
+    class: AppBundle\Admin\BlockT030Admin
+    arguments: 
+      - ~
+      - AppBundle\Entity\Block
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t030 (Заголовок), group: Структура }
+    public: true
+
+  admin.block.t183:
+    class: AppBundle\Admin\BlockT183Admin
+    arguments: 
+      - ~
+      - AppBundle\Entity\Block
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t183 (Обложка), group: Структура }
+    public: true
+
+  admin.block.t228:
+    class: AppBundle\Admin\BlockT228Admin
+    arguments: 
+      - ~
+      - AppBundle\Entity\Block
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t228 (Меню), group: Структура }
+    public: true
+
+  admin.block.t250:
+    class: AppBundle\Admin\BlockT250Admin
+    arguments: 
+      - ~
+      - AppBundle\Entity\Block
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t250 (Цитата в твиттер), group: Структура }
+    public: true
+
+  admin.block.t415:
+    class: AppBundle\Admin\BlockT415Admin
+    arguments: 
+      - ~
+      - AppBundle\Entity\Block
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t415 (Дедлайн), group: Структура }
+    public: true    
+
+  admin.block.t470:
+    class: AppBundle\Admin\BlockT470Admin
+    arguments: 
+      - ~
+      - AppBundle\Entity\Block
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t470 (Описание), group: Структура }
+    public: true    
+
+  admin.block.t492:
+    class: AppBundle\Admin\BlockT492Admin
+    arguments: 
+      - ~
+      - AppBundle\Entity\Block
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t492 (Карточка), group: Структура }
+    public: true    
+
+  admin.block.t547:
+    class: AppBundle\Admin\BlockT547Admin
+    arguments: 
+      - ~
+      - AppBundle\Entity\Block
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t547 (Таймлайн), group: Структура }
+    public: true   
+
+  admin.block.t667:
+    class: AppBundle\Admin\BlockT667Admin
+    arguments: 
+      - ~
+      - AppBundle\Entity\Block
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t667 (Две картинки), group: Структура }
+    public: true    
+
+  app.orm.quote_strategy:
+    class: AppBundle\ORM\QuoteStrategy
+    public: false
+
+  appbundle.blocks:
+    class: AppBundle\Service\BlockService
+    arguments: [ "@doctrine.orm.entity_manager" , "@service_container" ]
+    public: true
+
+  app.twig_runtime:
+    class: AppBundle\Twig\AppRuntime
+    public: false
+    tags:
+      - { name: twig.runtime }

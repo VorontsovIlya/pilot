@@ -1,0 +1,45 @@
+<div id="rec{{ id }}" class="r t-rec" style=" " data-animationappear="off" data-record-type="206">
+  <!-- cover -->
+  <div class="t-cover" id="recorddiv{{ id }}" bgimgfield="img" style="height:100vh; background-image:url(&#39;{% path params.custmediattr01, 'reference' %}&#39;);">
+    <div class="t-cover__carrier loaded" id="coverCarry{{ id }}" data-content-cover-id="{{ id }}" data-content-cover-bg="{% path params.custmediattr01, 'reference' %}"
+      data-content-cover-height="100vh" data-content-cover-parallax="" style="background-image: url(&quot;{% path params.custmediattr01, 'reference' %}&quot;); height: 100vh; background-attachment: scroll;"
+      src=""></div>
+    <div class="t-cover__filter{{ id }}" style=""></div>
+    <div class="t-container">
+      <div class="t-col t-col_12">
+        <div class="t-cover__wrapper t-valign_middle" style="height:100vh; position: relative;z-index: 1;">
+          <div class="t183">
+            <div data-hook-content="covercontent">
+              <div class="t183__wrapper"> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- arrow -->
+    <div class="t-cover__arrow">
+      <div class="t-cover__arrow-wrapper t-cover__arrow-wrapper_animated">
+        <div class="t-cover__arrow_mobile">
+          <svg class="t-cover__arrow-svg" style="fill:#000000;" x="0px" y="0px" width="38.417px" height="18.592px" viewBox="0 0 38.417 18.592">
+            <g>
+              <path d="M19.208,18.592c-0.241,0-0.483-0.087-0.673-0.261L0.327,1.74c-0.408-0.372-0.438-1.004-0.066-1.413c0.372-0.409,1.004-0.439,1.413-0.066L19.208,16.24L36.743,0.261c0.411-0.372,1.042-0.342,1.413,0.066c0.372,0.408,0.343,1.041-0.065,1.413L19.881,18.332C19.691,18.505,19.449,18.592,19.208,18.592z"></path>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!-- arrow -->
+    <style>
+      .t-cover__filter{{ id }} {
+        height: 100vh;
+        background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0));
+        background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0));
+        background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0));
+        background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0));
+        background-image: linear-gradient(top, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0));
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=&#39;#fe000000&#39;, endColorstr=&#39;#fe000000&#39;);
+      }
+    </style>
+
+  </div>
+</div>

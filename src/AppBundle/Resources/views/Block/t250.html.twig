@@ -1,0 +1,42 @@
+<div id="rec{{ id }}" class="r t-rec t-rec_pt_90 t-rec_pb_90" style="padding-top:90px;padding-bottom:90px;background-color:#f6b9c6; "
+  data-record-type="271" data-bg-color="#f6b9c6" data-animationappear="off">
+  <!-- t250 -->
+  <div class="t250">
+    <div class="t-container">
+      <div class="t-row">
+        <div class="t-col t-col_8 t-prefix_2" data-animate-style="fadeindown">
+          <div class="t250__text t-text-impact t-text-impact_sm" field="text">
+            {% if params.custstrattr01 is defined %}
+              <span style="font-weight: 100;">{{ params.custstrattr01 }}</span>
+            {% endif %}
+            {% if params.custstrattr02 is defined %}
+              <br>{{ params.custstrattr02 }}
+            {% endif %}          
+          </div>
+          <div>
+            {% set currentPath = app.request.uri %}                       
+            {% if (params.custstrattr02 is defined) and (params.custstrattr01 is defined) %}
+              {% set text = [params.custstrattr01, " ", params.custstrattr02]|join|url_encode  %}
+              <a class="t250__link" href='https://twitter.com/intent/tweet?url={{currentPath}};text={{text}};'
+                target="_blank">
+                <div class="t250__icon">
+                  <svg width="28px" height="25px" viewBox="0 0 28 25">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g transform="translate(-704.000000, -1375.000000)" fill="#000000">
+                        <path d="M731.2272,1375.449 C730.117467,1376.155 728.887333,1376.668 727.5788,1376.944 C726.532533,1375.748 725.038267,1375 723.386267,1375 C720.2148,1375 717.642533,1377.756 717.642533,1381.155 C717.642533,1381.637 717.693867,1382.106 717.79,1382.557 C713.016,1382.3 708.783333,1379.85 705.949733,1376.126 C705.455067,1377.034 705.171333,1378.092 705.171333,1379.221 C705.171333,1381.356 706.185867,1383.24 707.7268,1384.343 C706.785067,1384.311 705.899333,1384.034 705.124667,1383.573 L705.124667,1383.65 C705.124667,1386.631 707.104267,1389.12 709.733467,1389.686 C709.250933,1389.827 708.7432,1389.902 708.2196,1389.902 C707.85,1389.902 707.489733,1389.863 707.1388,1389.792 C707.870533,1392.236 709.992,1394.017 712.505467,1394.066 C710.538933,1395.716 708.061867,1396.701 705.370133,1396.701 C704.906267,1396.701 704.449867,1396.672 704,1396.615 C706.5424,1398.361 709.561733,1399.38 712.806,1399.38 C723.3732,1399.38 729.150533,1390.002 729.150533,1381.868 C729.150533,1381.601 729.1468,1381.335 729.134667,1381.071 C730.256533,1380.204 731.230933,1379.12 732,1377.884 C730.970533,1378.374 729.8636,1378.704 728.7016,1378.853 C729.886933,1378.094 730.797867,1376.887 731.2272,1375.449 L731.2272,1375.449 Z"
+                          id="Shape" sketch:type="MSShapeGroup"></path>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                {% if params.custstrattr03 is defined %}
+                  <div class="t250__link__descr t-text" field="descr">{{ params.custstrattr03 }}</div>
+                {% endif %}
+              </a>
+            {% endif %}          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

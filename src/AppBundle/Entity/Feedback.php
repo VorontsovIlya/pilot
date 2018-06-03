@@ -213,7 +213,7 @@ class Feedback
     public static function getTypes()
     {
         return [
-            'Артист' => 'artist', 
+            'Артист' => 'artist',
             'Менеджер артиста' => 'manager'
         ];
     }

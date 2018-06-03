@@ -1,0 +1,96 @@
+AppBundle\Entity\Block:
+  type: entity
+  table: null
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    path:
+      type: string
+      length: 255
+    type:
+      type: string
+      length: 255
+    order:
+      type: integer
+      options:
+        default: 0
+    comment:
+      type: string
+      length: 255
+      nullable: true
+
+    custstrattr01:
+      type: string
+      length: 255
+      nullable: true
+    custstrattr02:
+      type: string
+      length: 255
+      nullable: true
+    custstrattr03:
+      type: string
+      length: 255
+      nullable: true
+    custstrattr04:
+      type: string
+      length: 255
+      nullable: true
+    custstrattr05:
+      type: string
+      length: 255
+      nullable: true
+    custstrattr06:
+      type: string
+      length: 255
+      nullable: true
+
+    custboolattr01:
+      type: boolean      
+      nullable: true
+    custboolattr02:
+      type: boolean      
+      nullable: true
+    custboolattr03:
+      type: boolean      
+      nullable: true      
+    custboolattr04:
+      type: boolean      
+      nullable: true
+
+    custtextattr01:
+      type: text      
+      nullable: true
+    custtextattr02:
+      type: text      
+      nullable: true
+    custtextattr03:
+      type: text      
+      nullable: true
+    
+    custdtattr01:
+      type: datetime
+      nullable: true
+    custdtattr02:
+      type: datetime
+      nullable: true
+
+  manyToOne:
+    custmediattr01:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: custmediattr01
+        referencedColumnName: id
+    custmediattr02:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: custmediattr02
+        referencedColumnName: id
+    custmediattr03:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: custmediattr03
+        referencedColumnName: id      

@@ -1,0 +1,49 @@
+<div id="rec{{ id }}" class="r t-rec t-rec_pt_105 t-rec_pb_105" style="padding-top:105px;padding-bottom:105px;background-color:#ae94a9; "
+  data-record-type="470" data-bg-color="#ae94a9" data-animationappear="off" data-offset-top="1361">
+  <!-- t470 -->
+  <div class="t470">
+    <div class="t-container t-align_center">
+      <div class="t-col t-col_8 t-prefix_2">
+        {% if params.custstrattr01 is defined %}
+          <div class="t470__title t-name t-name_xs t-margin_auto" field="title" style="line-height:1;margin-bottom:25px;text-transform:uppercase;">
+            <div style="font-size:26px;color:#292a66;" data-customstyle="yes">{{ params.custstrattr01 }}</div>
+          </div>
+        {% endif %}
+        <div class="t470__imgdescrwrapper">
+          {% if params.custtextattr01 is defined %}
+            <div class="t470__descr t-descr t-descr_xxl t-margin_auto" field="descr" style="max-width:700px;margin-top:10px;margin-bottom:5px;">
+              <div style="text-align:left;color:#000000;" data-customstyle="yes">{{ params.custtextattr01|raw }}</div>
+            </div>
+          {% endif %}
+          {% if params.custboolattr01 %}
+            <img class="t470__bgimg t-img loaded" src="{% path params.custmediattr01, 'reference' %}" data-original="{{ asset('template/Animation-2.gif') }}"
+              imgfiled="img" style="opacity:0.2;">
+          {% endif %}
+        </div>
+        {% if params.custboolattr02 %}
+          <a href="{{ params.custstrattr02 }}" target="" class="t-btn t-animate t-animate_started" data-animate-style="zoomin" data-animate-group="yes"
+            data-animate-order="3" data-animate-delay="0.5" style="color:#ffffff;background-color:#363064;border-radius:7px; -moz-border-radius:7px; -webkit-border-radius:7px;">
+            <table style="width:100%; height:100%;">
+              <tbody>
+                <tr>
+                  <td>{{ params.custstrattr03 }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <style>
+    #rec{{ id }} .t-btn:not(.t-animate_no-hover):hover {
+      background-color: #f6b9c6 !important;
+      color: #ffffff !important;
+    }
+
+    #rec{{ id }} .t-btn:not(.t-animate_no-hover) {
+      -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+  </style>
+</div>
