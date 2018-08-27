@@ -1,24 +1,18 @@
-<div class="record" id="record44637175" recordid="44637175" off="" data-record-type="251" style="cursor: auto;">
-  <div id="rec44637175" class="r" style="padding-top:105px;padding-bottom:105px; ">
-    <!-- T223 -->
-    <div class="t223">
-      <div class="t-container">
-        <div class="t223-col t-col t-col_6" data-animate-style="zoomin" data-animate-group="yes" data-animate-order="1">
-          <iframe id="youtubeiframe_1_44637175" width="100%" height="315" src="./Tilda_ Pilot Promo - Artist Development_files/UwmShDGVewM.html"
-            frameborder="0" allowfullscreen=""></iframe>
-          <div class="t223__blocktext t-text t-text_sm" field="text">
-            <div style="text-align:center;color:#362d66;" data-customstyle="yes">
-              <strong>Роза Мажонц</strong> - Голая любовь (Премьера клипа)</div>
-          </div>
+<div id="rec{{id}}" class="r t-rec t-rec_pt_105 t-rec_pb_105" style="padding-top:105px;padding-bottom:105px; " data-record-type="251">
+  <!-- T223 -->
+  <div class="t223">
+    <div class="t-container">
+      <div class="t223-col t-col t-col_6 t-animate" data-animate-style="zoomin" data-animate-group="yes" data-animate-order="1">
+        {% media params.custmediattr01, 'big' with {'player_parameters': {'t223': 1}} %}
+        <div class="t223__blocktext t-text t-text_sm" field="text">
+          <div style="text-align:center;color:#362d66;" data-customstyle="yes">{{ params.custstrattr01|raw }}</div>
         </div>
-        <div class="t223-col t223-col_right t-col t-col_6" data-animate-style="zoomin" data-animate-group="yes" data-animate-order="2"
-          data-animate-delay="0.3">
-          <iframe id="youtubeiframe_2_44637175" width="100%" height="315" src="./Tilda_ Pilot Promo - Artist Development_files/Bt5PDmfj00k.html"
-            frameborder="0" allowfullscreen=""></iframe>
-          <div class="t223__blocktext t-text t-text_sm" field="text2">
-            <div style="text-align:center;color:#362d66;" data-customstyle="yes">
-              <strong>Лена Гордеева</strong> - Песня про любовь (Official video)</div>
-          </div>
+      </div>
+      <div class="t223-col t223-col_right t-col t-col_6 t-animate" data-animate-style="zoomin" data-animate-group="yes" data-animate-order="2"
+        data-animate-delay="0.3">
+        {% media params.custmediattr02, 'big' with {'player_parameters': {'t223': 1}} %}
+        <div class="t223__blocktext t-text t-text_sm" field="text2">
+          <div style="text-align:center;color:#362d66;" data-customstyle="yes">{{ params.custstrattr02|raw }}</div>
         </div>
       </div>
     </div>

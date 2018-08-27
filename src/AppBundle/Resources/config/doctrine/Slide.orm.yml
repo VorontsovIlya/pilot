@@ -1,0 +1,35 @@
+AppBundle\Entity\Slide:
+  type: entity
+  table: null
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+      type: string
+      length: 255
+    slide_title:
+      type: string
+      length: 255
+      nullable: true
+    slide_descr:
+      type: string
+      length: 255
+      nullable: true
+    button:
+      type: string
+      length: 255
+      nullable: true
+    link:
+      type: string
+      length: 255
+      nullable: true
+  manyToOne:
+    image:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: image
+        referencedColumnName: id

@@ -26,6 +26,9 @@ framework:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id: session.handler.native_file
         save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        # handler_id: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+        cookie_lifetime: 0
+        
     fragments: ~
     http_method_override: true
     assets: ~
@@ -72,7 +75,7 @@ doctrine:
                     ApplicationSonataUserBundle: ~
                     SonataUserBundle: ~
                     FOSUserBundle: ~
-                    AppBundle: ~                
+                    AppBundle: ~
                 quote_strategy: app.orm.quote_strategy
 
 # Swiftmailer Configuration
@@ -108,9 +111,9 @@ sonata_media:
                 - sonata.media.provider.file
                 - sonata.media.provider.vimeo
 
-            formats:
-                small: { width: 100 , quality: 70}
+            formats:                
                 big:   { width: 500 , quality: 70}
+                preview: { width: 20, quality: 70}
 
         news:
             providers:
@@ -119,22 +122,34 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
-                small: { width: 150 , quality: 95}
-                big:   { width: 500 , quality: 90}
+                preview: { width: 20, quality: 70}
+                big:   { width: 1000, quality: 95}
 
     cdn:
         server:
             path: /uploads/media # http://media.sonata-project.org/
+            # path: 'https://s3.amazonaws.com/pilot3.vserver.tk'            
 
     filesystem:
         local:
             # directory:  "%kernel.root_dir%/../public/uploads/media" #flex
             directory:  "%kernel.root_dir%/../web/uploads/media" #non-flex
-            create:     false
+            create:     true
+
+        s3:
+            bucket: pilot4.vserver.tk
+            accessKey: AKIAI2BIUZLL5OHVF66Q
+            secretKey: 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
+            region: us-east-2
+            create: true
+            storage: standard
+            acl: public
+
     providers:
         image:
             allowed_extensions: ['jpg', 'png', 'gif', 'jpeg']
             allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png', 'image/gif']
+            # filesystem: sonata.media.filesystem.s3
 
 fos_user:
     db_driver:      orm # can be orm or odm
@@ -195,7 +210,7 @@ sonata_seo:
             #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
 
 fos_ck_editor:
-    input_sync: true        
+    input_sync: true
     configs:
         config_t470:
-            toolbar: [ ["Bold", "-", "Source"], ["Maximize"] ]            
+            toolbar: [ ["Bold", "-", "Source"], ["Maximize"] ]

@@ -1,0 +1,30 @@
+AppBundle\Entity\Contact:
+  type: entity
+  table: null
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+      type: string
+      length: 255
+      nullable: true
+    name:
+      type: string
+      length: 255
+      nullable: true
+    descr:
+      type: string
+      length: 255
+      nullable: true
+    phone:
+      type: string
+      length: 255
+      nullable: true
+    mail:
+      type: string
+      length: 255
+      nullable: true

@@ -1,15 +1,19 @@
-<div class="record" id="record47283217" recordid="47283217" off="" data-record-type="795" style="cursor: auto;">
-  <div id="rec47283217" class="r" style="padding-top:90px;padding-bottom:0px; background-color:#f7f5f4;" data-bg-color="#f7f5f4">
+<div class="record" id="record{{ id }}" recordid="{{ id }}" off="" data-record-type="795" style="cursor: auto;">
+  <div id="rec{{ id }}" class="r" style="padding-top:90px;padding-bottom:0px; background-color:{{ params.custstrattr04 }};" data-bg-color="{{ params.custstrattr04 }}">
     <!-- T795 -->
     <div class="t795">
       <div class="t-container t-align_center">
         <div class="t-col t-col_10 t-prefix_1">
-          <div class="t795__title t-title t-title_xs t-margin_auto" field="title" style="">
-            <div style="color:#363064;" data-customstyle="yes">АРТИСТЫ</div>
-          </div>
-          <div class="t795__descr t-descr t-descr_xl t-margin_auto" field="descr" style="">
-            <div style="color:#363064;" data-customstyle="yes">Сегодня с нами сотрудничают:</div>
-          </div>
+          {% if params.custstrattr01 %}
+            <div class="t795__title t-title t-title_xs t-margin_auto" field="title" style="">
+              <div style="color:{{ params.custstrattr03 }};" data-customstyle="yes">{{ params.custstrattr01 }}</div>
+            </div>
+          {% endif %}
+          {% if params.custstrattr02 %}
+            <div class="t795__descr t-descr t-descr_xl t-margin_auto" field="descr" style="">
+              <div style="color:{{ params.custstrattr03 }};" data-customstyle="yes">{{ params.custstrattr02 }}</div>
+            </div>
+          {% endif %}            
         </div>
       </div>
     </div>

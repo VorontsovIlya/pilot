@@ -1,32 +1,16 @@
 <?php
 namespace AppBundle\Admin;
 
-use Doctrine\ORM\Mapping\AnsiQuoteStrategy;
-use Sonata\AdminBundle\Admin\AbstractAdmin;
-use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-
-class BlockT030Admin extends AbstractAdmin
+class BlockT030Admin extends BlockAdmin
 {
   private $type = 't030';
   protected $baseRouteName = 'admin_appbundle_t030admin';
   protected $baseRoutePattern = 't030-block';
-
-
-  protected function configureListFields(ListMapper $listMapper)
-  {
-    $listMapper
-      ->addIdentifier('id')
-      ->add('path')
-      ->add('order')
-      ->add('comment')
-    ;
-  }
 
   protected function configureFormFields(FormMapper $formMapper)
   {

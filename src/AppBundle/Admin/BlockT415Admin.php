@@ -1,31 +1,16 @@
 <?php
 namespace AppBundle\Admin;
 
-use Doctrine\ORM\Mapping\AnsiQuoteStrategy;
-use Sonata\AdminBundle\Admin\AbstractAdmin;
-use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
-class BlockT415Admin extends AbstractAdmin
+class BlockT415Admin extends BlockAdmin
 {
   private $type = 't415';
   protected $baseRouteName = 'admin_appbundle_t415admin';
   protected $baseRoutePattern = 't415-block';
-
-  protected function configureListFields(ListMapper $listMapper)
-  {
-    $listMapper
-      ->addIdentifier('id')
-      ->add('path')
-      ->add('order')
-      ->add('comment')
-    ;
-  }
 
   protected function configureFormFields(FormMapper $formMapper)
   {

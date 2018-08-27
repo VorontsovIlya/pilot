@@ -1,8 +1,8 @@
-<div id="rec48681581" class="r t-rec" style=" " data-animationappear="off" data-record-type="698" data-offset-top="8897">
+<div id="rec{{ id }}" class="r t-rec" style=" " data-animationappear="off" data-record-type="698" data-offset-top="8897">
   <!-- t698 -->
   <!-- cover -->
-  <div class="t-cover" id="recorddiv48681581" bgimgfield="img" style="height:100vh; background-image:url(&#39;{{ asset('template/backstage--1680.jpg') }}&#39;);">
-    <div class="t-cover__carrier loaded" id="coverCarry48681581" data-content-cover-id="48681581" data-content-cover-bg="{{ asset('template/backstage--1680.jpg') }}"
+  <div class="t-cover" id="recorddiv{{ id }}" bgimgfield="img" style="height:100vh; background-image:url(&#39;{{ asset('template/backstage--1680.jpg') }}&#39;);">
+    <div class="t-cover__carrier loaded" id="coverCarry{{ id }}" data-content-cover-id="{{ id }}" data-content-cover-bg="{{ asset('template/backstage--1680.jpg') }}"
       data-content-cover-height="100vh" data-content-cover-parallax="" style="background-image: url(&quot;{{ asset('template/backstage--1680.jpg') }}&quot;); height: 100vh; background-attachment: scroll;"
       src=""></div>
     <div class="t-cover__filter" style="height:100vh;background-color:#29221c;filter: alpha(opacity:70); KHTMLOpacity: 0.70; MozOpacity: 0.70; opacity: 0.70;"></div>
@@ -11,155 +11,161 @@
         <div class="t-width t-width_8 t698__mainblock">
           <div class="t-cover__wrapper t-valign_middle" style="height:100vh;">
             <div class="t698__mainwrapper" data-hook-content="covercontent">
+              {% set title = params.custstrattr04 %}
+              {% if params.custboolattr01 %}
+                {% set title = params.custstrattr01 %}
+              {% endif %}
               <div class="t698__title t-title t-title_xs t-animate t-animate_started" data-animate-style="zoomin" data-animate-group="yes"
-                data-animate-order="1" style="transition-delay: 0s;" field="title">Мероприятие БЕСПЛАТНОЕ! Регистрация ЗАКРЫТА!</div>
+                data-animate-order="1" style="transition-delay: 0s;" field="title">{{ title }}</div>
+              {% set descr = params.custstrattr05 %}
+              {% if params.custboolattr01 %}
+                {% set descr = params.custstrattr02 %}
+              {% endif %}
               <div class="t698__descr t-descr t-descr_md t-animate t-animate_started" data-animate-style="zoomin" data-animate-group="yes"
-                data-animate-order="2" data-animate-delay="0.3" style="transition-delay: 0.3s;" field="descr">Свободных мест НЕТ!</div>
+                data-animate-order="2" data-animate-delay="0.3" style="transition-delay: 0.3s;" field="descr">{{ descr }}</div>
+
               <div>
-                {{ form_start(form, {'attr': { 'class': 't-form js-form-proccess t-form_inputs-total_4', 'id': 'form48681581', 'name': 'form48681581',
-                'role': 'form', 'data-formactiontype': "2", 'data-inputbox': ".t-input-group", 'data-success-callback': "t698_onSuccess"
-                }})}} {{ form_widget(form._token) }}
-                <div class="js-successbox t-form__successbox t-text t-text_md" style="display:none;color:#ffffff;background-color:#363064;">Спасибо! Вы успешно зарегистрированы на мероприятие!</div>
-                <div class="js-successbox t-form__successbox t-text t-text_md" style="  color:#ffffff;background-color:#363064;">Вы чуть-чуть не успели!</div>
-                <div class="t-form__inputsbox" style="display:none;">
-                  <div class="t-input-group t-input-group_nm">
-                    <div class="t-input-block">
-                      {{ form_widget(form.name, { 'attr': { 'class': 't-input js-tilda-rule', 'style': 'color:#000000; background-color:#ffffff;
-                      border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px;', 'placeholder': "Имя", 'data-tilda-req':"1",
-                      'data-tilda-rule': "name" }})}}
-                      <div class="t-input-error"></div>
-                    </div>
-                  </div>
-                  <div class="t-input-group t-input-group_ph">
-                    <div class="t-input-block">
-                      {{ form_widget(form.phone, { 'attr': { 'class': 't-input js-tilda-rule js-tilda-mask', 'style': 'color:#000000; background-color:#ffffff;
-                      border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px;', 'placeholder': "Телефон",
-                      'data-tilda-req':"1", 'data-tilda-rule': "phone", 'data-tilda-mask': "+7 (999) 999-99-99" }})}}
-                      <div class="t-input-error"></div>
-                    </div>
-                  </div>
-                  <div class="t-input-group t-input-group_em">
-                    <div class="t-input-block">
-                      {{ form_widget(form.mail, { 'attr': { 'class': 't-input js-tilda-rule', 'style': 'color:#000000; background-color:#ffffff;
-                      border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px;', 'placeholder': "E-mail",
-                      'data-tilda-req':"1", 'data-tilda-rule': "email", }} ) }}
-                      <div class="t-input-error"></div>
-                    </div>
-                  </div>
-                  <div class="t-input-group t-input-group_sb">
-                    <div class="t-input-subtitle t-descr t-descr_xxs t-opacity_70" data-redactor-toolbar="no" field="li_subtitle__1521915104495"
-                      style="">Кто вы?</div>
-                    <div class="t-input-block">
-                      <div class="t-select__wrapper">
-                        {{ form_widget(form.type, { 'attr': { 'class': 't-select js-tilda-rule', 'style': 'color:#000000; background-color:#ffffff;
-                        border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px;', 'data-tilda-req':"1",
-                        }}) }}
+                {% if params.custboolattr01 %}
+                  {{ form_start(form, {'attr': { 'class': 't-form js-form-proccess t-form_inputs-total_4', 'id': ['form', id]|join, 'name': ['form', id]|join,
+                  'role': 'form', 'data-formactiontype': "2", 'data-inputbox': ".t-input-group", 'data-success-callback': "t698_onSuccess"
+                  }})}}
+                {% endif %}
+                {% if params.custboolattr01 %}
+                  <div class="js-successbox t-form__successbox t-text t-text_md" style="display:none;color:#ffffff;background-color:#363064;">{{ params.custstrattr03 }}</div>
+                {% endif %}
+                {% if not params.custboolattr01 %}
+                  <div class="js-successbox t-form__successbox t-text t-text_md" style="  color:#ffffff;background-color:#363064;">{{ params.custstrattr06 }}</div>
+                {% endif %}
+                {% if params.custboolattr01 %}
+                  <div class="t-form__inputsbox" >
+                    {% for child in form.children %}
+                      {% if child.vars.attr.datatype is defined %}
+                        {% if child.vars.attr.datatype == 'text' %}
+                          <div class="t-input-group">
+                            <div class="t-input-block">
+                              {{ form_widget(child)}}
+                              <div class="t-input-error"></div>
+                            </div>
+                          </div>
+                        {% endif %}
+                        {% if child.vars.attr.datatype == 'choice' %}
+                          <div class="t-input-group t-input-group_sb">
+                            <div class="t-input-subtitle t-descr t-descr_xxs t-opacity_70" style="">{{ child.vars.attr.placeholder }}</div>
+                            <div class="t-input-block">
+                              <div class="t-select__wrapper">
+                                {{ form_widget(child) }}
+                              </div>
+                              <div class="t-input-error"></div>
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+
+                    <div class="t-form__errorbox-middle">
+                      <div class="js-errorbox-all t-form__errorbox-wrapper" style="display:none;">
+                        <div class="t-form__errorbox-text t-text t-text_md">
+                          <p class="t-form__errorbox-item js-rule-error js-rule-error-all"></p>
+                          <p class="t-form__errorbox-item js-rule-error js-rule-error-req"></p>
+                          <p class="t-form__errorbox-item js-rule-error js-rule-error-email"></p>
+                          <p class="t-form__errorbox-item js-rule-error js-rule-error-text"></p>
+                          <p class="t-form__errorbox-item js-rule-error js-rule-error-phone"></p>
+                          <p class="t-form__errorbox-item js-rule-error js-rule-error-string"></p>
+                        </div>
                       </div>
-                      <div class="t-input-error"></div>
                     </div>
+
+                    <div class="t-form__submit">{{ form_row(form.submit, {'label': params.custstrattr07}) }}</div>
+
                   </div>
-                  <div class="t-form__errorbox-middle">
+                  <div class="t-form__errorbox-bottom">
                     <div class="js-errorbox-all t-form__errorbox-wrapper" style="display:none;">
                       <div class="t-form__errorbox-text t-text t-text_md">
                         <p class="t-form__errorbox-item js-rule-error js-rule-error-all"></p>
                         <p class="t-form__errorbox-item js-rule-error js-rule-error-req"></p>
                         <p class="t-form__errorbox-item js-rule-error js-rule-error-email"></p>
-                        <p class="t-form__errorbox-item js-rule-error js-rule-error-name"></p>
+                        <p class="t-form__errorbox-item js-rule-error js-rule-error-text"></p>
                         <p class="t-form__errorbox-item js-rule-error js-rule-error-phone"></p>
                         <p class="t-form__errorbox-item js-rule-error js-rule-error-string"></p>
                       </div>
                     </div>
                   </div>
-                  <div class="t-form__submit">
-                    {{ form_row(form.submit, { 'attr': { 'class': 't-submit', 'style': 'color:#ffffff;background-color:#363064;border-radius:7px;
-                    -moz-border-radius:7px; -webkit-border-radius:7px; text-transform: uppercase;' } }) }}
-                  </div>
-                </div>
-                <div class="t-form__errorbox-bottom">
-                  <div class="js-errorbox-all t-form__errorbox-wrapper" style="display:none;">
-                    <div class="t-form__errorbox-text t-text t-text_md">
-                      <p class="t-form__errorbox-item js-rule-error js-rule-error-all"></p>
-                      <p class="t-form__errorbox-item js-rule-error js-rule-error-req"></p>
-                      <p class="t-form__errorbox-item js-rule-error js-rule-error-email"></p>
-                      <p class="t-form__errorbox-item js-rule-error js-rule-error-name"></p>
-                      <p class="t-form__errorbox-item js-rule-error js-rule-error-phone"></p>
-                      <p class="t-form__errorbox-item js-rule-error js-rule-error-string"></p>
-                    </div>
-                  </div>
-                </div>
-                </form>
-                {{ form_end(form) }}
-                <style>
-                  #rec48681581 input::-webkit-input-placeholder {
-                    color: #000000;
-                    opacity: 0.5;
-                  }
-
-                  #rec48681581 input::-moz-placeholder {
-                    color: #000000;
-                    opacity: 0.5;
-                  }
-
-                  #rec48681581 input:-moz-placeholder {
-                    color: #000000;
-                    opacity: 0.5;
-                  }
-
-                  #rec48681581 input:-ms-input-placeholder {
-                    color: #000000;
-                    opacity: 0.5;
-                  }
-
-                  #rec48681581 textarea::-webkit-input-placeholder {
-                    color: #000000;
-                    opacity: 0.5;
-                  }
-
-                  #rec48681581 textarea::-moz-placeholder {
-                    color: #000000;
-                    opacity: 0.5;
-                  }
-
-                  #rec48681581 textarea:-moz-placeholder {
-                    color: #000000;
-                    opacity: 0.5;
-                  }
-
-                  #rec48681581 textarea:-ms-input-placeholder {
-                    color: #000000;
-                    opacity: 0.5;
-                  }
-                </style>
+                  {{ form_end(form) }}
+                {% endif %}
               </div>
-              <div class="t698__form-bottom-text t-text t-text_xs" style="display: none;" field="text">Приступая к заполнению формы, вы соглашаетесь с
-                <a href="http://russhow.biz/sites/default/files/lk.pdf" target="_blank"
-                  style="">положением об обработке и защите персональных данных</a>
-              </div>
+              {% if params.custboolattr01 %}
+                <div class="t698__form-bottom-text t-text t-text_xs" field="text">Приступая к заполнению формы, вы соглашаетесь с
+                  <a href="{% path params.custmediattr01, 'reference' %}" target="_blank"
+                    style="">положением об обработке и защите персональных данных</a>
+                </div>
+              {% endif %}
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <script type="text/javascript">
-    $('#rec48681581').find('.js-form-proccess').on('tildaform:aftererror', function (e) {
+    $('#rec{{ id }}').find('.js-form-proccess').on('tildaform:aftererror', function (e) {
       e.preventDefault();
-      t698_fixcontentheight('48681581');
+      t698_fixcontentheight('{{ id }}');
     });
     $('.t698').bind('displayChanged', function () {
-      t698_fixcontentheight('48681581');
+      t698_fixcontentheight('{{ id }}');
     });
   </script>
+
   <style>
-    #rec48681581 .t-submit:hover {
+    #rec{{ id }} .t-submit:hover {
       background-color: #4bc7d2 !important;
       color: #ffffff !important;
       border-color: #4bc7d2 !important;
     }
 
-    #rec48681581 .t-submit {
+    #rec{{ id }} .t-submit {
       -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
       transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    #rec{{ id }} input::-webkit-input-placeholder {
+      color: #000000;
+      opacity: 0.5;
+    }
+
+    #rec{{ id }} input::-moz-placeholder {
+      color: #000000;
+      opacity: 0.5;
+    }
+
+    #rec{{ id }} input:-moz-placeholder {
+      color: #000000;
+      opacity: 0.5;
+    }
+
+    #rec{{ id }} input:-ms-input-placeholder {
+      color: #000000;
+      opacity: 0.5;
+    }
+
+    #rec{{ id }} textarea::-webkit-input-placeholder {
+      color: #000000;
+      opacity: 0.5;
+    }
+
+    #rec{{ id }} textarea::-moz-placeholder {
+      color: #000000;
+      opacity: 0.5;
+    }
+
+    #rec{{ id }} textarea:-moz-placeholder {
+      color: #000000;
+      opacity: 0.5;
+    }
+
+    #rec{{ id }} textarea:-ms-input-placeholder {
+      color: #000000;
+      opacity: 0.5;
     }
   </style>
 </div>

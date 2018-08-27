@@ -1,17 +1,17 @@
-<div class="record" id="record44616337" recordid="44616337" off="" data-record-type="244" style="cursor: auto;">
-  <div id="rec44616337" class="r" style=" " data-animationappear="off">
+<div class="record" id="record{{id}}" recordid="{{id}}" off="" data-record-type="244" style="cursor: auto;">
+  <div id="rec{{id}}" class="r" style=" " data-animationappear="off">
     <!-- cover -->
     <script type="text/javascript">
       $(document).ready(function () {
-        cover_init(44616337);
+        //cover_init('{{id}}');
       });
     </script>
 
-    <div class="t-cover" id="recorddiv44616337" bgimgfield="img" style="height: 961px; background-image: -webkit-linear-gradient(top, rgb(204, 204, 204), rgb(119, 119, 119));"
+    <div class="t-cover" id="recorddiv{{id}}" bgimgfield="img" style="height: 961px; background-image: -webkit-linear-gradient(top, rgb(204, 204, 204), rgb(119, 119, 119));"
       data-tu-noclick="yes">
 
-      <div class="t-cover__carrier" id="coverCarry44616337" data-content-cover-id="44616337" data-content-cover-bg="https://static.tildacdn.com/tild6462-3738-4332-b030-383365356466/backstage--1680.jpg"
-        data-content-cover-height="100vh" data-content-cover-parallax="fixed" style="background-image: url(&quot;https://static.tildacdn.com/tild6462-3738-4332-b030-383365356466/backstage--1680.jpg&quot;); height: 961px;"></div>
+      <div class="t-cover__carrier" id="coverCarry{{id}}" data-content-cover-id="{{id}}" data-content-cover-bg="{% path params.custmediattr01, 'reference' %}"
+        data-content-cover-height="100vh" data-content-cover-parallax="fixed" style="background-image: url({% path params.custmediattr01, 'preview' %}); height: 961px;"></div>
 
       <div class="t-cover__filter" style="height: 961px; background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));"></div>
 
@@ -22,25 +22,19 @@
               <div data-hook-content="covercontent">
                 <div class="t216__wrapper">
                   <div class="t216__blocklogo">
-                    <img src="./Tilda_ Pilot Promo - Artist Development_files/_.png" data-tu-max-width="800" data-tu-max-height="800" class="t216__logo t-img"
+                    <img src="{% path params.custmediattr02, 'reference' %}" data-tu-max-width="800" data-tu-max-height="800" class="t216__logo t-img"
                       imgfield="img2" data-hook-clogo="coverlogo" id="tuwidget513397">
-                    <input type="file" class="tu-hidden-input" accept="image/*" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
                   </div>
-                  <div class="t216__title t-title t-title_xl" style="" field="title">
-                    <div style="font-size:46px;color:#f7e3d6;" data-customstyle="yes">Профессиональный менеджмент для артистов
-                      <br>в музыкальном бизнесе </div>
-                  </div>
-                  <div class="t216__descr t-descr t-descr_xl t216__descr_center" style="" field="descr">
-                    <div style="color:#ffffff;" data-customstyle="yes">Для молодых и профессиональных артистов
-                      <br>предоставляем услуги, включая всё, начиная от брендинга, музыкального и видео-продакшена, маркетинга
-                      и продвижения до цифровых продаж, организации концертов
-                      <br>и гастрольных туров
-                      <br>
-                      <br>
-                      <br>
+                  {% if params.custstrattr01 %}
+                    <div class="t216__title t-title t-title_xl" style="" field="title">
+                      <div style="font-size:46px;color:#f7e3d6;" data-customstyle="yes">{{ params.custstrattr01 }}</div>
                     </div>
-                  </div>
-                  <span class="space"></span>
+                  {% endif %}
+                  {% if params.custstrattr01 %}
+                    <div class="t216__descr t-descr t-descr_xl t216__descr_center" style="" field="descr">
+                      <div style="color:#ffffff;" data-customstyle="yes">{{ params.custstrattr02 }}</div>
+                    </div>
+                  {% endif %}
                 </div>
               </div>
             </div>
@@ -48,6 +42,5 @@
         </div>
       </div>
     </div>
-    <input type="file" class="tu-hidden-input" accept="image/*" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
   </div>
 </div>

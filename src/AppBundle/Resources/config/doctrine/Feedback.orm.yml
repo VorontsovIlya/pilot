@@ -1,7 +1,6 @@
 AppBundle\Entity\Feedback:
     type: entity
     table: null
-    repositoryClass: AppBundle\Repository\FeedbackRepository
     id:
         id:
             type: integer
@@ -9,22 +8,46 @@ AppBundle\Entity\Feedback:
             generator:
                 strategy: AUTO
     fields:
-        mail:
-            type: string
-            length: 255
-        name:
-            type: string
-            length: 255
-        phone:
-            type: string
-            length: 255
-        who:
+        field01:
             type: string
             length: 255
             nullable: true
-        type:
+        field02:
             type: string
             length: 255
+            nullable: true
+        field03:
+            type: string
+            length: 255
+            nullable: true
+        field04:
+            type: string
+            length: 255
+            nullable: true
+        field05:
+            type: string
+            length: 255
+            nullable: true
+        field06:
+            type: string
+            length: 255
+            nullable: true
+        field07:
+            type: string
+            length: 255
+            nullable: true
+        field08:
+            type: string
+            length: 255
+            nullable: true
+        field09:
+            type: string
+            length: 255
+            nullable: true
+        field10:
+            type: string
+            length: 255
+            nullable: true
         createdAt:
             type: datetime
     lifecycleCallbacks:

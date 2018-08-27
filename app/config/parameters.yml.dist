@@ -18,3 +18,10 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    s3_bucket_name: pilot4.vserver.tk
+    s3_access_key: AKIAI2BIUZLL5OHVF66Q
+    s3_secret_key: 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
+    s3_region: us-east-2
+    s3_version: '2006-03-01'
+    s3_sdk_version: 3

@@ -569,7 +569,7 @@
   text-align: center;
   vertical-align: middle;
   position: relative;
-  background-attachment: fixed
+  /* background-attachment: fixed */
 }
 
 .t-cover__carrier.loading {

@@ -697,4 +697,167 @@ class Block
     {
         return $this->custdtattr02;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $slides;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->slides = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add slide.
+     *
+     * @param \AppBundle\Entity\Slide $slide
+     *
+     * @return Block
+     */
+    public function addSlide(\AppBundle\Entity\Slide $slide)
+    {
+        $this->slides[] = $slide;
+
+        return $this;
+    }
+
+    /**
+     * Remove slide.
+     *
+     * @param \AppBundle\Entity\Slide $slide
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeSlide(\AppBundle\Entity\Slide $slide)
+    {
+        return $this->slides->removeElement($slide);
+    }
+
+    /**
+     * Get slides.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSlides()
+    {
+        return $this->slides;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $slides01;
+
+
+    /**
+     * Add slides01.
+     *
+     * @param \AppBundle\Entity\Slide $slides01
+     *
+     * @return Block
+     */
+    public function addSlides01(\AppBundle\Entity\Slide $slides01)
+    {
+        $this->slides01[] = $slides01;
+
+        return $this;
+    }
+
+    /**
+     * Remove slides01.
+     *
+     * @param \AppBundle\Entity\Slide $slides01
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeSlides01(\AppBundle\Entity\Slide $slides01)
+    {
+        return $this->slides01->removeElement($slides01);
+    }
+
+    /**
+     * Get slides01.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSlides01()
+    {
+        return $this->slides01;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $contacts01;
+
+
+    /**
+     * Add contacts01.
+     *
+     * @param \AppBundle\Entity\Contact $contacts01
+     *
+     * @return Block
+     */
+    public function addContacts01(\AppBundle\Entity\Contact $contacts01)
+    {
+        $this->contacts01[] = $contacts01;
+
+        return $this;
+    }
+
+    /**
+     * Remove contacts01.
+     *
+     * @param \AppBundle\Entity\Contact $contacts01
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeContacts01(\AppBundle\Entity\Contact $contacts01)
+    {
+        return $this->contacts01->removeElement($contacts01);
+    }
+
+    /**
+     * Get contacts01.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContacts01()
+    {
+        return $this->contacts01;
+    }
+    /**
+     * @var string|null
+     */
+    private $custstrattr07;
+
+
+    /**
+     * Set custstrattr07.
+     *
+     * @param string|null $custstrattr07
+     *
+     * @return Block
+     */
+    public function setCuststrattr07($custstrattr07 = null)
+    {
+        $this->custstrattr07 = $custstrattr07;
+
+        return $this;
+    }
+
+    /**
+     * Get custstrattr07.
+     *
+     * @return string|null
+     */
+    public function getCuststrattr07()
+    {
+        return $this->custstrattr07;
+    }
+
+    public function __clone() {
+        $this->id = null;
+    }
 }

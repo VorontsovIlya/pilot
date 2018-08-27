@@ -1,10 +1,10 @@
 <div id="rec{{ id }}" class="r t-rec" style=" " data-animationappear="off" data-record-type="415" data-offset-top="6769">
   <!-- t415 -->
   <!-- cover -->
-  <div class="t-cover" id="recorddiv{{ id }}" bgimgfield="img" style="height:100vh; background-image:url({% path params.custmediattr02, 'reference' %});">
+  <div class="t-cover" id="recorddiv{{ id }}" bgimgfield="img" style="height:100vh; background-image:url({% path params.custmediattr02, 'preview' %});">
     
     <div class="t-cover__carrier loaded" id="coverCarry{{ id }}" data-content-cover-id="{{ id }}" data-content-cover-bg="{% path params.custmediattr02, 'reference' %}"
-      data-content-cover-height="100vh" data-content-cover-parallax="" style="background-image: url({% path params.custmediattr02, 'reference' %}); height: 100vh; background-attachment: scroll;"
+      data-content-cover-height="100vh" data-content-cover-parallax="" style="background-image: url({% path params.custmediattr02, 'preview' %}); height: 100vh; background-attachment: scroll;"
       src=""></div>
 
     <div class="t-cover__filter"></div>
@@ -113,7 +113,8 @@
         updateClock();
         var timeinterval = setInterval(updateClock, 1000);
       }
-      var deadline = new Date("{{ params.custdtattr01|date('Y-m-d H:m') }}");
+      //var deadline = new Date("{{ params.custdtattr01|date('Y-m-d H:m') }}");
+      var deadline = new Date("{{ [params.custdtattr01|date('Y-m-d'),'T',params.custdtattr01|date('H:m'),'+03:00' ]|join }}");
       initializeClock('t415__timer{{ id }}', deadline);
     });
   </script>

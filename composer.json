@@ -21,6 +21,7 @@
     },
     "require": {
         "php": ">=5.3.9",
+        "aws/aws-sdk-php": "2.*",        
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-migrations-bundle": "^1.0",
         "doctrine/orm": "^2.5",

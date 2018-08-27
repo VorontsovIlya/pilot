@@ -9,7 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 use AppBundle\Entity\Feedback;
 use AppBundle\Form\FeedbackType;
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use AppBundle\Service\Blocks;
 
 class DefaultController extends Controller
@@ -28,7 +29,7 @@ class DefaultController extends Controller
   }
 
   public function mainAction(Request $request, $level, $slug)
-  {        
+  {
 
     $em = $this->getDoctrine()->getManager();
     $pages = $em->getRepository("AppBundle:Page")->createQueryBuilder('p')
@@ -60,75 +61,112 @@ class DefaultController extends Controller
         if ($page == null) $page = $p_all;
         if ($page == null) $page = $p_r;
       }
-    }  
-    
+    }
+
     $blocks = $this->container->get('appbundle.blocks')
       ->loadBlocks($page->getBlocks(), $slug, $level);
-    
-    return $this->render('AppBundle:Page:home.html.twig', [
-      'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-      'page' => $page,
-      'blocks' => $blocks,
-      'form' => $this->createCreateForm(new Feedback())->createView()
-    ]);
+
+    $render = array();
+    $render['base_dir'] = realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR;
+    $render['page'] = $page;
+    $render['blocks'] = $blocks;
+
+    if (isset($blocks['form'])) {
+      if (isset($blocks['form']['id'])) {
+        $block_form = $this->_loadBlockForm($blocks['form']['id']);
+        $render['form'] = $this->_createFeedbackForm(new Feedback(), $block_form);
+        // var_dump($render['form']);
+        $render['form'] = $render['form']->createView();
+      }
+    }
+
+    return $this->render('AppBundle:Page:home.html.twig', $render);
   }
 
+  private function _loadBlockForm($blockid){
+    $block = $this->getDoctrine()->getManager()->find("AppBundle:Block", $blockid);
+    $fields = preg_split('/\r\n|\r|\n/', $block->getcusttextattr01());
+    $result = array('id' => $blockid);
+    foreach ($fields as $key => $value) {
+      $field = explode('|', $value);
+      $f = array ('title' => $field[0], 'type' => $field[1]);
+      if ((count($field) > 2) && ($field[1] == 'choice'))
+        $f['choices'] = $field[2];
+      $result['fields'][] = $f;
+    }
+    return $result;
+  }
 
+  private function _createFeedbackForm(Feedback $entity, $block_form){
+    $form = $this->createForm(FeedbackType::class, $entity, array(
+      'action' => $this->generateUrl('feedback_create', array('blockid' => $block_form['id'])),
+      'method' => 'POST'
+    ));
+    
+    $style = 'border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px;';
 
+    $form->add('submit', 'submit', array(
+      'label' => 'Зарегистрироваться',
+      'attr' => array (
+        'style' => $style."color:#ffffff;background-color:#363064;text-transform:uppercase;",
+        'class' => 't-submit'
+      )
+    ));
 
+    $i = 1;
+    foreach ($block_form['fields'] as $key => $value) {
+      $style = 'color:#000000;background-color:#ffffff;';
+      $n = str_pad($i, 2, 0, STR_PAD_LEFT);      
+      $attr = array(
+        'class' => 't-input js-tilda-rule',
+        'style' => $style,
+        'data-tilda-req' => 1,
+        'data-tilda-rule' => $value['type'],
+        'placeholder' => $value['title'],
+        'datatype' => 'text'
+      );
+      if (($value['type'] == 'text') || ($value['type'] == 'email')) {
+        $form->add("field$n", TextType::class, array('attr' => $attr));
+      }
+      if ($value['type'] == 'phone') {
+        $attr['class'] = 't-input js-tilda-rule js-tilda-mask';
+        $attr['data-tilda-mask'] = '+7 (999) 999-99-99';
+        $form->add("field$n", TextType::class, array('attr' => $attr));
+      }
+      if ($value['type'] == 'choice') {
+        $attr['datatype'] = 'choice';
+        $c = explode(',', $value['choices']);
+        $choices = array();
+        foreach ($c as $choice) $choices[$choice] = $choice;
+        $form->add("field$n", ChoiceType::class,
+          array('attr' => $attr, 'choices' => $choices));
+      }
+      $i++;
+    }
+    return $form;
+  }
 
+  public function createAction(Request $request, $blockid)
+  {
+    $entity = new Feedback();
+    $block_form = $this->_loadBlockForm($blockid);
+    $form = $this->_createFeedbackForm($entity, $block_form);
+    $form->handleRequest($request);    
+    $res = 'error';
 
-
-
-
-
-
-
-
-    // /**
-    //  * @Route("/", name="homepage")
-    //  */
-    public function indexAction(Request $request)
-    {
-        $entity = new Feedback();
-        $form = $this->createCreateForm($entity);
-
-        return $this->render('AppBundle:Page:event.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-            'entity' => $entity,
-            'form' => $form->createView()
-        ]);
+    if ($form->isValid()) {
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($entity);
+      $em->flush();
+      $res = 'success';
     }
 
-    private function createCreateForm(Feedback $entity){
-        $form = $this->createForm(FeedbackType::class, $entity, array(
-            'action' => $this->generateUrl('feedback_create'),
-            'method' => 'POST',
-        ));
-        $form->add('submit', 'submit', array('label' => 'Зарегистрироваться'));
+    $response = new Response();
+    $response->setContent(json_encode(array(
+      'data' => $res,
+    )));
+    $response->headers->set('Content-Type', 'application/json');
 
-        return $form;
-    }
-
-    public function createAction(Request $request)
-    {
-        $entity = new Feedback();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
-
-        // if ($form->isValid()) {
-        //     $em = $this->getDoctrine()->getManager();
-        //     $em->persist($entity);
-        //     $em->flush();
-        // }
-
-        $response = new Response();
-        $response->setContent(json_encode(array(
-            'data' => 'success',
-        )));
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-    }
-
+    return $response;
+  }
 }

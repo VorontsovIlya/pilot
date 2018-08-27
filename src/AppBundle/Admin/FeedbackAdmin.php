@@ -12,27 +12,33 @@ class FeedbackAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', TextType::class)       
-            ->add('type', TextType::class)       
-            ->add('phone', TextType::class)       
-            ->add('mail', TextType::class)       
+            ->add('field01', TextType::class)       
+            ->add('field02', TextType::class)       
+            ->add('field03', TextType::class)       
+            ->add('field04', TextType::class)       
+            ->add('field05', TextType::class)       
+            ->add('field06', TextType::class)       
+            ->add('field07', TextType::class)       
+            ->add('field08', TextType::class)       
+            ->add('field09', TextType::class)       
+            ->add('field10', TextType::class)       
         ;
     }
 
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('name')            
-        ;
-    }
+    // protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    // {
+    //     $datagridMapper
+    //         ->add('name')            
+    //     ;
+    // }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('type')
-            ->add('phone')
-            ->add('mail')
+            ->addIdentifier('id')
+            ->add('field01')
+            ->add('field02')
+            ->add('field03')
         ;
     }
 }

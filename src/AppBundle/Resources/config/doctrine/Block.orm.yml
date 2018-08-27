@@ -47,6 +47,10 @@ AppBundle\Entity\Block:
       type: string
       length: 255
       nullable: true
+    custstrattr07:
+      type: string
+      length: 255
+      nullable: true
 
     custboolattr01:
       type: boolean      
@@ -94,3 +98,20 @@ AppBundle\Entity\Block:
       joinColumn:
         name: custmediattr03
         referencedColumnName: id      
+  
+  manyToMany:
+    slides01:
+      targetEntity: Slide      
+      joinTable:
+        name: null
+        joinColumns:
+          block_id:
+            referencedColumnName: id        
+            
+    contacts01:
+      targetEntity: Contact
+      joinTable:
+        name: null
+        joinColumns:
+          block_id:
+            referencedColumnName: id     

@@ -1,38 +1,40 @@
-<div class="record" id="record44566424" recordid="44566424" off="n" data-record-type="468" style="cursor: auto;">
-  <div id="rec44566424" class="r" style="padding-top:150px;padding-bottom:135px; background-color:#8d6b83;" data-bg-color="#8d6b83">
+<div class="record" id="record{{id}}" recordid="{{id}}" off="n" data-record-type="468" style="cursor: auto;">
+  <div id="rec{{id}}" class="r" style="padding-top:150px;padding-bottom:135px; background-color:#8d6b83;" data-bg-color="#8d6b83">
     <!-- t468 -->
     <div class="t468">
       <div class="t-container t-align_center">
         <div class="t-col t-col_8 t-prefix_2">
-          <div class="t468__title t-title t-title_lg t-margin_auto" field="title" style="font-size:42px;">
-            <div style="color:#fae2d5;" data-customstyle="yes">О нас</div>
-          </div>
-          <div class="t468__descr t-descr t-descr_xl t-margin_auto" field="descr" style="font-size:26px;font-weight:300;">
-            <div style="color:#f7e3d6;" data-customstyle="yes">Независимо от того, являетесь ли вы начинающим артистом, или уже создали себе мощную фан-базу, мы разработаем
-              и реализуем эффективную стратегию выхода на музыкальный рынок. Ваша карьера взлетит на новый уровень, с грамотным
-              менеджментом от вашей личной команды PILOT PROMO.
-              <br>
+          {% if params.custstrattr01 is defined %}
+            <div class="t468__title t-title t-title_lg t-margin_auto" field="title" style="font-size:42px;">
+              <div style="color:#fae2d5;" data-customstyle="yes">{{ params.custstrattr01 }}</div>
             </div>
-          </div>
-          <a href="https://tilda.cc/page/?pageid=2291012#pilotpromo" target="" class="t-btn  " style="color:#ffffff;border:0px solid #ffffff;background-color:#362d66;border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;">
-            <table style="width:100%; height:100%;">
-              <tbody>
-                <tr>
-                  <td>Подробнее о наших услугах</td>
-                </tr>
-              </tbody>
-            </table>
-          </a>
+          {% endif %}
+          {% if params.custtextattr01 is defined %}
+            <div class="t468__descr t-descr t-descr_xl t-margin_auto" field="descr" style="font-size:26px;font-weight:300;">
+              <div style="color:#f7e3d6;" data-customstyle="yes">{{ params.custtextattr01|raw }}</div>
+            </div>
+          {% endif %}
+          {% if params.custboolattr02 %}
+            <a href="{{ params.custstrattr02 }}" target="" class="t-btn  " style="color:#ffffff;border:0px solid #ffffff;background-color:#362d66;border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;">
+              <table style="width:100%; height:100%;">
+                <tbody>
+                  <tr>
+                    <td>{{ params.custstrattr03 }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </a>
+          {% endif %}
         </div>
       </div>
     </div>
 
     <style>
-      #rec44566424 .t-btn:not(.t-animate_no-hover):hover {
+      #rec{{id}} .t-btn:not(.t-animate_no-hover):hover {
         background-color: #fb4f75 !important;
       }
 
-      #rec44566424 .t-btn:not(.t-animate_no-hover) {
+      #rec{{id}} .t-btn:not(.t-animate_no-hover) {
         -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
       }

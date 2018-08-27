@@ -47,10 +47,10 @@
         </div>
         <div class="t228__rightside" style="min-width: 150px;">
           <div class="t228__rightcontainer">
-            {% if (params.custboolattr01 is defined) or (params.custboolattr02 is defined) or (params.custboolattr03 is defined) %}
+            {% if (params.custboolattr01) or (params.custboolattr02) or (params.custboolattr03) %}
               <div class="t228__right_social_links">
                 <div class="t228__right_social_links_wrap">                
-                  {% if params.custboolattr01 is defined %}
+                  {% if params.custboolattr01 %}
                     <div class="t228__right_social_links_item">
                       <a href="{{ params.custstrattr01 }}" target="_blank">
                         <svg style="fill:#fae2d5;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -62,7 +62,7 @@
                       </a>
                     </div>
                   {% endif %}
-                  {% if params.custboolattr02 is defined %}
+                  {% if params.custboolattr02 %}
                     <div class="t228__right_social_links_item">
                       <a href="{{ params.custstrattr02 }}" target="_blank">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -82,7 +82,7 @@
                       </a>
                     </div>
                   {% endif %}
-                  {% if params.custboolattr03 is defined %}
+                  {% if params.custboolattr03 %}
                     <div class="t228__right_social_links_item">
                       <a href="{{ params.custstrattr03 }}" target="_blank">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -98,10 +98,10 @@
                 </div>
               </div>
             {% endif %}
-            {% if (params.custboolattr04 is defined) %}
+            {% if (params.custboolattr04 ) %}
               <div class="t228__right_buttons">
                 <div class="t228__right_buttons_wrap">
-                  {% if params.custboolattr04 is defined %}
+                  {% if params.custboolattr04 %}
                     <div class="t228__right_buttons_but">
                       <a href="{{ params.custstrattr04 }}" target="" class="t-btn " style="color:#fae2d5;background-color:#ae94a9;border-radius:7px; -moz-border-radius:7px; -webkit-border-radius:7px;text-transform:uppercase;">
                         <table style="width:100%; height:100%;">

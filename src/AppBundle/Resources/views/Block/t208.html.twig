@@ -1,8 +1,8 @@
-<div id="rec48681578" class="r t-rec t-rec_pb_0" style="padding-bottom:0px; " data-animationappear="off" data-record-type="237">
+<div id="rec{{ id }}" class="r t-rec t-rec_pb_0" style="padding-bottom:0px; " data-animationappear="off" data-record-type="237">
   <!-- cover -->
-  <div class="t-cover" id="recorddiv48681578" bgimgfield="img" style="height:80vh; background-image:url(&#39;{{ asset('template/d8073571-9bca-4f48-b.png') }}&#39;);">
-    <div class="t-cover__carrier loaded" id="coverCarry48681578" data-content-cover-id="48681578" data-content-cover-bg="{{ asset('template/d8073571-9bca-4f48-b.png') }}"
-      data-content-cover-height="80vh" data-content-cover-parallax="fixed" style="background-image: url(&quot;{{ asset('template/d8073571-9bca-4f48-b.png') }}&quot;); height: 80vh;"
+  <div class="t-cover" id="recorddiv{{ id }}" bgimgfield="img" style="height:80vh; background-image:url({% path params.custmediattr01, 'preview' %});">
+    <div class="t-cover__carrier loaded" id="coverCarry{{ id }}" data-content-cover-id="{{ id }}" data-content-cover-bg="{% path params.custmediattr01, 'reference' %}"
+      data-content-cover-height="80vh" data-content-cover-parallax="fixed" style="background-image: url({% path params.custmediattr01, 'preview' %}); height: 80vh;"
       src=""></div>
     <div class="t-cover__filter" style="height:80vh;background-image: -moz-linear-gradient(top, rgba(0,0,0,0.0), rgba(0,0,0,0.0));background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.0), rgba(0,0,0,0.0));background-image: -o-linear-gradient(top, rgba(0,0,0,0.0), rgba(0,0,0,0.0));background-image: -ms-linear-gradient(top, rgba(0,0,0,0.0), rgba(0,0,0,0.0));background-image: linear-gradient(top, rgba(0,0,0,0.0), rgba(0,0,0,0.0));filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=&#39;#fe000000&#39;, endColorstr=&#39;#fe000000&#39;);"></div>
     <div class="t208">
@@ -12,8 +12,9 @@
             <div data-hook-content="covercontent">
               <div class="t208__wrapper">
                 <div class="t208__textwrapper t-animate t-animate_started" data-animate-style="fadeinleft" style="background-color: rgba(54,48,100,1);">
-                  <div class="t208__text t-text t-text_sm" field="text" style="color:#fae2d5;">Центральный вход. Караоке зал (2 этаж).
-                    <br>Или спросите на ресепшне, как попасть на лекцию "Музыкальный Backstage".</div>
+                  {% if params.custstrattr01 %}  
+                    <div class="t208__text t-text t-text_sm" field="text" style="color:#fae2d5;">{{ params.custstrattr01|raw }}</div>
+                  {% endif %}
                 </div>
               </div>
             </div>

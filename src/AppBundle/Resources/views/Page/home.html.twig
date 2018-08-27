@@ -23,6 +23,8 @@
   <script src="{{ asset('template2/jquery.touchswipe.min.js') }}"></script>
   <script src="{{ asset('template2/tilda-map-1.0.min.js') }}"></script>
   <script src="{{ asset('template2/jquery.tooltipster.min.js') }}"></script>
+  <script src="{{ asset('template2/tilda-forms-1.0.min.js') }}"></script>
+  <script src="{{ asset('template2/lazyload-1.3.min.js ') }}"></script>
 
   {# <script src="./Tilda_ Pilot Promo - Artist Development_files/typed.min.js.Без названия" type="text/javascript"></script> #}
   {# <script src="./Tilda_ Pilot Promo - Artist Development_files/tilda-forms-1.0.min.js.Без названия" type="text/javascript"></script> #}
@@ -54,10 +56,18 @@
   <!--allrecords-->
   <div id="allrecords" class="t-records ui-sortable" data-hook="blocks-collection-content-node"
     data-blocks-animationoff="yes" data-tilda-mode="edit">
-    {% for key, block in blocks %}
-      {% set file = ['AppBundle:Block:', block.file, '.html.twig'] | join %}
-      {% set id = ['id_', key] | join  %}
-      {% include file with {'id': id, 'params': block.params } %}
+    {% for key, block in blocks %}      
+      {% set news = "" %}
+      {% if (block.news is defined) %}        
+        {% set news = block.news %}            
+      {% endif %}
+      {% if ((key != 'form') and (key != 'news')) %}
+        {% set file = ['AppBundle:Block:', block.file, '.html.twig'] | join %}
+        {% set id = ['id_', key] | join  %}        
+        {% if block.params %}
+          {% include file with {'id': id, 'params': block.params, 'news': news } %}
+        {% endif %}
+      {% endif %}
     {% endfor %}
   </div>
   <!--/allrecords-->
