@@ -19,7 +19,17 @@ class BlockT228Admin extends BlockAdmin
         ->add('path', TextType::class)
         ->add('order', TextType::class)
         ->add('comment', TextType::class)
-        ->add('custtextattr01', TextareaType::class, array('label' => 'Меню'))
+        // ->add('custtextattr01', TextareaType::class, array('label' => 'Меню'))
+        ->add('menu01', null, array(
+          'label' => 'Меню',
+          'required' => true,
+          'query_builder' => function($er) {
+            $qb = $er->createQueryBuilder('m')
+              ->Where('m.lvl = 0')
+              ->orderBy('m.root, m.lft', 'ASC');
+            return $qb;
+          }
+        ))
       ->end()
       ->with("Facebook", array('class' => 'col-md-5'))
         ->add('custboolattr01', null, array('label' => 'Показать'))

@@ -1,0 +1,65 @@
+MenuBundle\Entity\Menu:
+  type: entity
+  repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
+  gedmo:
+    tree:
+      type: nested
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+      type: string
+      length: 100
+    route:
+      type: string
+      length: 100
+      nullable: true
+    alias:
+      type: string
+      nullable: true
+    static:
+      type: boolean
+    lft:
+      type: integer
+      gedmo:
+        - treeLeft
+    rgt:
+      type: integer
+      gedmo:
+        - treeRight
+    lvl:
+      type: integer
+      gedmo:
+        - treeLevel      
+  manyToOne:
+    root:
+      targetEntity: Menu
+      joinColumn:
+        name: tree_root
+        referencedColumnName: id
+        onDelete: CASCADE
+      gedmo:
+        - treeRoot
+    parent:
+      targetEntity: Menu
+      inversedBy: children
+      joinColumn:
+        name: parent_id
+        referencedColumnName: id
+        onDelete: CASCADE
+      gedmo:
+        - treeParent
+
+  oneToMany:
+    children:
+      targetEntity: Menu
+      mappedBy: parent
+      orderBy:
+        lft: ASC
+
+  lifecycleCallbacks:    
+    prePersist: [ setLevels ]     

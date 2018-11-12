@@ -1,0 +1,13 @@
+MenuBundle\Entity\MenuType:
+  type: entity
+  repositoryClass: MenuBundle\Entity\MenuTypeRepository
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+      type: string
+      length: 100

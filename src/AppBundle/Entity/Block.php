@@ -26,9 +26,13 @@ class Block
     public static function getTypes()
     {
         return array(
+            't001' => 't001',
+            't004' => 't004',
             't015' => 't015',
+            't021' => 't021',
             't030' => 't030',
             't107' => 't107',
+            't142' => 't142',
             't183' => 't183',
             't208' => 't208',
             't216' => 't216',
@@ -41,16 +45,20 @@ class Block
             't415' => 't415',
             't468' => 't468',
             't470' => 't470',
+            't474' => 't474',
             't492' => 't492',
             't494' => 't494',
             't547' => 't547',
             't552' => 't552',
+            't594' => 't594',
             't604' => 't604',
             't667' => 't667',
+            't670' => 't670',
             't698' => 't698',
             't734' => 't734',
             't738' => 't738',
             't795' => 't795',
+            't0001' => 't0001',            
         );
     }
 
@@ -859,5 +867,63 @@ class Block
 
     public function __clone() {
         $this->id = null;
+    }
+    /**
+     * @var \MenuBundle\Entity\Menu
+     */
+    private $menu;
+
+
+    /**
+     * Set menu.
+     *
+     * @param \MenuBundle\Entity\Menu|null $menu
+     *
+     * @return Block
+     */
+    public function setMenu(\MenuBundle\Entity\Menu $menu = null)
+    {
+        $this->menu = $menu;
+
+        return $this;
+    }
+
+    /**
+     * Get menu.
+     *
+     * @return \MenuBundle\Entity\Menu|null
+     */
+    public function getMenu()
+    {
+        return $this->menu;
+    }
+    /**
+     * @var \MenuBundle\Entity\Menu
+     */
+    private $menu01;
+
+
+    /**
+     * Set menu01.
+     *
+     * @param \MenuBundle\Entity\Menu|null $menu01
+     *
+     * @return Block
+     */
+    public function setMenu01(\MenuBundle\Entity\Menu $menu01 = null)
+    {
+        $this->menu01 = $menu01;
+
+        return $this;
+    }
+
+    /**
+     * Get menu01.
+     *
+     * @return \MenuBundle\Entity\Menu|null
+     */
+    public function getMenu01()
+    {
+        return $this->menu01;
     }
 }

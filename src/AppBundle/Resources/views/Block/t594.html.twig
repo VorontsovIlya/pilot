@@ -1,0 +1,38 @@
+<div id="rec{{id}}" class="r t-rec t-rec_pt_120 t-rec_pb_120" style="padding-top:120px;padding-bottom:120px; "
+  data-record-type="594">
+  <!-- t594 -->
+  <div class="t594">
+    <div class="t-section__container t-container">
+      <div class="t-col t-col_12">
+        <div class="t-section__topwrapper t-align_center">
+          <div class="t-section__title t-title t-title_xs" field="btitle">
+            <div style="color:#363064;" data-customstyle="yes"><strong>{{params.custstrattr01}}</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t594__container t-container">
+      
+      {% set slide_size = 't594__item_3-in-row' %}
+
+      {% if params.custstrattr02 == 4 %}
+        {% set slide_size = 't594__item_4-in-row' %}
+      {% endif %}
+
+      {% if params.custstrattr02 == 5 %}
+        {% set slide_size = 't594__item_5-in-row' %}
+      {% endif %}
+
+      {% if params.custstrattr02 == 6 %}
+        {% set slide_size = 't594__item_6-in-row' %}
+      {% endif %}
+
+      {% for slide in params.slides01 %}
+        <div class="t-col t594__item {{slide_size}}">
+          <img src="{% path slide.image, 'preview' %}" data-original="{% path slide.image, 'reference' %}" class="t594__img t-img "
+          imgfield="li_img__1481203544538" style="max-width:160px;" />
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

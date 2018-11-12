@@ -35,7 +35,10 @@ class SlideAdmin extends AbstractAdmin
                 array('label'=>'Картинка'),
                 array('link_parameters' =>
                     array('context' => 'default', '_list_mode'=>'list', 'provider' => 'sonata.media.provider.image')))
-        
+            ->add('video', 'sonata_type_model_list',
+                array('label'=>'Видео', 'required' => false),
+                array('link_parameters' =>
+                    array('context' => 'default', '_list_mode'=>'list', 'provider' => 'sonata.media.provider.youtube')))
             ->add('slide_title', TextType::class, array('required' => false, 'label' => 'Заголовок слайда'))
             ->add('slide_descr', TextType::class, array('required' => false, 'label' => 'Описание слайда'))            
             ->add('button', TextType::class, array('required' => false, 'label' => 'Текст кнопки'))

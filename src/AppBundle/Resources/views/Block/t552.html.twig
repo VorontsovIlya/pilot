@@ -1,21 +1,35 @@
-<div id="rec{{ id }}" class="r t-rec t-rec_pt_0 t-rec_pb_0" style="padding-top:0px;padding-bottom:0px;background-color:#363064; "
-  data-animationappear="off" data-record-type="552" data-bg-color="#363064">
+<div id="rec{{ id }}" class="r t-rec t-rec_pt_0 t-rec_pb_0" style="padding-top:0px;padding-bottom:0px;background-color:{{ params.custstrattr02 }}; "
+  data-animationappear="off" data-record-type="552" data-bg-color="{{ params.custstrattr02 }}">
   <!-- t552-->
   <div class="t552">
     <div class="t552__container t-container_100 ">
 
+      {% set slide_size = 't552__tile_25' %}
+
+      {% if params.custstrattr01 == 3 %}
+        {% set slide_size = 't552__tile_33' %}
+      {% endif %}
+
+      {% if params.custstrattr01 == 2 %}
+        {% set slide_size = 't552__tile_50' %}
+      {% endif %}
+
+
       {% set i = 0 %} 
       {% for slide in params.slides01 %}
-        <div class="t552__tile t552__tile_25" itemscope itemtype="http://schema.org/ImageObject">
-          <div class="t552__blockimg t552__blockimg_animated t-bgimg" bgimgfield="gi_img__{{ i }}" data-zoom-target="{{ i }}" data-zoomable="yes"
-            title="{{ slide.slidetitle }}" data-img-zoom-url="{% path slide.image, 'reference' %}" data-original="{% path slide.image, 'reference' %}"
-            style="background: url({% path slide.image, 'preview' %}) center center no-repeat; background-size:cover; height:25vw;"
-            data-img-zoom-descr="{{ slide.slidedescr }}">
-            <meta itemprop="image" content="{% path slide.image, 'reference' %}">
-            <meta itemprop="caption" content="{{ slide.slidetitle }}">
+        {% set zoomable = 'yes' %}
+        <a>
+          <div class="t552__tile {{slide_size}}" itemscope itemtype="http://schema.org/ImageObject">
+            <div class="t552__blockimg t552__blockimg_animated t-bgimg" bgimgfield="gi_img__{{ i }}" data-zoom-target="{{ i }}" data-zoomable="{{ zoomable }}"
+              title="{{ slide.slidetitle }}" data-img-zoom-url="{% path slide.image, 'reference' %}" data-original="{% path slide.image, 'reference' %}"
+              style="background: url({% path slide.image, 'preview' %}) center center no-repeat; background-size:cover; height:25vw;"
+              data-img-zoom-descr="{{ slide.slidedescr }}">
+              <meta itemprop="image" content="{% path slide.image, 'reference' %}">
+              <meta itemprop="caption" content="{{ slide.slidetitle }}">
+            </div>
           </div>
-        </div>
-        {% set i = i + 1 %}
+          {% set i = i + 1 %}
+        </a>
       {% endfor %}
 
     </div>

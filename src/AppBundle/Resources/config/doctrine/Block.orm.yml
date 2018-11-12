@@ -83,6 +83,11 @@ AppBundle\Entity\Block:
       nullable: true
 
   manyToOne:
+    menu01:
+      targetEntity: MenuBundle\Entity\Menu
+      joinColumn:
+        name: menu01
+        referencedColumnName: id
     custmediattr01:
       targetEntity: Application\Sonata\MediaBundle\Entity\Media
       joinColumn:

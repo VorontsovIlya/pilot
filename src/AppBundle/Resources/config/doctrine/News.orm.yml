@@ -28,11 +28,15 @@ AppBundle\Entity\News:
       length: 255
       nullable: true
     content:
-      type: text      
+      type: text
       nullable: true
     public:
-      type: boolean      
-      nullable: true      
+      type: boolean
+      nullable: true
+    path:
+      type: string
+      length: 255
+      nullable: true
 
   manyToOne:
     picture:
@@ -40,3 +44,7 @@ AppBundle\Entity\News:
       joinColumn:
         name: picture
         referencedColumnName: id
+
+  lifecycleCallbacks:
+    preUpdate: [ setNewsPath ]
+    prePersist: [ setNewsPath ]        

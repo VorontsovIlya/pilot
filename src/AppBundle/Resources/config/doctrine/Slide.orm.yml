@@ -33,3 +33,9 @@ AppBundle\Entity\Slide:
       joinColumn:
         name: image
         referencedColumnName: id
+
+    video:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: video
+        referencedColumnName: id

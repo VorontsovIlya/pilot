@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@AppBundle/Resources/config/services.yml" }
+    - { resource: "@MenuBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -62,6 +63,8 @@ doctrine:
         #path: '%database_path%'
         types:
             json: Sonata\Doctrine\Types\JsonType
+        options:
+            1002: "SET NAMES 'UTF8' COLLATE 'utf8_unicode_ci'"
 
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
@@ -76,6 +79,15 @@ doctrine:
                     SonataUserBundle: ~
                     FOSUserBundle: ~
                     AppBundle: ~
+                    MenuBundle: ~
+                    gedmo_tree:
+                        type: annotation
+                        prefix: Gedmo\Tree\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                        alias: GedmoTree # (optional) it will default to the name set for the mapping
+                        is_bundle: false
+                        
+
                 quote_strategy: app.orm.quote_strategy
 
 # Swiftmailer Configuration
@@ -213,4 +225,79 @@ fos_ck_editor:
     input_sync: true
     configs:
         config_t470:
-            toolbar: [ ["Bold", "-", "Source"], ["Maximize"] ]
+            toolbar: [ ["Bold", "-", "Source"], ["Maximize"], ["Styles", "Format"] ]
+            stylesSet: "my_styles"
+
+        default:
+            # default toolbar plus Format button
+            toolbar:
+            - [Bold, Italic, Underline, -, Cut, Copy, Paste,
+              PasteText, PasteFromWord, -, Undo, Redo, -,
+              NumberedList, BulletedList, -, Outdent, Indent, -,
+              Blockquote, -, Image, Link, Unlink, Table]
+            - [Format, Maximize, Source]
+
+            filebrowserBrowseRoute: admin_sonata_media_media_ckeditor_browser
+            filebrowserImageBrowseRoute: admin_sonata_media_media_ckeditor_browser
+            # Display images by default when clicking the image dialog browse button
+            filebrowserImageBrowseRouteParameters:
+                provider: sonata.media.provider.image
+            filebrowserUploadMethod: form
+            filebrowserUploadRoute: admin_sonata_media_media_ckeditor_upload
+            filebrowserUploadRouteParameters:
+                provider: sonata.media.provider.file
+            # Upload file as image when sending a file from the image dialog
+            filebrowserImageUploadRoute: admin_sonata_media_media_ckeditor_upload
+            filebrowserImageUploadRouteParameters:
+                provider: sonata.media.provider.image
+                context: my-context # Optional, to upload in a custom context
+                format: my-big # Optional, media format or original size returned to editor
+    styles:
+        my_styles:
+            - { name: "Span 400", element: "span", styles: { font-weight: 400 }}
+            - { name: "Blue Title", element: "h2", styles: { color: "Blue" }}
+            - { name: "CSS Style", element: "span", attributes: { class: "my_style" }}
+            - { name: "Widget Style", type: widget, widget: "my_widget", attributes: { class: "my_widget_style" }}
+
+# sonata_admin:
+#     templates:
+#         layout:  sonata_admin_layout.html.twig
+
+sonata_formatter:
+    default_formatter: text
+    formatters:
+        markdown:
+            service: sonata.formatter.text.markdown
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig #keep this commented unless you are using media bundle.
+
+
+        text:
+            service: sonata.formatter.text.text
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        rawhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        richhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        twig:
+            service: sonata.formatter.text.twigengine
+            extensions: [] # Twig formatter cannot have extensions

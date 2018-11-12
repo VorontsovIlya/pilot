@@ -1,0 +1,133 @@
+<div id="rec{{id}}" class="r t-rec t-rec_pt_90 t-rec_pb_90" style="padding-top:90px;padding-bottom:90px;background-color:#f7e3d6; "
+  data-animationappear="off" data-record-type="670" data-bg-color="#f7e3d6">
+  <div class="t670">
+    <div class="t-slds" style="visibility: hidden;">
+      <div class="t-container t-slds__main">
+        <div class="t-slds__container t-width t-width_9 t-margin_auto">
+          <div class="t-slds__items-wrapper t-slds_animated-none t-slds__witharrows" data-slider-transition="300"
+            data-slider-with-cycle="true" data-slider-correct-height="true" data-auto-correct-mobile-width="false"
+            data-slider-arrows-nearpic="yes" data-slider-timeout="1000">
+            
+            {% set i = 1 %}
+            {% for slide in params.slides01 %}
+              {% set class = '' %}
+              {% if i == 1 %}
+                {% set class = 't-slds__item_active' %}
+              {% endif %}   
+              
+              {% if slide.video is not null %}
+                {% set imgslide = null  %}
+              {% else %}  
+                {% set imgslide = 't-slds__bgimg-contain' %}
+              {% endif  %}
+
+                <div class="t-slds__item {{ class }}" data-slide-index="{{i}}">
+                  <div class="t-width t-width_9 t-margin_auto" itemscope itemtype="http://schema.org/ImageObject">
+                    <div class="t-slds__wrapper t-align_center">
+                      <meta itemprop="image" content="{% path slide.image, 'reference' %}">
+                      <div class="t670__imgwrapper" bgimgfield="gi_img__{{i}}">
+                        <div class="t-slds__bgimg {{imgslide}} t-bgimg" data-original="{% path slide.image, 'reference' %}"
+                          style="background-image: url({% path slide.image, 'preview' %});"></div>
+                        <div class="t670__separator" data-slider-image-width="860" data-slider-image-height="550"></div>
+                        {% if imgslide is null %}
+                          <div class="t670__play" data-slider-video-type="youtube" data-slider-video-url="{{slide.video.providerReference}}">
+                            <div class="t670__play_icon" style="width: 70px; height: 70px;">
+                              <svg width="70px" height="70px" viewBox="0 0 60 60">
+                                <g stroke="none" stroke-width="1" fill="" fill-rule="evenodd">
+                                  <g transform="translate(-691.000000, -3514.000000)" fill="#fb4f75">
+                                    <path d="M721,3574 C737.568542,3574 751,3560.56854 751,3544 C751,3527.43146 737.568542,3514 721,3514 C704.431458,3514 691,3527.43146 691,3544 C691,3560.56854 704.431458,3574 721,3574 Z M715,3534 L732,3544.5 L715,3555 L715,3534 Z"></path>
+                                  </g>
+                                </g>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="t670__frame"></div> 
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% set i = i + 1 %}
+            {% endfor %}   
+          </div>
+        </div>
+        <div class="t-slds__arrow_container t-slds__arrow_container-outside">
+          <style type="text/css">
+            #rec{{id}} .t-slds__arrow_wrapper:hover .t-slds__arrow-withbg {
+              border-color: #ffffff !important;
+              background-color: rgba(251, 79, 117, 1) !important;
+            }
+          </style>
+
+          <div class="t-slds__arrow_wrapper t-slds__arrow_wrapper-left" data-slide-direction="left">
+            <div class="t-slds__arrow t-slds__arrow-left t-slds__arrow-withbg" style="width: 40px; height: 40px;background-color: rgba(54,48,100,1);">
+              <div class="t-slds__arrow_body t-slds__arrow_body-left" style="width: 9px;"> <svg style="display: block"
+                  viewBox="0 0 9.3 17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <style type="text/css">
+                    #rec{{id}} .t-slds__arrow_wrapper polyline {
+                      -webkit-transition: stroke ease-in-out .2s;
+                      -moz-transition: stroke ease-in-out .2s;
+                      -o-transition: stroke ease-in-out .2s;
+                      transition: stroke ease-in-out .2s;
+                    }
+
+                    #rec{{id}} .t-slds__arrow_wrapper:hover polyline {
+                      stroke: #ffffff !important;
+                    }
+                  </style>
+                  <desc>Left</desc>
+                  <polyline fill="none" stroke="#ffffff" stroke-linejoin="butt" stroke-linecap="butt" stroke-width="1"
+                    points="0.5,0.5 8.5,8.5 0.5,16.5" />
+                </svg> </div>
+            </div>
+          </div>
+
+          <div class="t-slds__arrow_wrapper t-slds__arrow_wrapper-right" data-slide-direction="right">
+            <div class="t-slds__arrow t-slds__arrow-right t-slds__arrow-withbg" style="width: 40px; height: 40px;background-color: rgba(54,48,100,1);">
+              <div class="t-slds__arrow_body t-slds__arrow_body-right" style="width: 9px;"> <svg style="display: block"
+                  viewBox="0 0 9.3 17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <desc>Right</desc>
+                  <polyline fill="none" stroke="#ffffff" stroke-linejoin="butt" stroke-linecap="butt" stroke-width="1"
+                    points="0.5,0.5 8.5,8.5 0.5,16.5" />
+                </svg> </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="t-slds__bullet_wrapper">          
+          {% set i = 1 %}
+          {% for slide in params.slides01 %}
+            {% set class = '' %}
+            {% if i == 1 %}
+              {% set class = 't-slds__bullet_active' %}
+            {% endif %}
+            <div class="t-slds__bullet {{ class }}" data-slide-bullet-for="{{i}}">
+              <div class="t-slds__bullet_body" style="background-color: #363064;"></div>
+            </div>
+            {% set i = i + 1 %}
+          {% endfor %}    
+        </div>
+        <div class="t-slds__caption__container"> </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      t670_init('{{id}}');
+      t_sldsInit('{{id}}');
+    });
+    $('.t670').bind('displayChanged', function () {
+      t_slds_updateSlider('{{id}}');
+      t_slds_positionArrows('{{id}}');
+    });
+  </script>
+  <style type="text/css">
+    #rec{{id}} .t-slds__bullet_active .t-slds__bullet_body {
+      background-color: #fb4f75 !important;
+    }
+
+    #rec{{id}} .t-slds__bullet:hover .t-slds__bullet_body {
+      background-color: #fb4f75 !important;
+    }
+  </style>
+</div>

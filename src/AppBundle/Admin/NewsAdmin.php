@@ -26,6 +26,7 @@ class NewsAdmin extends AbstractAdmin
           ->add('public')
           ->add('title', TextType::class)
           ->add('tag', TextType::class, array('required' => false))
+          ->add('path', TextType::class, array('required' => false))
           ->add('newsdate', DateType::class, array(
             'required' => false, 'label' => 'Дата'))
           ->add('picture', 'sonata_type_model_list',
@@ -33,9 +34,9 @@ class NewsAdmin extends AbstractAdmin
             array('link_parameters' =>
               array('context' => 'news', '_list_mode'=>'list', 'provider' => 'sonata.media.provider.image')))
           ->add('descr', CKEditorType::class, array(
-            'label' => 'Краткая статья', 'config_name' => 'config_t470'))
+            'label' => 'Краткая статья', 'config_name' => 'default'))
           ->add('content', CKEditorType::class, array(
-            'label' => 'Полный текст', 'config_name' => 'config_t470'))
+            'label' => 'Полный текст', 'config_name' => 'default'))
         ->end()
       ;
   }

@@ -1,0 +1,11 @@
+# menu_homepage:
+#     path:     /
+#     defaults: { _controller: MenuBundle:Default:index }
+
+page_tree_up:
+    path: /admin/page_tree_up/{page_id}
+    defaults:  { _controller: MenuBundle:PageTreeSort:up }
+
+page_tree_down:
+    path: /admin/page_tree_down/{page_id}
+    defaults:  { _controller: MenuBundle:PageTreeSort:down }

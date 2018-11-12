@@ -22,7 +22,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-            new FOS\CKEditorBundle\FOSCKEditorBundle(),            
+            new FOS\CKEditorBundle\FOSCKEditorBundle(),
+            new Sonata\FormatterBundle\SonataFormatterBundle(),
             new Sonata\UserBundle\SonataUserBundle(),
             new Sonata\MediaBundle\SonataMediaBundle(),
             new FOS\UserBundle\FOSUserBundle(),
@@ -31,7 +32,11 @@ class AppKernel extends Kernel
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+
             new AppBundle\AppBundle(),
+            new MenuBundle\MenuBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

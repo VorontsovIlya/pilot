@@ -1,0 +1,35 @@
+<div id="rec{{id}}" class="r t-rec t-rec_pt_90 t-rec_pb_90" style="padding-top:90px;padding-bottom:90px;background-color:#f0f0f0; "
+  data-record-type="191" data-bg-color="#f0f0f0">
+  <!-- T142 -->
+  <div class="t142">
+    <div class="t-container_100">
+      <div class="t142__wrapone">
+        <div class="t142__wraptwo">
+          <a href="{{ relative_path(params.custstrattr02) }}" class="">
+            <div class="t-btn t142__submit " style="color:#363064;border:2px solid #363064;background-color:#f0f0f0;border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;">{{params.custstrattr03}}</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      t142_checkSize('{{id}}');
+    });
+    $(window).load(function () {
+      t142_checkSize('{{id}}');
+    });
+  </script>
+  <style>
+    #rec{{id}} .t-btn:not(.t-animate_no-hover):hover {
+      background-color: #363064 !important;
+      color: #f0f0f0 !important;
+      border-color: #363064 !important;
+    }
+
+    #rec{{id}} .t-btn:not(.t-animate_no-hover) {
+      -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+  </style>
+</div>

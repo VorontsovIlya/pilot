@@ -19,8 +19,26 @@ class BlockT494Admin extends BlockAdmin
         ->add('order', TextType::class)
         ->add('comment', TextType::class)
         ->add('custstrattr05', TextType::class, array('required' => false, 'label' => 'Заголовок'))
+
         ->add('contacts01', 'sonata_type_model',
             array('multiple' => true, 'by_reference' => false, 'btn_add' => true, 'label' => 'Контакты'))
+
+        // ->add('contacts01', 'sonata_type_collection',
+        //   array(
+        //     'label' => 'Контакты',
+        //     'cascade_validation' => true,
+        //     'by_reference' => false,
+        //     'btn_add' => true,
+        //     'btn_catalogue' => true,
+        //   ),
+        //   array(
+        //     'edit' => 'inline',
+        //     'inline' => 'table',
+        //     'admin_code' => 'admin.content.contact'
+        //   )
+        // )
+
+
       ->end()
       ->with("Facebook", array('class' => 'col-md-5'))
         ->add('custboolattr01', null, array('label' => 'Показать'))

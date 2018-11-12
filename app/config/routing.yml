@@ -30,3 +30,7 @@ media:
 appbundle:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
+
+menu:
+    resource: "@MenuBundle/Resources/config/routing.yml"
+    prefix:   /menu

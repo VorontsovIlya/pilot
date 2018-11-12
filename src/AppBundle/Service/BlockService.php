@@ -27,13 +27,15 @@ class BlockService {
       $blocks[$key] = $value = trim($value);
       $i = 0;
       while (array_key_exists("{$value}_{$i}", $result)) $i++;
-      if (array_key_exists($value, $available_blocks))
+            
+      if (array_key_exists($value, $available_blocks)){        
         $result["{$value}_{$i}"] = array(
           'file' => $value,
           'params' => array(),
           'order' => $i,
           'path' => ''
         );
+      }
     }
 
     $qb = $this->em->getRepository("AppBundle:Block")->createQueryBuilder('b');
@@ -122,9 +124,10 @@ class BlockService {
   }
 
   private function _loadParam($block){
+    
     $result = array();
     $names = ['custstrattr', 'custboolattr', 'custtextattr', 'custmediattr',
-      'custdtattr', 'slides', 'contacts'];
+      'custdtattr', 'slides', 'contacts', 'menu'];
     foreach ($names as $n) {
       $i = 1;
       $f = true;

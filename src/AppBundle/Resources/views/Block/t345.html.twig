@@ -1,98 +1,60 @@
-<div class="record" id="record{{ id }}" recordid="{{ id }}" off="" data-record-type="345" style="cursor: auto;">
-  <div id="rec{{ id }}" class="r" style=" background-color:#363064;" data-animationappear="off" data-bg-color="#363064">
-    <!-- T345 -->
-    <div class="t345" id="footer_{{ id }}">
-      <div class="t345-wrapper" style="border-top: 1px solid; border-top-color: #363064;">
-        <div class="t345-container t-container" style="height:120px;">
-          <div class="t345-col t-col t-col_12">
-            <div class="t345-content">
-              <div class="t345-text__wrapper">
-                {% if params.custstrattr05 %}
-                  <div class="t345-text t-descr t-descr_xxs" field="text" style="color:#b9a3b5;">
-                    <span style="font-weight: 600;">{{ params.custstrattr05 }}</span>
-                  </div>
-                {% endif %}
+<div id="rec{{id}}" class="r t-rec" style="background-color:#363064; " data-animationappear="off" data-record-type="345"
+  data-bg-color="#363064">
+  <!-- T345 -->
+  <div class="t345" id="footer_{{id}}">
+    <div class="t345-wrapper" style="border-top: 1px solid; border-top-color: #363064;">
+      <div class="t345-container t-container" style="height:120px;">
+        <div class="t345-col t-col t-col_12">
+          <div class="t345-content">
+            <div class="t345-text__wrapper">
+              <div class="t345-text t-descr t-descr_xxs" field="text" style="color:#b9a3b5;">
+                <span style="font-weight: 600;">{{ params.custstrattr05 }}</span>
               </div>
-              <div class="t345-socials">
-                <div class="t345-share t345__transp-white">
-                  <div class="ya-share2 ya-share2_inited" data-yasharel10n="en" data-services="facebook,vkontakte,odnoklassniki,twitter" data-counter="">
-                    <div class="ya-share2__container ya-share2__container_size_m">
-                      <ul class="ya-share2__list ya-share2__list_direction_horizontal">
-                        {% if params.custboolattr01 %}
-                          <li class="ya-share2__item ya-share2__item_service_facebook">
-                            <a class="ya-share2__link" href="{{ params.custstrattr01 }}"
-                              rel="nofollow noopener" target="_blank" title="Facebook">
-                              <span class="ya-share2__badge">
-                                <span class="ya-share2__icon"></span>
-                                <span class="ya-share2__counter">0</span>
-                              </span>
-                              <span class="ya-share2__title">Facebook</span>
-                            </a>
-                          </li>
-                        {% endif %}
-                        {% if params.custboolattr02 %}
-                          <li class="ya-share2__item ya-share2__item_service_vkontakte">
-                            <a class="ya-share2__link" href="{{ params.custstrattr02 }}"
-                              rel="nofollow noopener" target="_blank" title="ВКонтакте">
-                              <span class="ya-share2__badge">
-                                <span class="ya-share2__icon"></span>
-                                <span class="ya-share2__counter">0</span>
-                              </span>
-                              <span class="ya-share2__title">ВКонтакте</span>
-                            </a>
-                          </li>
-                        {% endif %}
-                        {% if params.custboolattr03 %}
-                          <li class="ya-share2__item ya-share2__item_service_odnoklassniki">
-                            <a class="ya-share2__link" href="{{ params.custstrattr03 }}"
-                              rel="nofollow noopener" target="_blank" title="Одноклассники">
-                              <span class="ya-share2__badge">
-                                <span class="ya-share2__icon"></span>
-                                <span class="ya-share2__counter">0</span>
-                              </span>
-                              <span class="ya-share2__title">Одноклассники</span>
-                            </a>
-                          </li>
-                        {% endif %}
-                        {% if params.custboolattr04 %}                        
-                          <li class="ya-share2__item ya-share2__item_service_twitter">
-                            <a class="ya-share2__link" href="{{ params.custstrattr04 }}"
-                              rel="nofollow noopener" target="_blank" title="Twitter">
-                              <span class="ya-share2__badge">
-                                <span class="ya-share2__icon"></span>
-                              </span>
-                              <span class="ya-share2__title">Twitter</span>
-                            </a>
-                          </li>
-                        {% endif %}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+            </div>
+            <div class="t345-socials">
+              <div class="t345-share t345__transp-white">
+                
+                {% set services = [] %}
+                {% if params.custboolattr01 == true %}          
+                  {% set services = services | merge(['facebook']) %}
+                {% endif %}
+
+                {% if params.custboolattr02 == true %}          
+                  {% set services = services | merge(['vkontakte']) %}
+                {% endif %}
+
+                {% if params.custboolattr03 == true %}          
+                  {% set services = services | merge(['odnoklassniki']) %}
+                {% endif %}
+
+                {% if params.custboolattr04 == true %}          
+                  {% set services = services | merge(['twitter']) %}
+                {% endif %}
+
+                <script type="text/javascript" async="async" src="{{ asset('template2/share.js') }}" charset="utf-8"></script>
+                <div class="ya-share2" data-yashareL10n="en" data-services="{{ services | join(',')}}"
+                  data-counter=""></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-    <script type="text/javascript">
-      function checkSize_{{ id }}() {
-        var content = $("#footer_{{ id }} .t345-text").width() + $("#footer_{{ id }} .t345-socials").width();
-        var container = $("#footer_{{ id }} .t345-container").width() - 30;
-
-        if (content > container) {
-          $("#footer_{{ id }} .t345-container").addClass('t345-socials_block');
-        } else {
-          $("#footer_{{ id }} .t345-container").removeClass('t345-socials_block');
-        }
-      }
-
-      $(document).ready(function () {
-        checkSize_{{ id }}();
-        $(window).resize(checkSize_{{ id }});
-      });
-    </script>
   </div>
+  <script type="text/javascript">
+    function checkSize_{{id}}() {
+      var content = $("#footer_{{id}} .t345-text").width() + $("#footer_{{id}} .t345-socials").width();
+      var container = $("#footer_{{id}} .t345-container").width() - 30;
+      if (content > container) {
+        $("#footer_{{id}} .t345-container").addClass('t345-socials_block');
+      } else {
+        $("#footer_{{id}} .t345-container").removeClass('t345-socials_block');
+      }
+    }
+    $(document).ready(function () {
+      checkSize_{{id}}();
+      $(window).resize(checkSize_{{id}});
+    });
+  </script>
+</div>
 </div>

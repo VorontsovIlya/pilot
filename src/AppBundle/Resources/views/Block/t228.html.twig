@@ -1,4 +1,3 @@
-<div class="record" id="rec{{ id }}" recordid="{{ id }}" off="n" data-record-type="257" style="background-color: black; cursor: auto;">
   <div id="rec{{ id }}" class="r t-rec" style=" " data-animationappear="off">
     <!-- T228 -->
     <div id="nav{{ id }}marker"></div>
@@ -13,8 +12,8 @@
         </div>
       </div>
     </div>
-    <div id="nav{{ id }}" class="t228 t228__hidden t228__positionfixed " style="background-color: rgba(54,45,102,0.0); height:95px;"
-      data-bgcolor-hex="#362d66" data-bgcolor-rgba="rgba(54,45,102,0.0)" data-navmarker="nav{{ id }}marker" data-appearoffset=""
+    <div id="nav{{ id }}" class="t228 t228__hidden t228__positionfixed " style="background-color: rgba(54,45,102,1); height:95px; box-shadow: 0px 1px 3px rgba(0,0,0,0.0);"
+      data-bgcolor-hex="#362d66" data-bgcolor-rgba="rgba(54,45,102,1)" data-navmarker="nav{{ id }}marker" data-appearoffset=""
       data-bgopacity-two="80" data-menushadow="0" data-bgopacity="0.0" data-bgcolor-rgba-afterscroll="rgba(54,45,102,0.80)"
       data-menu-items-align="center" data-menu="yes">
       <div class="t228__maincontainer " style="height:95px;">
@@ -25,7 +24,7 @@
               {% set style = "" %}
               {% if params.custstrattr06 is defined %}
                 {% set style = ["max-width: ", params.custstrattr06, "px; width: ", params.custstrattr06, "px; height: auto; display: block;"]|join %}
-              {% endif %}              
+              {% endif %}
               <img src="{% path params.custmediattr01, 'reference' %}" class="t228__imglogo t228__imglogomobile" imgfield="img" alt="" style="{{ style }}">
             </a>
           </div>
@@ -33,23 +32,23 @@
 
         <div class="t228__centerside ">
           <div class="t228__centercontainer">
-            <ul class="t228__list">
-              {% set lines = (params.custtextattr01|splitlines) %}
-              {% for line in lines %}
-                {% set menu = line | split('|') %}
-                <li class="t228__list_item">
-                  <a class="t-menu__link-item" href="{{ menu[1] }}" style="color:#fae2d5;font-size:14px;font-weight:600;text-transform:uppercase;"
-                    data-menu-item-number="1">{{ menu[0] }}</a>
-                </li>
-              {% endfor %}
-            </ul>
+            {% if params.menu01.children is defined %}            
+              <ul class="t228__list">
+                {% for child in params.menu01.children %}
+                  <li class="t228__list_item">
+                    <a class="t-menu__link-item" href="{{ relative_path(child.route) }}" style="color:#fae2d5;font-size:14px;font-weight:600;text-transform:uppercase;"
+                      data-menu-item-number="1">{{ child.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
         </div>
         <div class="t228__rightside" style="min-width: 150px;">
           <div class="t228__rightcontainer">
             {% if (params.custboolattr01) or (params.custboolattr02) or (params.custboolattr03) %}
               <div class="t228__right_social_links">
-                <div class="t228__right_social_links_wrap">                
+                <div class="t228__right_social_links_wrap">
                   {% if params.custboolattr01 %}
                     <div class="t228__right_social_links_item">
                       <a href="{{ params.custstrattr01 }}" target="_blank">
@@ -94,7 +93,7 @@
                         </svg>
                       </a>
                     </div>
-                  {% endif %}                
+                  {% endif %}
                 </div>
               </div>
             {% endif %}
@@ -223,4 +222,3 @@
         <![endif]-->
 
   </div>
-</div>

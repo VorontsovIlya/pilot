@@ -207,4 +207,33 @@ class Slide
     public function __clone() {
         $this->id = null;
     }
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     */
+    private $video;
+
+
+    /**
+     * Set video.
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media|null $video
+     *
+     * @return Slide
+     */
+    public function setVideo(\Application\Sonata\MediaBundle\Entity\Media $video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video.
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media|null
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
 }

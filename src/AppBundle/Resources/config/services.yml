@@ -26,12 +26,42 @@ services:
       - { name: sonata.admin, manager_type: orm, label: Новости, group: Содержимое }
     public: true    
 
+  admin.artist:
+    class: AppBundle\Admin\ArtistAdmin
+    arguments:
+      - ~
+      - AppBundle\Entity\Artist
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Артисты, group: Содержимое }
+    public: true  
+
   admin.page:
     class: AppBundle\Admin\PageAdmin
     arguments: [~, AppBundle\Entity\Page, ~]
     tags:
       - { name: sonata.admin, manager_type: orm, label: Страницы, group: Структура }
     public: true
+
+  admin.block.t001:
+    class: AppBundle\Admin\BlockT001Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t001 (Обложка), group: Структура }
+    public: true    
+
+  admin.block.t004:
+    class: AppBundle\Admin\BlockT004Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t004 (Текст), group: Структура }
+    public: true    
 
   admin.block.t015:
     class: AppBundle\Admin\BlockT015Admin
@@ -43,6 +73,16 @@ services:
       - { name: sonata.admin, manager_type: orm, label: Блок - t015 (Заголовок), group: Структура }
     public: true
 
+  admin.block.t021:
+    class: AppBundle\Admin\BlockT021Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t021 (Заголовок 2), group: Структура }
+    public: true    
+
   admin.block.t030:
     class: AppBundle\Admin\BlockT030Admin
     arguments:
@@ -50,7 +90,7 @@ services:
       - AppBundle\Entity\Block
       - AppBundle:CRUD
     tags:
-      - { name: sonata.admin, manager_type: orm, label: Блок - t030 (Заголовок 2), group: Структура }
+      - { name: sonata.admin, manager_type: orm, label: Блок - t030 (Заголовок 3), group: Структура }
     public: true
 
   admin.block.t107:
@@ -61,6 +101,16 @@ services:
       - AppBundle:CRUD
     tags:
       - { name: sonata.admin, manager_type: orm, label: Блок - t107 (Картинка), group: Структура }
+    public: true
+
+  admin.block.t142:
+    class: AppBundle\Admin\BlockT142Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t142 (Кнопка), group: Структура }
     public: true
 
   admin.block.t183:
@@ -183,6 +233,16 @@ services:
       - { name: sonata.admin, manager_type: orm, label: Блок - t470 (Описание с фоном), group: Структура }
     public: true
 
+  admin.block.t474:
+    class: AppBundle\Admin\BlockT474Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t474 (Текст), group: Структура }
+    public: true    
+
   admin.block.t492:
     class: AppBundle\Admin\BlockT492Admin
     arguments:
@@ -223,6 +283,16 @@ services:
       - { name: sonata.admin, manager_type: orm, label: Блок - t552 (Изображения), group: Структура }
     public: true    
 
+  admin.block.t594:
+    class: AppBundle\Admin\BlockT594Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t594 (Изображения), group: Структура }
+    public: true       
+
   admin.block.t604:
     class: AppBundle\Admin\BlockT604Admin
     arguments:
@@ -242,6 +312,16 @@ services:
     tags:
       - { name: sonata.admin, manager_type: orm, label: Блок - t667 (Две картинки), group: Структура }
     public: true
+
+  admin.block.t670:
+    class: AppBundle\Admin\BlockT670Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t670 (Слайдер), group: Структура }
+    public: true    
 
   admin.block.t698:
     class: AppBundle\Admin\BlockT698Admin
@@ -282,6 +362,16 @@ services:
     tags:
       - { name: sonata.admin, manager_type: orm, label: Блок - t795 (Заголовок малый), group: Структура }
     public: true        
+
+  admin.block.t0001:
+    class: AppBundle\Admin\BlockT0001Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t0001 (Заглушка-разделитель), group: Структура }
+    public: true  
 
   admin.content.slide:
     class: AppBundle\Admin\SlideAdmin
