@@ -14,11 +14,13 @@
         {% set slide_size = 't552__tile_50' %}
       {% endif %}
 
-
-      {% set i = 0 %} 
+      {% set i = 0 %}
       {% for slide in params.slides01 %}
         {% set zoomable = 'yes' %}
-        <a>
+        {% if slide.link != '' %}
+          {% set zoomable = 'no' %}
+          <a href="{{ relative_path(slide.link) }}">
+        {% endif %}
           <div class="t552__tile {{slide_size}}" itemscope itemtype="http://schema.org/ImageObject">
             <div class="t552__blockimg t552__blockimg_animated t-bgimg" bgimgfield="gi_img__{{ i }}" data-zoom-target="{{ i }}" data-zoomable="{{ zoomable }}"
               title="{{ slide.slidetitle }}" data-img-zoom-url="{% path slide.image, 'reference' %}" data-original="{% path slide.image, 'reference' %}"
@@ -28,8 +30,10 @@
               <meta itemprop="caption" content="{{ slide.slidetitle }}">
             </div>
           </div>
-          {% set i = i + 1 %}
-        </a>
+        {% set i = i + 1 %}
+        {% if slide.link != '' %}
+          </a>
+        {% endif %}
       {% endfor %}
 
     </div>

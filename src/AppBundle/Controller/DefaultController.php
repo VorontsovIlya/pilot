@@ -80,6 +80,8 @@ class DefaultController extends Controller
       }
     }
 
+    
+
     return $this->render('AppBundle:Page:home.html.twig', $render);
   }
 

@@ -14,3 +14,45 @@ AppBundle\Entity\Artist:
     title:
       type: string
       length: 255
+    descr:
+      type: text
+      nullable: true
+    content:
+      type: text
+      nullable: true
+    videodescr01:
+      type: string
+      length: 255
+      nullable: true
+    videodescr02:
+      type: string
+      length: 255
+      nullable: true
+
+  manyToMany:
+    slides01:
+      targetEntity: Slide      
+      joinTable:
+        name: artist_slides01
+        joinColumns:
+          artist_id:
+            referencedColumnName: id        
+    slides02:
+      targetEntity: Slide      
+      joinTable:
+        name: artist_slides02
+        joinColumns:
+          artist_id:
+            referencedColumnName: id        
+  
+  manyToOne:
+    video01:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: custmediattr01
+        referencedColumnName: id
+    video02:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: custmediattr02
+        referencedColumnName: id

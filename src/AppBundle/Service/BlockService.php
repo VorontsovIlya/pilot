@@ -119,12 +119,18 @@ class BlockService {
       }
     }
 
-    // var_dump($result);
+    $result['artist'] = false;
+
+    if ($level == 2){      
+      if ($slug[0] == '/artist'){
+        $result = $this->_loadArtist($result, $slug);
+      }
+    }
+
     return $result;
   }
 
-  private function _loadParam($block){
-    
+  private function _loadParam($block){    
     $result = array();
     $names = ['custstrattr', 'custboolattr', 'custtextattr', 'custmediattr',
       'custdtattr', 'slides', 'contacts', 'menu'];
@@ -176,5 +182,28 @@ class BlockService {
     }
     $result[] = $line;     
     return $result;
+  }
+
+  private function _loadArtist($data, $slug){
+    $qb = $this->em->getRepository("AppBundle:Artist")->createQueryBuilder('a');
+    $artist = $qb->where('a.path = :path')
+      ->setParameter('path', $slug[1])
+      ->setMaxResults( 1 )
+      ->getQuery()
+      ->getResult();
+    if(count($artist) == 1){
+      $artist = $artist[0];
+      $data['artist'] = true;
+      $data['t795_0']['params']['custstrattr01'] = $artist->getTitle();
+      $data['t795_0']['params']['custstrattr02'] = $artist->getDescr();
+      $data['t670_0']['params']['slides01'] = $artist->getSlides01();
+      $data['t004_0']['params']['custtextattr01'] = $artist->getContent();
+      $data['t552_0']['params']['slides01'] = $artist->getSlides01();
+      $data['t223_0']['params']['custmediattr01'] = $artist->getVideo01();
+      $data['t223_0']['params']['custmediattr02'] = $artist->getVideo02();
+      $data['t223_0']['params']['custstrattr01'] = $artist->getVideoDescr01();
+      $data['t223_0']['params']['custstrattr02'] = $artist->getVideoDescr02();
+    }    
+    return $data;
   }
 }

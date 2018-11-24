@@ -61,7 +61,7 @@
       {% if (block.news is defined) %}        
         {% set news = block.news %}            
       {% endif %}
-      {% if ((key != 'form') and (key != 'news')) %}
+      {% if ((key != 'form') and (key != 'news') and (key != 'artist')) %}
         {% set file = ['AppBundle:Block:', block.file, '.html.twig'] | join %}        
         {% set id = ['id_', key] | join  %}        
         {% if block.params %}
