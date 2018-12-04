@@ -120,3 +120,11 @@ AppBundle\Entity\Block:
         joinColumns:
           block_id:
             referencedColumnName: id     
+
+    # videos01:
+    #   targetEntity: Slide      
+    #   joinTable:
+    #     name: null
+    #     joinColumns:
+    #       block_id:
+    #         referencedColumnName: id          

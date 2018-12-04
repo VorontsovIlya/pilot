@@ -1,0 +1,24 @@
+AppBundle\Entity\Music:
+  type: entity
+  table: null
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+      type: string
+      length: 255
+      nullable: true
+    code:
+      type: text
+      nullable: true
+    active:
+      type: boolean      
+      nullable: true
+    starred:
+      type: boolean      
+      nullable: true
+

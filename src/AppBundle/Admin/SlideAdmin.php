@@ -32,7 +32,7 @@ class SlideAdmin extends AbstractAdmin
         ->end()
         ->with("Слайд", array('class' => 'col-md-7'))
             ->add('image', 'sonata_type_model_list',
-                array('label'=>'Картинка'),
+                array('label'=>'Картинка', 'required' => false),
                 array('link_parameters' =>
                     array('context' => 'default', '_list_mode'=>'list', 'provider' => 'sonata.media.provider.image')))
             ->add('video', 'sonata_type_model_list',

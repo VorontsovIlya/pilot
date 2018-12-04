@@ -109,4 +109,9 @@ class Page
     {
         return $this->title;
     }
+
+    public function __clone() {
+        $this->id = null;
+    }
+
 }

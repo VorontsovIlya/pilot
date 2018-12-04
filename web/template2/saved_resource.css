@@ -10177,6 +10177,10 @@ img:not([src]) {
   padding: 0;
 }
 
+.t223-col_right {
+  margin-top: 20px;
+}
+
 @media screen and (max-width:960px) {
   .t223-col_right {
     margin-top: 30px;

@@ -373,6 +373,26 @@ services:
       - { name: sonata.admin, manager_type: orm, label: Блок - t0001 (Заглушка-разделитель), group: Структура }
     public: true  
 
+  admin.block.t0223:
+    class: AppBundle\Admin\BlockT0223Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t0223 (Куча видео), group: Структура }
+    public: true  
+
+  admin.block.t0795:
+    class: AppBundle\Admin\BlockT0795Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t0795 (Музыка), group: Структура }
+    public: true  
+
   admin.content.slide:
     class: AppBundle\Admin\SlideAdmin
     arguments:
@@ -391,6 +411,16 @@ services:
       - ~
     tags:
       - { name: sonata.admin, manager_type: orm, label: Контакты, group: Содержимое }
+    public: true
+
+  admin.content.music:
+    class: AppBundle\Admin\MusicAdmin
+    arguments:
+      - ~
+      - AppBundle\Entity\Music
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Музыка, group: Содержимое }
     public: true
 
   app.orm.quote_strategy:

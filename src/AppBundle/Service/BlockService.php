@@ -114,9 +114,15 @@ class BlockService {
           'id' => $b->getId()
         );
       };
+
       if ($b->getType() == 't404'){
         $result[$key]['news'] = $this->_loadNews();
       }
+
+      if ($b->getType() == 't0795'){
+        $result[$key]['params']['slides01'] = $this->_loadMusic();
+      };
+
     }
 
     $result['artist'] = false;
@@ -205,5 +211,27 @@ class BlockService {
       $data['t223_0']['params']['custstrattr02'] = $artist->getVideoDescr02();
     }    
     return $data;
+  }
+
+  private function _loadMusic($starred = false, $count = 50){
+    $qb = $this->em->getRepository("AppBundle:Music")->createQueryBuilder('m');
+    if($starred) {
+      $qb->orderBy('m.starred', 'ASC');
+    }
+    $music = $qb->where('m.active = :active')
+      ->setParameter('active', true)
+      ->setMaxResults($count)
+      ->getQuery()
+      ->getResult()
+    ;
+    $result = array();
+    $line = array();
+    foreach ($music as $m){
+      $line['title'] = $m->getTitle();
+      $line['code'] = $m->getCode();
+      $result[] = $line;
+      $line = array();
+    }
+    return $result;
   }
 }

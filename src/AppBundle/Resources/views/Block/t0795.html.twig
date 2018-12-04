@@ -1,0 +1,19 @@
+  <div id="rec{{ id }}" class="r t-rec t-rec_pt_135 t-rec_pb_0" style="padding-top:60px;padding-bottom:0px;background-color:{{ params.custstrattr04 }};" data-bg-color="{{ params.custstrattr04 }}">
+    <!-- T0795 -->
+    <div class="t795">
+      <div class="t-container t-align_center">      
+          {# {{ dump(params) }} #}
+          {% for slide in params.slides01 %}  
+          <div class="t-col t-col_10 t-prefix_1" style="padding-top: 20px; padding-bottom: 20px;">                              
+            <div class="t795__title t-title t-title_xs t-margin_auto" field="title" style="">
+              <div data-customstyle="yes">{{ slide.title }}</div>
+            </div>                        
+            <div class="t795__descr t-descr t-descr_xl t-margin_auto" field="descr" style="">
+              <div data-customstyle="yes">{{ slide.code | raw }}</div>
+            </div>            
+          </div>
+          {% endfor %}
+        
+      </div>
+    </div>
+  </div>
