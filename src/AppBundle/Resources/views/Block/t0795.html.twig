@@ -1,19 +1,31 @@
-  <div id="rec{{ id }}" class="r t-rec t-rec_pt_135 t-rec_pb_0" style="padding-top:60px;padding-bottom:0px;background-color:{{ params.custstrattr04 }};" data-bg-color="{{ params.custstrattr04 }}">
+  <div id="rec{{ id }}" class="r t-rec t-rec_pb_0" style="padding-top:15px;padding-bottom:15px;background-color:#f7e3d6;" data-bg-color="{{ params.custstrattr04 }}">
     <!-- T0795 -->
     <div class="t795">
-      <div class="t-container t-align_center">      
-          {# {{ dump(params) }} #}
-          {% for slide in params.slides01 %}  
-          <div class="t-col t-col_10 t-prefix_1" style="padding-top: 20px; padding-bottom: 20px;">                              
-            <div class="t795__title t-title t-title_xs t-margin_auto" field="title" style="">
-              <div data-customstyle="yes">{{ slide.title }}</div>
-            </div>                        
-            <div class="t795__descr t-descr t-descr_xl t-margin_auto" field="descr" style="">
-              <div data-customstyle="yes">{{ slide.code | raw }}</div>
-            </div>            
-          </div>
+      <div class="t-container">
+          {# {{ dump() }} #}
+          <div style="padding-left: 30px; padding-right: 15px;">
+          {% for slide in params.slides01 %}
+            <div class="track" style="width: 100%;">
+              <div class="t-container">
+                <div class="t-cell">
+                  <a href="{{ relative_path([ '/', 'release', '/', slide.link]|join) }}" style="display: inline" target="_blank">
+                    <img src="{% path slide.image, 'mini' %}" style="float: left; width: 50px; height: 50px; margin-top: 0;">
+                  </a>
+                </div>
+                <div class="t-cell t-width">
+                  <a href="{{ relative_path([ '/', 'release', '/', slide.link]|join) }}" style="display: inline" target="_blank">                    
+                    <h2>{{ slide.title }}<br><span>{{ slide.artist }}</span></h2>
+                  </a>
+                </div>
+                <div class="t-cell">
+                  <a class="download-track" href="{{ relative_path([ '/', 'release', '/', slide.link]|join) }}" target="_blank">
+                    <img style="" src="{{ asset('template2/play.png') }}">
+                  </a>
+                </div>
+              </div>
+				    </div>
           {% endfor %}
-        
+          </div>
       </div>
     </div>
   </div>

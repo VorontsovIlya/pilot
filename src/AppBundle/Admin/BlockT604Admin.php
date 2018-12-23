@@ -18,8 +18,8 @@ class BlockT604Admin extends BlockAdmin
         ->add('path', TextType::class)
         ->add('order', TextType::class)
         ->add('comment', TextType::class)
-        ->add('slides01', 'sonata_type_model',
-            array('multiple' => true, 'by_reference' => false, 'btn_add' => true, 'label' => 'Слайды'))
+        // ->add('slides01', 'sonata_type_model',
+        //     array('multiple' => true, 'by_reference' => false, 'btn_add' => true, 'label' => 'Слайды'))
       ->end()
     ;
   }

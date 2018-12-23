@@ -29,7 +29,7 @@ framework:
         save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
         # handler_id: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
         cookie_lifetime: 0
-        
+
     fragments: ~
     http_method_override: true
     assets: ~
@@ -86,7 +86,7 @@ doctrine:
                         dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
                         alias: GedmoTree # (optional) it will default to the name set for the mapping
                         is_bundle: false
-                        
+
 
                 quote_strategy: app.orm.quote_strategy
 
@@ -123,7 +123,7 @@ sonata_media:
                 - sonata.media.provider.file
                 - sonata.media.provider.vimeo
 
-            formats:                
+            formats:
                 big:   { width: 500 , quality: 70}
                 preview: { width: 20, quality: 70}
 
@@ -134,13 +134,35 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
-                preview: { width: 20, quality: 70}
+                preview: { width: 50, quality: 70}
                 big:   { width: 1000, quality: 95}
+
+        release:
+            providers:
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+
+            formats:
+                thumb: { width: 500, quality: 95}
+                poster: { width: 500, height: 500, quality: 95}
+                video:   { width: 375, quality: 95}
+                mini: {width: 50, height: 50, quality: 95}
+                preview: { width: 50, quality: 70}
+                
+        artist:
+            providers:                
+                - sonata.media.provider.image
+
+            formats:            
+                poster:  { width: 500, height: 500, quality: 95}
+                big:     { width: 500 , quality: 95}
+                preview: { width: 50, quality: 95}
+                slider:  { width: 860, height: 550, quality: 95 }
 
     cdn:
         server:
             path: /uploads/media # http://media.sonata-project.org/
-            # path: 'https://s3.amazonaws.com/pilot3.vserver.tk'            
+            # path: 'https://s3.amazonaws.com/pilot3.vserver.tk'
 
     filesystem:
         local:
@@ -233,9 +255,10 @@ fos_ck_editor:
             toolbar:
             - [Bold, Italic, Underline, -, Cut, Copy, Paste,
               PasteText, PasteFromWord, -, Undo, Redo, -,
-              NumberedList, BulletedList, -, Outdent, Indent, -,
-              Blockquote, -, Image, Link, Unlink, Table]
+              NumberedList, BulletedList, -, Outdent, Indent, JustifyLeft, JustifyRight, JustifyCenter, JustifyBlock, -,
+              Blockquote, -, Image, Link, Unlink, Table, Youtube]
             - [Format, Maximize, Source]
+
 
             filebrowserBrowseRoute: admin_sonata_media_media_ckeditor_browser
             filebrowserImageBrowseRoute: admin_sonata_media_media_ckeditor_browser
@@ -252,12 +275,23 @@ fos_ck_editor:
                 provider: sonata.media.provider.image
                 context: my-context # Optional, to upload in a custom context
                 format: my-big # Optional, media format or original size returned to editor
+
+            extraPlugins: ["youtube", "justify"]
+
     styles:
         my_styles:
             - { name: "Span 400", element: "span", styles: { font-weight: 400 }}
             - { name: "Blue Title", element: "h2", styles: { color: "Blue" }}
             - { name: "CSS Style", element: "span", attributes: { class: "my_style" }}
             - { name: "Widget Style", type: widget, widget: "my_widget", attributes: { class: "my_widget_style" }}
+
+    plugins:
+        youtube:
+            path:     "/ckeditor/plugins/youtube/" # with trailing slash
+            filename: "plugin.js"
+        justify:
+            path:     "/ckeditor/plugins/justify/" # with trailing slash
+            filename: "plugin.js"
 
 # sonata_admin:
 #     templates:

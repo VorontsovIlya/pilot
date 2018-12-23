@@ -380,27 +380,29 @@ function t404_unifyHeightsTextwrapper(recid) {
 }
 
 function t404_showMore(recid) {
-  var el = $('#rec' + recid).find(".t404");
-  el.find(".t-col").hide();
-  var cards_size = el.find(".t-col").size();
-  var cards_count = parseInt(el.attr("data-show-count"));
-  if (cards_count > 500) {
-    cards_count = 500
-  }
-  var x = cards_count;
-  var y = cards_count;
-  el.find('.t-col:lt(' + x + ')').show();
-  el.find('.t404__showmore').click(function () {
-    x = (x + y <= cards_size) ? x + y : cards_size;
-    el.find('.t-col:lt(' + x + ')').show();
-    if (x == cards_size) {
-      el.find('.t404__showmore').hide()
-    }
-    $('.t404').trigger('displayChanged');
-    if (window.lazy == 'y') {
-      t_lazyload_update()
-    }
-  })
+  // var el = $('#rec' + recid).find(".t404");
+  // el.find(".t-col").hide();
+  // var cards_size = el.find(".t-col").size();
+  // var cards_count = parseInt(el.attr("data-show-count"));
+  // if (cards_count > 500) {
+  //   cards_count = 500
+  // }
+  // var x = cards_count;
+  // var y = cards_count;
+  // el.find('.t-col:lt(' + x + ')').show();
+  
+  // el.find('.t404__showmore').click(function () {
+  //   x = (x + y <= cards_size) ? x + y : cards_size;
+  //   el.find('.t-col:lt(' + x + ')').show();
+  //   if (x == cards_size) {
+  //     el.find('.t404__showmore').hide()
+  //   }
+  //   $('.t404').trigger('displayChanged');
+  //   if (window.lazy == 'y') {
+  //     t_lazyload_update()
+  //   }
+  // })
+
 }
 
 function t552_init(recid, ratio) {

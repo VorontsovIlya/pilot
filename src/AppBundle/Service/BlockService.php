@@ -27,8 +27,8 @@ class BlockService {
       $blocks[$key] = $value = trim($value);
       $i = 0;
       while (array_key_exists("{$value}_{$i}", $result)) $i++;
-            
-      if (array_key_exists($value, $available_blocks)){        
+
+      if (array_key_exists($value, $available_blocks)){
         $result["{$value}_{$i}"] = array(
           'file' => $value,
           'params' => array(),
@@ -80,7 +80,7 @@ class BlockService {
 
     foreach ($blocks as $b) {
       $key = $b->getType() . '_' . $b->getOrder();
-      if ($level == 0) {        
+      if ($level == 0) {
         $result[$key] ["params"] = $this->_loadParam($b);
         $result[$key] ['path'] = $b->getPath();
       } elseif ($level == 1) {
@@ -88,7 +88,7 @@ class BlockService {
           if ($result[$key]['path'] == '/') {
             $result[$key] ["params"] = $this->_loadParam($b);
             $result[$key] ['path'] = $b->getPath();
-          } elseif (($result[$key] ['path'] == "{$slug[0]}/*") && 
+          } elseif (($result[$key] ['path'] == "{$slug[0]}/*") &&
             $b->getPath() != '/'){
             $result[$key] ["params"] = $this->_loadParam($b);
             $result[$key] ['path'] = $b->getPath();
@@ -102,7 +102,7 @@ class BlockService {
           if ($result[$key]['path'] == '/') {
             $result[$key] ["params"] = $this->_loadParam($b);
             $result[$key] ['path'] = $b->getPath();
-          } 
+          }
         } else {
           $result[$key] ["params"] = $this->_loadParam($b);
           $result[$key] ['path'] = $b->getPath();
@@ -115,20 +115,53 @@ class BlockService {
         );
       };
 
-      if ($b->getType() == 't404'){
-        $result[$key]['news'] = $this->_loadNews();
+      if (($b->getType() == 't404')){
+        $result[$key]['news'] = $this->_loadNewsBlock();
       }
 
-      if ($b->getType() == 't0795'){
-        $result[$key]['params']['slides01'] = $this->_loadMusic();
+      if ( ($b->getType() == 't0004')){
+        $result[$key]['news'] = $this->_loadNewsBlock(20);
+      }
+
+      if ( ($b->getType() == 't604')){
+        $result[$key]['params']['slides01'] = $this->_loadArtists(); 
+      }
+
+      if ($b->getType() == 't0795'){        
+        if ($slug[0] != '/artist'){  
+          $result[$key]['params']['slides01'] = $this->_loadMusic(); 
+        }
+      };
+
+      if ($b->getType() == 't0552'){        
+        if ($slug[0] != '/artist'){  
+          $result[$key]['params']['slides01'] = $this->_loadMusic(true, 8); 
+        }
+      };
+
+      if ($b->getType() == 't0223'){        
+        if ($slug[0] != '/artist'){  
+          $videos = $this->_loadVideo(); 
+          $result[$key]['params']['slides01'] = $videos;
+          $artists = array();
+          foreach ($videos as $v) {            
+            $artist = $v['artist']->getTitle();
+            if (!in_array($artist, $artists)){
+              $artists[] = $artist;
+            }
+          }          
+          $result[$key]['params']['custboolattr01'] = true; 
+          $result[$key]['params']['slides02'] = $artists;
+        }
       };
 
     }
 
     $result['artist'] = false;
 
-    if ($level == 2){      
+    if ($level == 2){
       if ($slug[0] == '/artist'){
+        $result['artist']['loaded'] = true;
         $result = $this->_loadArtist($result, $slug);
       }
     }
@@ -136,7 +169,7 @@ class BlockService {
     return $result;
   }
 
-  private function _loadParam($block){    
+  private function _loadParam($block){
     $result = array();
     $names = ['custstrattr', 'custboolattr', 'custtextattr', 'custmediattr',
       'custdtattr', 'slides', 'contacts', 'menu'];
@@ -155,7 +188,7 @@ class BlockService {
     return $result;
   }
 
-  private function _loadNews($tag = null, $limit = 20, $inline = 4){
+  private function _loadNewsBlock($limit = 4, $inline = 4, $tag = null){
     $result = array();
     $qb = $this->em->getRepository("AppBundle:News")->createQueryBuilder('n');
     if($tag) {
@@ -167,15 +200,15 @@ class BlockService {
       )
       ->setParameter('1', $tag);
     } else
-      $qb->where($qb->expr()->eq('n.public', true));    
+      $qb->where($qb->expr()->eq('n.public', true));
 
-    $news = $qb->orderBy('n.newsdate', 'ASC') 
+    $news = $qb->orderBy('n.newsdate', 'ASC')
       ->setMaxResults( $limit )
       ->getQuery()
       ->getResult()
     ;
-    
-    $line = array();    
+
+    $line = array();
     $i = 0;
     foreach ($news as $n) {
       $line[] = $n;
@@ -186,8 +219,8 @@ class BlockService {
         $i = 0;
       }
     }
-    $result[] = $line;     
-    return $result;
+    $result[] = $line;
+    return $news;
   }
 
   private function _loadArtist($data, $slug){
@@ -200,16 +233,34 @@ class BlockService {
     if(count($artist) == 1){
       $artist = $artist[0];
       $data['artist'] = true;
-      $data['t795_0']['params']['custstrattr01'] = $artist->getTitle();
-      $data['t795_0']['params']['custstrattr02'] = $artist->getDescr();
-      $data['t670_0']['params']['slides01'] = $artist->getSlides01();
-      $data['t004_0']['params']['custtextattr01'] = $artist->getContent();
-      $data['t552_0']['params']['slides01'] = $artist->getSlides01();
-      $data['t223_0']['params']['custmediattr01'] = $artist->getVideo01();
-      $data['t223_0']['params']['custmediattr02'] = $artist->getVideo02();
-      $data['t223_0']['params']['custstrattr01'] = $artist->getVideoDescr01();
-      $data['t223_0']['params']['custstrattr02'] = $artist->getVideoDescr02();
-    }    
+      if (isset($data['t0002_0']['params'])){
+        $data['t0002_0']['params']['custmediattr01'] = $artist->getImage();
+        $data['t0002_0']['params']['custstrattr01'] = $artist->getTitle();
+      }
+      if (isset($data['t188_0']['params'])){
+        $data['t188_0']['params']['custstrattr01'] = $artist->getSocialFB();
+        $data['t188_0']['params']['custstrattr02'] = $artist->getSocialVK();
+        $data['t188_0']['params']['custstrattr03'] = $artist->getSocialTw();
+        $data['t188_0']['params']['custstrattr04'] = $artist->getSocialYTube();
+        $data['t188_0']['params']['custstrattr05'] = $artist->getSocialInst();
+      }
+      if (isset($data['t795_0']['params'])){
+        $data['t795_0']['params']['custstrattr01'] = $artist->getTitle();
+        $data['t795_0']['params']['custstrattr02'] = $artist->getDescr();
+      }
+      if (isset($data['t004_0']['params'])){
+        $data['t004_0']['params']['custtextattr01'] = $artist->getContent();
+      }
+      if (isset($data['t552_0']['params'])){
+        $data['t552_0']['params']['slides01'] = $artist->getSlides01();
+      }
+      if (isset($data['t0795_0']['params'])){
+        $data['t0795_0']['params']['slides01'] = $artist->getMusic();
+      }      
+      if (isset($data['t0223_0']['params'])){
+        $data['t0223_0']['params']['slides01'] = $artist->getVideo();
+      }      
+    }
     return $data;
   }
 
@@ -228,7 +279,54 @@ class BlockService {
     $line = array();
     foreach ($music as $m){
       $line['title'] = $m->getTitle();
-      $line['code'] = $m->getCode();
+      $line['artist'] = $m->getArtist();
+      $line['link'] = $m->getLink();
+      $line['image'] = $m->getImage();
+      $result[] = $line;
+      $line = array();
+    }
+    return $result;
+  }
+
+  private function _loadVideo($starred = false, $count = 50){
+    $qb = $this->em->getRepository("AppBundle:Video")->createQueryBuilder('v');
+    if($starred) {
+      $qb->orderBy('v.starred', 'ASC');
+    }
+    $video = $qb->where('v.active = :active')
+      ->setParameter('active', true)
+      ->setMaxResults($count)
+      ->getQuery()
+      ->getResult()
+    ;
+    $result = array();
+    $line = array();
+    foreach ($video as $v){
+      $line['title'] = $v->getTitle();
+      $line['artist'] = $v->getArtist();
+      $line['video'] = $v->getVideo();      
+      $result[] = $line;
+      $line = array();
+    }
+    return $result;
+  }
+
+  private function _loadArtists(){
+    $qb = $this->em->getRepository("AppBundle:Artist")->createQueryBuilder('a');
+    $artists = $qb->getQuery()
+      ->getResult();
+
+    $result = array();
+    $line = array();
+    foreach ($artists as $a){
+      $line['title'] = $a->getTitle();
+      $line['image'] = $a->getImage();
+      $line['path'] = $a->getPath();
+      $line['social_fb'] = $a->getSocialFB();
+      $line['social_vk'] = $a->getSocialVK();
+      $line['social_ytube'] = $a->getSocialYTube();
+      $line['social_inst'] = $a->getSocialInst();
+      // $line['video'] = $a->getVideo();      
       $result[] = $line;
       $line = array();
     }

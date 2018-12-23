@@ -8,6 +8,10 @@ AppBundle\Entity\Music:
       generator:
         strategy: AUTO
   fields:
+    link:
+      type: string
+      length: 255
+      nullable: true
     title:
       type: string
       length: 255
@@ -16,9 +20,80 @@ AppBundle\Entity\Music:
       type: text
       nullable: true
     active:
-      type: boolean      
+      type: boolean
       nullable: true
     starred:
-      type: boolean      
+      type: boolean
       nullable: true
-
+    releasedate:
+      type: date
+      nullable: true
+    # video:
+    #   type: string
+    #   length: 255
+    #   nullable: true
+    link_itunes:
+      type: string
+      length: 255
+      nullable: true
+    link_apple:
+      type: string
+      length: 255
+      nullable: true
+    link_gplay:
+      type: string
+      length: 255
+      nullable: true
+    link_vk:
+      type: string
+      length: 255
+      nullable: true
+    link_spotify:
+      type: string
+      length: 255
+      nullable: true
+    link_deezer:
+      type: string
+      length: 255
+      nullable: true
+    link_yam:
+      type: string
+      length: 255
+      nullable: true
+    social_fb:
+      type: string
+      length: 255
+      nullable: true
+    social_vk:
+      type: string
+      length: 255
+      nullable: true    
+    social_tw:
+      type: string
+      length: 255
+      nullable: true
+    social_ytube:
+      type: string
+      length: 255
+      nullable: true
+    social_inst:
+      type: string
+      length: 255
+      nullable: true      
+  manyToOne:
+    artist:
+      targetEntity: Artist
+      inversedBy: music
+      joinColumn:
+        name: artist
+        referencedColumnName: id
+    video:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: video
+        referencedColumnName: id
+    image:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: image
+        referencedColumnName: id

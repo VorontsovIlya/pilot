@@ -1,0 +1,33 @@
+AppBundle\Entity\Video:
+  type: entity
+  table: null
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+      type: string
+      length: 255
+      nullable: true
+    active:
+      type: boolean
+      nullable: true
+    starred:
+      type: boolean
+      nullable: true      
+
+  manyToOne:
+    artist:
+      targetEntity: Artist
+      inversedBy: video
+      joinColumn:
+        name: artist
+        referencedColumnName: id
+    video:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: video
+        referencedColumnName: id

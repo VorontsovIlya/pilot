@@ -171,4 +171,42 @@ class DefaultController extends Controller
 
     return $response;
   }
+
+  public function releaseAction(Request $request, $slug){
+    $em = $this->getDoctrine()->getManager();
+    $qb = $em->getRepository("AppBundle:Music")->createQueryBuilder('m');
+    $music = $qb->where('m.active = :active')
+      ->where(
+        $qb->expr()->andX(
+          $qb->expr()->eq('m.link', '?1'),
+          $qb->expr()->eq('m.active', true)
+        )
+      )
+      ->setParameter('1', $slug)
+      ->setMaxResults(1)
+      ->getQuery()
+      ->getResult()
+    ;      
+    
+    if(count($music) == 1) {
+      $render['release']['image'] = $music[0]->getImage();
+      $render['release']['artist'] = $music[0]->getArtist();
+      $render['release']['title'] = $music[0]->getTitle();
+      $render['release']['video'] = $music[0]->getVideo();
+      $render['release']['link_itunes'] = $music[0]->getLinkiTunes();
+      $render['release']['link_apple'] = $music[0]->getLinkApple();
+      $render['release']['link_gplay'] = $music[0]->getLinkGPlay();
+      $render['release']['link_vk'] = $music[0]->getLinkVK();
+      $render['release']['link_spotify'] = $music[0]->getLinkSpotify();
+      $render['release']['link_deezer'] = $music[0]->getLinkDeezer();
+      $render['release']['link_yam'] = $music[0]->getLinkYaM();
+      $render['release']['social_fb'] = $music[0]->getSocialFB();
+      $render['release']['social_vk'] = $music[0]->getSocialVK();
+      $render['release']['social_ytube'] = $music[0]->getSocialYTube();
+      $render['release']['social_inst'] = $music[0]->getSocialInst();
+    } else {
+      return $this->redirectToRoute('page_level0');
+    }
+    return $this->render('AppBundle:Page:release.html.twig', $render);
+  }
 }

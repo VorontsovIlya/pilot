@@ -123,6 +123,16 @@ services:
       - { name: sonata.admin, manager_type: orm, label: Блок - t183 (Обложка), group: Структура }
     public: true
 
+  admin.block.t188:
+    class: AppBundle\Admin\BlockT188Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t188 (Соц сети), group: Структура }
+    public: true
+
   admin.block.t208:
     class: AppBundle\Admin\BlockT208Admin
     arguments:
@@ -373,6 +383,16 @@ services:
       - { name: sonata.admin, manager_type: orm, label: Блок - t0001 (Заглушка-разделитель), group: Структура }
     public: true  
 
+  admin.block.t0002:
+    class: AppBundle\Admin\BlockT0002Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t0002 (Обложка артистов), group: Структура }
+    public: true      
+
   admin.block.t0223:
     class: AppBundle\Admin\BlockT0223Admin
     arguments:
@@ -383,6 +403,16 @@ services:
       - { name: sonata.admin, manager_type: orm, label: Блок - t0223 (Куча видео), group: Структура }
     public: true  
 
+  admin.block.t0552:
+    class: AppBundle\Admin\BlockT0552Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t0552 (Обложки музыки), group: Структура }
+    public: true      
+
   admin.block.t0795:
     class: AppBundle\Admin\BlockT0795Admin
     arguments:
@@ -391,6 +421,16 @@ services:
       - AppBundle:CRUD
     tags:
       - { name: sonata.admin, manager_type: orm, label: Блок - t0795 (Музыка), group: Структура }
+    public: true  
+
+  admin.block.t0004:
+    class: AppBundle\Admin\BlockT0004Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t0004 (Новости), group: Структура }
     public: true  
 
   admin.content.slide:
@@ -422,6 +462,17 @@ services:
     tags:
       - { name: sonata.admin, manager_type: orm, label: Музыка, group: Содержимое }
     public: true
+
+  admin.content.video:
+    class: AppBundle\Admin\VideoAdmin
+    arguments:
+      - ~
+      - AppBundle\Entity\Video
+      - ~
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Видео, group: Содержимое }
+    public: true
+
 
   app.orm.quote_strategy:
     class: AppBundle\ORM\QuoteStrategy

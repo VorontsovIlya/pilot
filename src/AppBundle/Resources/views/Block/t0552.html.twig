@@ -1,0 +1,49 @@
+<div id="rec{{ id }}" class="r t-rec t-rec_pt_0 t-rec_pb_0" style="padding-top:0px;padding-bottom:0px;background-color:{{ params.custstrattr02 }}; "
+  data-animationappear="off" data-record-type="552" data-bg-color="{{ params.custstrattr02 }}">
+  <!-- t0552-->
+  <div class="t552">
+    <div class="t552__container t-container_100 ">
+
+      {% set slide_size = 't552__tile_25' %}
+
+      {% if params.custstrattr01 == 3 %}
+        {% set slide_size = 't552__tile_33' %}
+      {% endif %}
+
+      {% if params.custstrattr01 == 2 %}
+        {% set slide_size = 't552__tile_50' %}
+      {% endif %}
+
+      {% set i = 0 %}
+      {% for slide in params.slides01 %}
+        {% set zoomable = 'yes' %}
+        {% if slide.link != '' %}
+          {% set zoomable = 'no' %}
+          <a href="{{ relative_path(['/', 'release', '/', slide.link]|join) }}">
+        {% endif %}
+          <div class="t552__tile {{slide_size}}" itemscope itemtype="http://schema.org/ImageObject">
+            <div class="t552__blockimg t552__blockimg_animated t-bgimg" bgimgfield="gi_img__{{ i }}" data-zoom-target="{{ i }}" data-zoomable="{{ zoomable }}"
+              data-img-zoom-url="{% path slide.image, 'reference' %}" data-original="{% path slide.image, 'reference' %}"
+              style="background: url({% path slide.image, 'preview' %}) center center no-repeat; background-size:cover; height:25vw;">
+              <meta itemprop="image" content="{% path slide.image, 'reference' %}">              
+            </div>
+          </div>
+        {% set i = i + 1 %}
+        {% if slide.link != '' %}
+          </a>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      setTimeout(function () {
+        t552_init('{{ id }}', '1');
+      }, 500);
+    });
+    $('.t552').bind('displayChanged', function () {
+      t552_init('{{ id }}', '1');
+    });
+  </script>
+</div>

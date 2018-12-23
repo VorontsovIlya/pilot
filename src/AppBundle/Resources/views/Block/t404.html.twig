@@ -2,12 +2,11 @@
     <!-- T404 -->
     <div class="t404" data-show-count="4">
 
-      {% for line in news %}
         <div class="t-container">
-        {# {{ dump(line) }} #}
-        {% for n in line %}
+        {% for n in news %}
+          {% set link = ['/news#', 'n' , n.id] | join %}
           <div class="t404__col t-col t-col_3 t-align_left " data-animate-style="fadeinup" data-animate-chain="yes" style="display: block;">
-            <a class="t404__link" href="{{ n.link }}">
+            <a class="t404__link" href="{{ relative_path( link ) }}">
               <div class="t404__imgbox">
                 <div class="t404__img t-bgimg" data-original="{% path n.picture, 'big' %}"
                   style="background-image: url({% path n.picture, 'preview' %});"></div>
@@ -29,18 +28,19 @@
           </div>
         {% endfor %}
         </div>
-      {% endfor %}
 
       <div class="t404__buttonwrapper">
-        <div class="t404__showmore t404__btn t-btn " style="color:#ffffff;border:0px solid #000000;background-color:#362d66;border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;">
-          <table style="width:100%; height:100%;">
-            <tbody>
-              <tr>
-                <td>Показать ещё</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <a href="{{ relative_path('/news') }}">
+          <div class="t404__showmore t404__btn t-btn " style="color:#ffffff;border:0px solid #000000;background-color:#362d66;border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;">
+            <table style="width:100%; height:100%;">
+              <tbody>
+                <tr>
+                  <td>Показать ещё</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </a>
       </div>
     </div>
 

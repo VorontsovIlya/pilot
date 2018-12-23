@@ -1,15 +1,40 @@
-<div id="rec{{id}}" class="r t-rec t-rec_pt_105 t-rec_pb_105" style="padding-top:50px;padding-bottom:50px; " data-record-type="251">
+<div id="rec{{id}}" class="r t-rec t-rec_pt_105 t-rec_pb_105" style="padding-top:20px;padding-bottom:20px;" data-record-type="251">
   <!-- T0223 -->
   <div class="t223">
+    {% if params.custboolattr01 %}
+      <div class="t-container t-align_center selector">
+        {% for slide in params.slides02 %}
+            <a class="sel" data-id="{{ slide|lower }}" style="color: #fae2d5;">{{ slide }}</a>
+        {% endfor %}
+        <a class="sel_all active" style="color: #fae2d5;">Все</a>
+      </div>
+    {% endif %}
     <div class="t-container">
       {% for slide in params.slides01 %}
-        <div class="t223-col t-col t-col_6 t-animate" data-animate-style="zoomin" data-animate-group="yes" data-animate-order="1">
+        <div class="t223-col t-col t-col_6 t-animate t-rec_pb_45" data-id="{{slide.artist|lower}}" data-animate-style="zoomin" data-animate-group="no" data-animate-order="1">
           {% media slide.video, 'big' with {'player_parameters': {'t223': 1}} %}
           <div class="t223__blocktext t-text t-text_sm" field="text">
-            <div style="text-align:center;color:#362d66;" data-customstyle="yes">{{ slide.slidedescr }}</div>
+            <div style="text-align:center;color:#362d66;" data-customstyle="yes">{{ slide.title }}</div>
           </div>
         </div>
       {% endfor %}
+      {# {{ dump(params) }}  #}
     </div>
   </div>
+  <script type="text/javascript">
+    $(".sel").click(function(){
+      $(".t223-col").hide();
+      $(".sel").removeClass('active');
+      $(".sel_all").removeClass('active');
+      $(this).addClass('active');
+      selector = ($(this).attr('data-id'));
+      $('div[data-id="'+selector+'"]').show();
+    })
+    $(".sel_all").click(function(){      
+      $(".t223-col").show();
+      $(".sel").removeClass('active');
+      $(".sel_all").removeClass('active');
+      $(this).addClass('active');
+    })
+  </script>
 </div>
