@@ -2,10 +2,13 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Cmf\Component\Routing\RouteObjectInterface;
+use Symfony\Cmf\Component\Routing\RouteReferrersInterface;
+
 /**
  * Artist
  */
-class Artist
+class Artist implements RouteReferrersInterface
 {
     /**
      * @var int
@@ -21,7 +24,6 @@ class Artist
      * @var string
      */
     private $title;
-
 
     /**
      * Get id.
@@ -117,6 +119,7 @@ class Artist
     {
         $this->slides01 = new \Doctrine\Common\Collections\ArrayCollection();
         $this->slides02 = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->routes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -296,7 +299,6 @@ class Artist
      */
     private $videodescr02;
 
-
     /**
      * Set videodescr01.
      *
@@ -347,8 +349,12 @@ class Artist
 
     public function __toString()
     {
-        if ($this->title) return $this->title;
-            else return "";
+        if ($this->title) {
+            return $this->title;
+        } else {
+            return "";
+        }
+
     }
 
     /**
@@ -380,7 +386,6 @@ class Artist
      * @var \Application\Sonata\MediaBundle\Entity\Media
      */
     private $image;
-
 
     /**
      * Set socialFb.
@@ -530,7 +535,6 @@ class Artist
      */
     private $music;
 
-
     /**
      * Add music.
      *
@@ -571,7 +575,6 @@ class Artist
      */
     private $video;
 
-
     /**
      * Add video.
      *
@@ -607,4 +610,90 @@ class Artist
     {
         return $this->video;
     }
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     */
+    private $poster;
+
+    /**
+     * Set poster.
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media|null $poster
+     *
+     * @return Artist
+     */
+    public function setPoster(\Application\Sonata\MediaBundle\Entity\Media $poster = null)
+    {
+        $this->poster = $poster;
+
+        return $this;
+    }
+
+    /**
+     * Get poster.
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media|null
+     */
+    public function getPoster()
+    {
+        return $this->poster;
+    }
+
+    /**
+     * @var RouteObjectInterface[]|ArrayCollection
+     */
+    private $routes;
+
+    /**
+     * @param RouteObjectInterface $route
+     *
+     * @return $this
+     */
+    public function addRoute($route)
+    {
+        $this->routes[] = $route;
+
+        return $this;
+    }
+
+    /**
+     * @param RouteObjectInterface $route
+     *
+     * @return $this
+     */
+    public function removeRoute($route)
+    {
+        return $this->routes->removeElement($route);
+    }
+
+    /**
+     * @return RouteObjectInterface[]|ArrayCollection
+     */
+    public function getRoutes()
+    {
+        return $this->routes;
+    }
+
+    /**
+     * @param RouteObjectInterface[]|ArrayCollection $routes
+     */
+    public function setRoutes($routes)
+    {
+        $this->routes = $routes;
+    }
+
+    public function getRoute()
+    {
+        if (count($this->routes)) {
+            return $this->routes[0];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @var Container
+     */
+    private $container;
+
 }

@@ -97,3 +97,7 @@ AppBundle\Entity\Music:
       joinColumn:
         name: image
         referencedColumnName: id
+  manyToMany:
+    routes:
+      targetEntity: Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Orm\Route
+      cascade: ["persist", "remove"]      

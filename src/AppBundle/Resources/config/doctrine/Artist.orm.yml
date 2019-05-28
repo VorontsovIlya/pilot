@@ -47,11 +47,21 @@ AppBundle\Entity\Artist:
           artist_id:
             referencedColumnName: id
 
+    routes:
+      targetEntity: Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Orm\Route
+      cascade: ["persist", "remove"]        
+
   manyToOne:
     image:
       targetEntity: Application\Sonata\MediaBundle\Entity\Media
       joinColumn:
         name: image
+        referencedColumnName: id
+    
+    poster:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: poster
         referencedColumnName: id
 
   oneToMany:

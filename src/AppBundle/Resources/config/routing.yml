@@ -21,3 +21,6 @@ page_level2:
     path:   /{slug}/{slug_0}
     defaults: { _controller: "AppBundle:Default:level2" }
 
+page_level3:
+    path:   /{slug}/{slug_0}/{slug_1}
+    defaults: { _controller: "AppBundle:Default:level3" }

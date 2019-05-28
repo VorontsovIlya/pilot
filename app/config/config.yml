@@ -16,7 +16,7 @@ framework:
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
-        strict_requirements: ~
+        # strict_requirements: ~
     form: ~
     csrf_protection: ~
     validation: { enable_annotations: true }
@@ -126,6 +126,7 @@ sonata_media:
             formats:
                 big:   { width: 500 , quality: 70}
                 preview: { width: 20, quality: 70}
+                video:   { width: 375, quality: 95}
 
         news:
             providers:
@@ -335,3 +336,17 @@ sonata_formatter:
         twig:
             service: sonata.formatter.text.twigengine
             extensions: [] # Twig formatter cannot have extensions
+
+cmf_routing:
+    chain:
+        routers_by_id:                        
+            router.default: 100
+            cmf_routing.dynamic_router: 200
+    dynamic:  
+        persistence:
+            orm:
+                enabled: true 
+        enabled: true
+        generic_controller: AppBundle:Default:dynamicRoute
+        templates_by_class:
+            AppBundle\Entity\Artist: AppBundle:Default:index.html.twig

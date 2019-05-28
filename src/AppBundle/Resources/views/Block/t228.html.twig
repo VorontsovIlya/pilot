@@ -36,7 +36,7 @@
               <ul class="t228__list">
                 {% for child in params.menu01.children %}
                   <li class="t228__list_item">
-                    <a class="t-menu__link-item" href="{{ relative_path(child.route) }}" style="color:#fae2d5;font-size:14px;font-weight:600;text-transform:uppercase;"
+                    <a class="t-menu__link-item" href="{{ absolute_url(child.route) }}" style="color:#fae2d5;font-size:14px;font-weight:600;text-transform:uppercase;"
                       data-menu-item-number="1">{{ child.title }}</a>
                   </li>
                 {% endfor %}

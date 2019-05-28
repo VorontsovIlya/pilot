@@ -488,3 +488,14 @@ services:
     public: false
     tags:
       - { name: twig.runtime }
+  
+  # app.route_provider:
+  #   class: AppBundle\Repository\RouteProvider
+  #   public: false
+  #   # tags:
+  #   #   - { name: router, priority: 300 }
+
+  AppBundle\EventListener\PostUpdateListener:
+    arguments: ['@service_container']
+    tags:
+      - { name: doctrine.event_listener, event: postUpdate }

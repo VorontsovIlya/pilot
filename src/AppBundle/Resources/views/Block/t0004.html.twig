@@ -10,10 +10,15 @@
         <div field="text" class="t-text t-text_md " style="">
           <div class="t404__uptitle t-uptitle" style="text-transform:uppercase;">
             {% if n.tag %}
-              <span style="text-transform:uppercase;" class="t404__tag">{{ n.tag }}&nbsp;&nbsp;&nbsp;</span>
+              {% set tags = n.tag | split(',') %}
+              {% for tag in tags %}
+                {% set taglink = ['/news/tag/', tag | trim] | join %} 
+                <a href="{{ absolute_url(taglink) }}"><span style="text-transform:uppercase;" class="t404__tag">#{{ tag | trim }}</span></a>  
+              {% endfor %}
+                <span style="text-transform:uppercase;" class="t404__tag">&nbsp;&nbsp;&nbsp;</span>
             {% endif %}
             {% if n.newsdate %}
-              <span style="text-transform:uppercase;" class="t404__date">{{ n.newsdate|date("m / d / Y") }}</span>
+              <span style="text-transform:uppercase;" class="t404__date">{{ n.newsdate|date("Y / m / d") }}</span>
             {% endif %}
           </div>
           <div class="t404__title t-heading t-heading_xs" style="color: rgb(54, 45, 102);">{{ n.title }}</div>

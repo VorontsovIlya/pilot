@@ -5,6 +5,7 @@ namespace AppBundle\Service;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\Container;
 use AppBundle\Entity\Block;
+use Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Orm\Route;
 
 class BlockService {
 
@@ -120,7 +121,13 @@ class BlockService {
       }
 
       if ( ($b->getType() == 't0004')){
-        $result[$key]['news'] = $this->_loadNewsBlock(20);
+        if (!isset($slug[1])) { 
+          $result[$key]['news'] = $this->_loadNewsBlock(20);
+        } else {
+          if (isset($slug[2]) && ($slug[1] == "tag")){
+            $result[$key]['news'] = $this->_loadNewsBlock(20, 4, $slug[2]);
+          }
+        }
       }
 
       if ( ($b->getType() == 't604')){
@@ -198,11 +205,11 @@ class BlockService {
           $qb->expr()->eq('n.public', true)
         )
       )
-      ->setParameter('1', $tag);
+      ->setParameter('1', "%".$tag."%");
     } else
       $qb->where($qb->expr()->eq('n.public', true));
 
-    $news = $qb->orderBy('n.newsdate', 'ASC')
+    $news = $qb->orderBy('n.newsdate', 'desc')
       ->setMaxResults( $limit )
       ->getQuery()
       ->getResult()
@@ -282,6 +289,7 @@ class BlockService {
       $line['artist'] = $m->getArtist();
       $line['link'] = $m->getLink();
       $line['image'] = $m->getImage();
+      $line['route'] = $m->getRoute();
       $result[] = $line;
       $line = array();
     }

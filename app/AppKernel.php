@@ -34,6 +34,8 @@ class AppKernel extends Kernel
             new Sonata\SeoBundle\SonataSeoBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+            new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
+            
 
             new AppBundle\AppBundle(),
             new MenuBundle\MenuBundle(),

@@ -7,18 +7,18 @@
           {% for slide in params.slides01 %}
             <div class="track" style="width: 100%;">
               <div class="t-container">
-                <div class="t-cell">
-                  <a href="{{ relative_path([ '/', 'release', '/', slide.link]|join) }}" style="display: inline" target="_blank">
+                <div class="t-cell">                  
+                  <a href="{{ slide.route ? path(slide.route) }}" style="display: inline" target="_blank">
                     <img src="{% path slide.image, 'mini' %}" style="float: left; width: 50px; height: 50px; margin-top: 0;">
                   </a>
                 </div>
                 <div class="t-cell t-width">
-                  <a href="{{ relative_path([ '/', 'release', '/', slide.link]|join) }}" style="display: inline" target="_blank">                    
+                  <a href="{{ slide.route ? path(slide.route) }}" style="display: inline" target="_blank">                    
                     <h2>{{ slide.title }}<br><span>{{ slide.artist }}</span></h2>
                   </a>
                 </div>
                 <div class="t-cell">
-                  <a class="download-track" href="{{ relative_path([ '/', 'release', '/', slide.link]|join) }}" target="_blank">
+                  <a class="download-track" href="{{ slide.route ? path(slide.route) }}" target="_blank">
                     <img style="" src="{{ asset('template2/play.png') }}">
                   </a>
                 </div>

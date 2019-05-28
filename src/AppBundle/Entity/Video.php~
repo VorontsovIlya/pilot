@@ -109,4 +109,62 @@ class Video
     {
         return $this->video;
     }
+    /**
+     * @var bool|null
+     */
+    private $active;
+
+    /**
+     * @var bool|null
+     */
+    private $starred;
+
+
+    /**
+     * Set active.
+     *
+     * @param bool|null $active
+     *
+     * @return Video
+     */
+    public function setActive($active = null)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active.
+     *
+     * @return bool|null
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set starred.
+     *
+     * @param bool|null $starred
+     *
+     * @return Video
+     */
+    public function setStarred($starred = null)
+    {
+        $this->starred = $starred;
+
+        return $this;
+    }
+
+    /**
+     * Get starred.
+     *
+     * @return bool|null
+     */
+    public function getStarred()
+    {
+        return $this->starred;
+    }
 }
