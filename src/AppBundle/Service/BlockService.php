@@ -273,10 +273,11 @@ class BlockService {
 
   private function _loadMusic($starred = false, $count = 50){
     $qb = $this->em->getRepository("AppBundle:Music")->createQueryBuilder('m');
-    if($starred) {
-      $qb->orderBy('m.starred', 'ASC');
-    }
+    // if($starred) {
+    //   $qb->orderBy('m.starred', 'ASC');
+    // }
     $music = $qb->where('m.active = :active')
+      ->orderBy('m.id', 'DESC')
       ->setParameter('active', true)
       ->setMaxResults($count)
       ->getQuery()
@@ -298,10 +299,11 @@ class BlockService {
 
   private function _loadVideo($starred = false, $count = 50){
     $qb = $this->em->getRepository("AppBundle:Video")->createQueryBuilder('v');
-    if($starred) {
-      $qb->orderBy('v.starred', 'ASC');
-    }
+    // if($starred) {
+    //   $qb->orderBy('v.starred', 'ASC');
+    // }
     $video = $qb->where('v.active = :active')
+      ->orderBy('v.id', 'DESC')
       ->setParameter('active', true)
       ->setMaxResults($count)
       ->getQuery()
