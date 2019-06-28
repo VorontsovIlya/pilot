@@ -37240,7 +37240,7 @@ html#ecwid_html body#ecwid_body .t380 div.ecwid-productBrowser-nav {
 
 .t552__container {
   font-size: 0;
-  min-height: 1px;
+  /* min-height: 1px; */
 }
 
 .t552__container.t-container {

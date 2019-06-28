@@ -29,6 +29,8 @@ class ArtistAdmin extends AbstractAdmin
             ->with("Картинки", array('class' => 'col-md-5'))
             ->add('image', 'sonata_type_model_list', array('required' => false, 'label' => 'Постер'),
                 array('link_parameters' => array('context' => 'artist', 'hide_context' => true)))
+            // ->add('poster', 'sonata_type_model_list', array('required' => false, 'label' => 'Постер (квадратный)'),
+            //     array('link_parameters' => array('context' => 'artist', 'hide_context' => true)))
             ->add('slides01', 'sonata_type_model',
                 array('multiple' => true, 'by_reference' => false, 'btn_add' => true,
                     'label' => 'Слайды (нижняя часть)', 'required' => false))

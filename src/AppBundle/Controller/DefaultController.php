@@ -240,10 +240,12 @@ class DefaultController extends Controller
             $render['release']['link_spotify'] = $music[0]->getLinkSpotify();
             $render['release']['link_deezer'] = $music[0]->getLinkDeezer();
             $render['release']['link_yam'] = $music[0]->getLinkYaM();
-            $render['release']['social_fb'] = $music[0]->getSocialFB();
-            $render['release']['social_vk'] = $music[0]->getSocialVK();
-            $render['release']['social_ytube'] = $music[0]->getSocialYTube();
-            $render['release']['social_inst'] = $music[0]->getSocialInst();
+            
+            $render['release']['social_fb'] = $music[0]->getArtist()->getSocialFB();
+            $render['release']['social_vk'] = $music[0]->getArtist()->getSocialVK();
+            $render['release']['social_ytube'] = $music[0]->getArtist()->getSocialYTube();
+            $render['release']['social_inst'] = $music[0]->getArtist()->getSocialInst();
+
         } else {
             return $this->redirectToRoute('page_level0');
         }

@@ -413,6 +413,17 @@ services:
       - { name: sonata.admin, manager_type: orm, label: Блок - t0552 (Обложки музыки), group: Структура }
     public: true      
 
+  admin.block.t1552:
+    class: AppBundle\Admin\BlockT1552Admin
+    arguments:
+      - ~
+      - AppBundle\Entity\Block
+      - AppBundle:CRUD
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Блок - t1552 (Обложки артистов), group: Структура }
+    public: true      
+
+
   admin.block.t0795:
     class: AppBundle\Admin\BlockT0795Admin
     arguments:

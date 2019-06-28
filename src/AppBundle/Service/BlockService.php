@@ -121,7 +121,7 @@ class BlockService {
       }
 
       if ( ($b->getType() == 't0004')){
-        if (!isset($slug[1])) { 
+        if (!isset($slug[1])) {
           $result[$key]['news'] = $this->_loadNewsBlock(20);
         } else {
           if (isset($slug[2]) && ($slug[1] == "tag")){
@@ -131,33 +131,36 @@ class BlockService {
       }
 
       if ( ($b->getType() == 't604')){
-        $result[$key]['params']['slides01'] = $this->_loadArtists(); 
+        $result[$key]['params']['slides01'] = $this->_loadArtists();
       }
 
-      if ($b->getType() == 't0795'){        
-        if ($slug[0] != '/artist'){  
-          $result[$key]['params']['slides01'] = $this->_loadMusic(); 
+      if ($b->getType() == 't0795'){
+        if ($slug[0] != '/artist'){
+          $result[$key]['params']['slides01'] = $this->_loadMusic();
         }
       };
 
       if ($b->getType() == 't0552'){        
-        if ($slug[0] != '/artist'){  
-          $result[$key]['params']['slides01'] = $this->_loadMusic(true, 8); 
-        }
+        $result[$key]['params']['slides01'] = $this->_loadMusic(true, 8);
       };
 
-      if ($b->getType() == 't0223'){        
-        if ($slug[0] != '/artist'){  
-          $videos = $this->_loadVideo(); 
+      if ($b->getType() == 't1552'){
+        $result[$key]['params']['slides01'] = $this->_loadArtists();
+      };
+
+
+      if ($b->getType() == 't0223'){
+        if ($slug[0] != '/artist'){
+          $videos = $this->_loadVideo();
           $result[$key]['params']['slides01'] = $videos;
           $artists = array();
-          foreach ($videos as $v) {            
+          foreach ($videos as $v) {
             $artist = $v['artist']->getTitle();
             if (!in_array($artist, $artists)){
               $artists[] = $artist;
             }
-          }          
-          $result[$key]['params']['custboolattr01'] = true; 
+          }
+          $result[$key]['params']['custboolattr01'] = true;
           $result[$key]['params']['slides02'] = $artists;
         }
       };
@@ -263,10 +266,10 @@ class BlockService {
       }
       if (isset($data['t0795_0']['params'])){
         $data['t0795_0']['params']['slides01'] = $artist->getMusic();
-      }      
+      }
       if (isset($data['t0223_0']['params'])){
         $data['t0223_0']['params']['slides01'] = $artist->getVideo();
-      }      
+      }
     }
     return $data;
   }
@@ -314,7 +317,7 @@ class BlockService {
     foreach ($video as $v){
       $line['title'] = $v->getTitle();
       $line['artist'] = $v->getArtist();
-      $line['video'] = $v->getVideo();      
+      $line['video'] = $v->getVideo();
       $result[] = $line;
       $line = array();
     }
@@ -331,12 +334,13 @@ class BlockService {
     foreach ($artists as $a){
       $line['title'] = $a->getTitle();
       $line['image'] = $a->getImage();
+      $line['poster'] = $a->getPoster();
       $line['path'] = $a->getPath();
       $line['social_fb'] = $a->getSocialFB();
       $line['social_vk'] = $a->getSocialVK();
       $line['social_ytube'] = $a->getSocialYTube();
       $line['social_inst'] = $a->getSocialInst();
-      // $line['video'] = $a->getVideo();      
+      // $line['video'] = $a->getVideo();
       $result[] = $line;
       $line = array();
     }
