@@ -110,6 +110,7 @@ AppBundle\Entity\Artist:
     music:
       targetEntity: Music
       mappedBy: artist
+      orderBy: { 'releasedate': 'DESC' }
     video:
       targetEntity: Video
       mappedBy: artist
