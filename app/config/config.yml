@@ -156,7 +156,7 @@ sonata_media:
 
             formats:            
                 poster:  { width: 500, height: 500, quality: 95 }
-                big:     { width: 960, height: 680, quality: 95 }
+                big:     { width: 1200, height: 700, quality: 95 }
                 preview: { width: 50, quality: 95 }
                 slider:  { width: 860, height: 550, quality: 95 }
 
