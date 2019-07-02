@@ -167,4 +167,33 @@ class Video
     {
         return $this->starred;
     }
+    /**
+     * @var \DateTime|null
+     */
+    private $releasedate = '2018-01-01';
+
+
+    /**
+     * Set releasedate.
+     *
+     * @param \DateTime|null $releasedate
+     *
+     * @return Video
+     */
+    public function setReleasedate($releasedate = null)
+    {
+        $this->releasedate = $releasedate;
+
+        return $this;
+    }
+
+    /**
+     * Get releasedate.
+     *
+     * @return \DateTime|null
+     */
+    public function getReleasedate()
+    {
+        return $this->releasedate;
+    }
 }

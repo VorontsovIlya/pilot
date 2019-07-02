@@ -244,7 +244,10 @@ class BlockService {
       $artist = $artist[0];
       $data['artist'] = true;
       if (isset($data['t0002_0']['params'])){
-        $data['t0002_0']['params']['custmediattr01'] = $artist->getImage();
+        
+        $data['t0002_0']['params']['custmediattr01'] = 
+          ($artist->getPoster()?$artist->getPoster():$artist->getImage());
+        
         $data['t0002_0']['params']['custstrattr01'] = $artist->getTitle();
       }
       if (isset($data['t188_0']['params'])){
@@ -280,8 +283,10 @@ class BlockService {
     //   $qb->orderBy('m.starred', 'ASC');
     // }
     $music = $qb->where('m.active = :active')
-      ->orderBy('m.id', 'DESC')
+      ->andWhere('m.hidden = :hidden')
+      ->orderBy('m.releasedate', 'DESC')
       ->setParameter('active', true)
+      ->setParameter('hidden', false)
       ->setMaxResults($count)
       ->getQuery()
       ->getResult()
@@ -306,7 +311,7 @@ class BlockService {
     //   $qb->orderBy('v.starred', 'ASC');
     // }
     $video = $qb->where('v.active = :active')
-      ->orderBy('v.id', 'DESC')
+      ->orderBy('v.releasedate', 'DESC')
       ->setParameter('active', true)
       ->setMaxResults($count)
       ->getQuery()
@@ -326,15 +331,17 @@ class BlockService {
 
   private function _loadArtists(){
     $qb = $this->em->getRepository("AppBundle:Artist")->createQueryBuilder('a');
-    $artists = $qb->getQuery()
+    $artists = $qb->where('a.lvl = 1')
+      ->orderBy('a.lft')
+      ->getQuery()      
       ->getResult();
-
     $result = array();
     $line = array();
     foreach ($artists as $a){
       $line['title'] = $a->getTitle();
       $line['image'] = $a->getImage();
-      $line['poster'] = $a->getPoster();
+      $line['poster'] = ($a->getPoster()?$a->getPoster():$a->getImage());
+      $line['poster_sq'] = ($a->getPosterSq()?$a->getPosterSq():$a->getImage());      
       $line['path'] = $a->getPath();
       $line['social_fb'] = $a->getSocialFB();
       $line['social_vk'] = $a->getSocialVK();

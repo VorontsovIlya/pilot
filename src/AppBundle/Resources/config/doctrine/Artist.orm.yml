@@ -1,6 +1,10 @@
 AppBundle\Entity\Artist:
   type: entity
+  repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
   table: null
+  gedmo:
+    tree:
+      type: nested
   id:
     id:
       type: integer
@@ -37,6 +41,18 @@ AppBundle\Entity\Artist:
       type: string
       length: 255
       nullable: true
+    lft:
+      type: integer
+      gedmo:
+        - treeLeft
+    rgt:
+      type: integer
+      gedmo:
+        - treeRight
+    lvl:
+      type: integer
+      gedmo:
+        - treeLevel
 
   manyToMany:
     slides01:
@@ -64,6 +80,32 @@ AppBundle\Entity\Artist:
         name: poster
         referencedColumnName: id
 
+    poster_sq:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinColumn:
+        name: poster_sq
+        referencedColumnName: id
+
+    root:
+      targetEntity: Artist
+      joinColumn:
+        name: tree_root
+        referencedColumnName: id
+        onDelete: CASCADE
+      gedmo:
+        - treeRoot
+          # identifierMethod: getRoot2
+
+    parent:
+      targetEntity: Artist
+      inversedBy: children
+      joinColumn:
+        name: parent_id
+        referencedColumnName: id
+        onDelete: CASCADE
+      gedmo:
+        - treeParent
+
   oneToMany:
     music:
       targetEntity: Music
@@ -71,3 +113,9 @@ AppBundle\Entity\Artist:
     video:
       targetEntity: Video
       mappedBy: artist
+
+    children:
+      targetEntity: Artist
+      mappedBy: parent
+      orderBy:
+        lft: ASC

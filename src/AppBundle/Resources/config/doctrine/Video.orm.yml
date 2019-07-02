@@ -17,7 +17,12 @@ AppBundle\Entity\Video:
       nullable: true
     starred:
       type: boolean
-      nullable: true      
+      nullable: true     
+    releasedate:
+      type: date
+      nullable: true
+      options:
+        default: '2018-01-01'
 
   manyToOne:
     artist:

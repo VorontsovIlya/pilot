@@ -22,6 +22,11 @@ AppBundle\Entity\Music:
     active:
       type: boolean
       nullable: true
+    hidden:
+      type: boolean
+      nullable: true
+      options:
+        default: false
     starred:
       type: boolean
       nullable: true

@@ -706,4 +706,41 @@ class Music
             return null;
         }
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->routes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @var bool|null
+     */
+    private $hidden = false;
+
+
+    /**
+     * Set hidden.
+     *
+     * @param bool|null $hidden
+     *
+     * @return Music
+     */
+    public function setHidden($hidden = null)
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Get hidden.
+     *
+     * @return bool|null
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
+    }
 }

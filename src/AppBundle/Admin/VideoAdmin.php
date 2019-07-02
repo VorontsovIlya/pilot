@@ -35,6 +35,7 @@ class VideoAdmin extends AbstractAdmin
           ->add('active', null, array('required' => false, 'label' => 'Опубликовать'))          
           ->add('artist', 'sonata_type_model_list', array('required' => false, 'label'=>'Артист'))
           ->add('title', TextType::class, array('required' => false, 'label' => 'Название'))
+          ->add('releasedate', null, array('required' => false, 'label' => 'Дата релиза'))
           ->add('video', 'sonata_type_model_list', array('required' => false, 'label' => 'Ссылка на видео'))
         ->end()
       ;

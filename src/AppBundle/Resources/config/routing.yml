@@ -9,6 +9,14 @@ page_release:
     path: /release/{slug}
     defaults: { _controller: "AppBundle:Default:release" }
 
+page_artist_up:
+    path: /admin/page_artist_up/{page_id}
+    defaults:  { _controller: "AppBundle:PageTreeSort:up" }
+
+page_artist_down:
+    path: /admin/page_artist_down/{page_id}
+    defaults:  { _controller: "AppBundle:PageTreeSort:down" }    
+
 page_level0:
     path:   /
     defaults: { _controller: "AppBundle:Default:level0" }

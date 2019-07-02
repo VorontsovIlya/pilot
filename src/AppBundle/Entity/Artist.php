@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 use Symfony\Cmf\Component\Routing\RouteReferrersInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Artist
@@ -696,4 +697,256 @@ class Artist implements RouteReferrersInterface
      */
     private $container;
 
+    /**
+     * @var string
+     */
+    private $path_sec;
+
+    /**
+     * @var int
+     */
+    private $lft;
+
+    /**
+     * @var int
+     */
+    private $rgt;
+
+    /**
+     * @var int
+     */
+    private $lvl;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $children;
+
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     */
+    private $poster_sq;
+
+    /**
+     * @Gedmo\TreeRoot(identifierMethod="getRoot")    
+     * @var \AppBundle\Entity\Artist
+     */
+    private $root;
+
+    /**
+     * @var \AppBundle\Entity\Artist
+     */
+    private $parent;
+
+
+    /**
+     * Set pathSec.
+     *
+     * @param string $pathSec
+     *
+     * @return Artist
+     */
+    public function setPathSec($pathSec)
+    {
+        $this->path_sec = $pathSec;
+
+        return $this;
+    }
+
+    /**
+     * Get pathSec.
+     *
+     * @return string
+     */
+    public function getPathSec()
+    {
+        return $this->path_sec;
+    }
+
+    /**
+     * Set lft.
+     *
+     * @param int $lft
+     *
+     * @return Artist
+     */
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
+
+        return $this;
+    }
+
+    /**
+     * Get lft.
+     *
+     * @return int
+     */
+    public function getLft()
+    {
+        return $this->lft;
+    }
+
+    /**
+     * Set rgt.
+     *
+     * @param int $rgt
+     *
+     * @return Artist
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+
+        return $this;
+    }
+
+    /**
+     * Get rgt.
+     *
+     * @return int
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * Set lvl.
+     *
+     * @param int $lvl
+     *
+     * @return Artist
+     */
+    public function setLvl($lvl)
+    {
+        $this->lvl = $lvl;
+
+        return $this;
+    }
+
+    /**
+     * Get lvl.
+     *
+     * @return int
+     */
+    public function getLvl()
+    {
+        return $this->lvl;
+    }
+
+    /**
+     * Add child.
+     *
+     * @param \AppBundle\Entity\Artist $child
+     *
+     * @return Artist
+     */
+    public function addChild(\AppBundle\Entity\Artist $child)
+    {
+        $this->children[] = $child;
+
+        return $this;
+    }
+
+    /**
+     * Remove child.
+     *
+     * @param \AppBundle\Entity\Artist $child
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeChild(\AppBundle\Entity\Artist $child)
+    {
+        return $this->children->removeElement($child);
+    }
+
+    /**
+     * Get children.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set posterSq.
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media|null $posterSq
+     *
+     * @return Artist
+     */
+    public function setPosterSq(\Application\Sonata\MediaBundle\Entity\Media $posterSq = null)
+    {
+        $this->poster_sq = $posterSq;
+
+        return $this;
+    }
+
+    /**
+     * Get posterSq.
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media|null
+     */
+    public function getPosterSq()
+    {
+        return $this->poster_sq;
+    }
+
+    /**
+     * Set root.
+     *
+     * @param \AppBundle\Entity\Artist|null $root
+     *
+     * @return Artist
+     */
+    public function setRoot(\AppBundle\Entity\Artist $root = null)
+    {
+        $this->root = $root;
+
+        return $this;
+    }
+
+    /** 
+     * @return \AppBundle\Entity\Artist|null
+     */
+    public function getRoot()
+    {
+        return $this->root;
+    }
+
+    /**
+     * Set parent.
+     *
+     * @param \AppBundle\Entity\Artist|null $parent
+     *
+     * @return Artist
+     */
+    public function setParent(\AppBundle\Entity\Artist $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent.
+     *
+     * @return \AppBundle\Entity\Artist|null
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    public function getLaveledTitle()
+    {
+        $prefix = "";
+        for ($i=1; $i<= $this->lvl; $i++){
+            $prefix .= "--";
+        }
+        return $prefix . $this->title;
+    }
 }

@@ -32,7 +32,6 @@ class Music
      */
     private $starred;
 
-
     /**
      * Get id.
      *
@@ -212,7 +211,6 @@ class Music
      * @var string|null
      */
     private $social_inst;
-
 
     /**
      * Set artist.
@@ -578,7 +576,6 @@ class Music
      */
     private $link;
 
-
     /**
      * Set link.
      *
@@ -606,7 +603,6 @@ class Music
      * @var \Application\Sonata\MediaBundle\Entity\Media
      */
     private $poster;
-
 
     /**
      * Set poster.
@@ -636,7 +632,6 @@ class Music
      */
     private $image;
 
-
     /**
      * Set image.
      *
@@ -659,5 +654,93 @@ class Music
     public function getImage()
     {
         return $this->image;
+    }
+    /**
+     * @var RouteObjectInterface[]|ArrayCollection
+     */
+    private $routes;
+
+    /**
+     * @param RouteObjectInterface $route
+     *
+     * @return $this
+     */
+    public function addRoute($route)
+    {
+        $this->routes[] = $route;
+
+        return $this;
+    }
+
+    /**
+     * @param RouteObjectInterface $route
+     *
+     * @return $this
+     */
+    public function removeRoute($route)
+    {
+        return $this->routes->removeElement($route);
+    }
+
+    /**
+     * @return RouteObjectInterface[]|ArrayCollection
+     */
+    public function getRoutes()
+    {
+        return $this->routes;
+    }
+
+    /**
+     * @param RouteObjectInterface[]|ArrayCollection $routes
+     */
+    public function setRoutes($routes)
+    {
+        $this->routes = $routes;
+    }
+
+    public function getRoute()
+    {
+        if (count($this->routes)) {
+            return $this->routes[0];
+        } else {
+            return null;
+        }
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->routes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @var bool|null
+     */
+    private $hidden = false;
+
+
+    /**
+     * Set hidden.
+     *
+     * @param bool|null $hidden
+     *
+     * @return Music
+     */
+    public function setHidden($hidden = null)
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Get hidden.
+     *
+     * @return bool|null
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
     }
 }

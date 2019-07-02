@@ -155,9 +155,9 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:            
-                poster:  { width: 500, height: 500, quality: 95}
-                big:     { width: 500 , quality: 95}
-                preview: { width: 50, quality: 95}
+                poster:  { width: 500, height: 500, quality: 95 }
+                big:     { width: 960, height: 680, quality: 95 }
+                preview: { width: 50, quality: 95 }
                 slider:  { width: 860, height: 550, quality: 95 }
 
     cdn:
@@ -274,8 +274,8 @@ fos_ck_editor:
             filebrowserImageUploadRoute: admin_sonata_media_media_ckeditor_upload
             filebrowserImageUploadRouteParameters:
                 provider: sonata.media.provider.image
-                context: my-context # Optional, to upload in a custom context
-                format: my-big # Optional, media format or original size returned to editor
+                context: default # Optional, to upload in a custom context
+                format: big # Optional, media format or original size returned to editor
 
             extraPlugins: ["youtube", "justify"]
 

@@ -6,19 +6,26 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
 class ArtistAdmin extends AbstractAdmin
 {
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('up', 'text', array('template' => 'AppBundle:admin:field_artist_up.html.twig', 'label'=>' '))
+            ->add('down', 'text', array('template' => 'AppBundle:admin:field_artist_down.html.twig', 'label'=>' '))
             ->addIdentifier('id')
-            ->add('title')
+            ->addIdentifier('laveled_title', null, array('sortable'=>false, 'label'=>'Пункт меню'))
         ;
     }
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+
+        $subject = $this->getSubject();
+        $id = $subject->getId();
+
         $formMapper
             ->with("Страница", array('class' => 'col-md-7'))
             ->add('title', TextType::class, array('required' => true, 'label' => 'Название'))
@@ -27,10 +34,12 @@ class ArtistAdmin extends AbstractAdmin
             ->end()
 
             ->with("Картинки", array('class' => 'col-md-5'))
-            ->add('image', 'sonata_type_model_list', array('required' => false, 'label' => 'Постер'),
+            ->add('image', 'sonata_type_model_list', array('required' => false, 'label' => 'Картинка, на главную (860x550)'),
                 array('link_parameters' => array('context' => 'artist', 'hide_context' => true)))
-            // ->add('poster', 'sonata_type_model_list', array('required' => false, 'label' => 'Постер (квадратный)'),
-            //     array('link_parameters' => array('context' => 'artist', 'hide_context' => true)))
+            ->add('poster', 'sonata_type_model_list', array('required' => false, 'label' => 'Картинка, на страницу артиста (960x680)'),
+                array('link_parameters' => array('context' => 'artist', 'hide_context' => true)))
+            ->add('poster_sq', 'sonata_type_model_list', array('required' => false, 'label' => 'Картинка, на страницу артистов (500x500)'),
+                array('link_parameters' => array('context' => 'artist', 'hide_context' => true)))
             ->add('slides01', 'sonata_type_model',
                 array('multiple' => true, 'by_reference' => false, 'btn_add' => true,
                     'label' => 'Слайды (нижняя часть)', 'required' => false))
@@ -47,6 +56,40 @@ class ArtistAdmin extends AbstractAdmin
             ->add('social_ytube', null, array('required' => false, 'label' => 'YouTube'))
             ->add('social_inst', null, array('required' => false, 'label' => 'Instagram'))
             ->end()
+            
+            ->with("Настройка", array('class' => 'col-md-5'))
+                ->add('parent', null, array(
+                    'label' => 'Родитель',
+                    'required' => false,
+                    'query_builder' => function($er) use ($id) {
+                        $qb = $er->createQueryBuilder('p');
+                        if ($id) {
+                            $qb->where('p.id <> :id')
+                            ->andWhere('p.lvl = 0')
+                            ->setParameter('id', $id);
+                        }
+                        $qb->orderBy('p.root, p.lft', 'ASC');
+                        return $qb;
+                    }
+                ))
+            ->end()
         ;
+    }
+
+    public function createQuery($context = 'list')
+    {
+      $em = $this->modelManager->getEntityManager('AppBundle\Entity\Artist');
+
+      $queryBuilder = $em
+        ->createQueryBuilder('a')
+        ->select('a')
+        ->from('AppBundle:Artist', 'a')
+        ->orderBy('a.root')
+        ->addOrderBy('a.parent')
+        ->addOrderBy('a.lft')
+      ;
+
+      $query = new ProxyQuery($queryBuilder);
+      return $query;
     }
 }

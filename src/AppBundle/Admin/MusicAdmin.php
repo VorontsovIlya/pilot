@@ -33,6 +33,7 @@ class MusicAdmin extends AbstractAdmin
       $formMapper
         ->with("Настройка", array('class' => 'col-md-7'))
           ->add('active', null, array('required' => false, 'label' => 'Опубликовать'))
+          ->add('hidden', null, array('required' => false, 'label' => 'Скрытый'))
           ->add('link', TextType::class, array('required' => false, 'label' => 'Ссылка'))
           ->add('artist', 'sonata_type_model_list', array('required' => false, 'label'=>'Артист'))
           ->add('title', TextType::class, array('required' => false, 'label' => 'Название'))
