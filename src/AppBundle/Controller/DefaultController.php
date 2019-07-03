@@ -199,6 +199,19 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Обратная связь')
+                ->setFrom('info@pilot-promo.ru')
+                ->setTo('art.fefilova@gmail.com ')
+                ->setBody(
+                    $this->renderView(
+                        'AppBundle:mail:feedback.txt.twig', 
+                        ['entity' => $entity]
+                    ))
+            ;
+            $this->get('mailer')->send($message);
+            
             $res = 'success';
         }
 

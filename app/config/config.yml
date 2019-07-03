@@ -96,7 +96,9 @@ swiftmailer:
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
-    spool: { type: memory }
+    spool: 
+        type: file
+        path: '%kernel.project_dir%/var/spool'
 
 sonata_block:
     blocks:
