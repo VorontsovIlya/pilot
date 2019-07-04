@@ -16,3 +16,7 @@ AppBundle\Entity\Page:
     title:
       type: string
       length: 255
+    keywords:
+      type: string      
+    description:
+      type: string      

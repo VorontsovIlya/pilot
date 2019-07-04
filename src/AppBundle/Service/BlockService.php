@@ -24,6 +24,7 @@ class BlockService {
     $available_blocks = Block::getTypes();
 
     $result = array();
+
     foreach ($blocks as $key => $value) {
       $blocks[$key] = $value = trim($value);
       $i = 0;
@@ -78,6 +79,10 @@ class BlockService {
 
     $qb->andWhere($qb->expr()->orX()->addMultiple($conditions));
     $blocks = $qb->getQuery()->getResult();
+
+    $result['keywords'] = null;
+    $result['description'] = null;
+    $result['title'] = null;
 
     foreach ($blocks as $b) {
       $key = $b->getType() . '_' . $b->getOrder();
@@ -243,6 +248,9 @@ class BlockService {
     if(count($artist) == 1){
       $artist = $artist[0];
       $data['artist'] = true;
+      $data['title'] = $artist->getPageTitle();
+      $data['keywords'] = $artist->getPageKeywords();
+      $data['description'] = $artist->getPageDescription();
       if (isset($data['t0002_0']['params'])){
         
         $data['t0002_0']['params']['custmediattr01'] = 

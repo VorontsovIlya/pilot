@@ -6,11 +6,11 @@
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="shortcut icon" href="https://tilda.cc/img/tildafavicon.ico?2">
+  <meta name="description" content="{{ description }}">
+  <meta name="keywords" content="{{ keywords }}">
+  <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
 
-  <title>{{ page.title }}</title>
+  <title>{{ title }}</title>
 
   <script src="{{ asset('template2/jquery-1.10.2.min.js') }}" type="text/javascript"></script>
   <script src="{{ asset('template2/tilda-scripts-2.8.min.js') }}"></script>
@@ -61,7 +61,8 @@
       {% if (block.news is defined) %}        
         {% set news = block.news %}            
       {% endif %}
-      {% if ((key != 'form') and (key != 'news') and (key != 'artist')) %}
+      {# {% if ((key != 'form') and (key != 'news') and (key != 'artist')) %} #}
+      {% if (key not in ['form', 'news', 'artist', 'keywords', 'description', 'title']) %}
         {% set file = ['AppBundle:Block:', block.file, '.html.twig'] | join %}        
         {% set id = ['id_', key] | join  %}        
         {% if block.params %}

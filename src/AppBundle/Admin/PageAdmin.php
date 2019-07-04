@@ -30,7 +30,9 @@ class PageAdmin extends AbstractAdmin
   {
       $formMapper
           ->add('title', TextType::class)
-          ->add('path', TextType::class)
+          ->add('keywords', TextType::class)
+          ->add('description', TextType::class)
+          ->add('path', TextType::class)          
           ->add('blocks', TextType::class)
       ;
   }

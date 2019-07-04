@@ -103,6 +103,12 @@ class DefaultController extends Controller
         $render = array();
         $render['base_dir'] = realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR;
         $render['page'] = $page;
+        $render['keywords'] = 
+            $blocks['keywords']?$blocks['keywords']:$page->getKeywords();
+        $render['description'] = 
+            $blocks['description']?$blocks['description']:$page->getDescription();
+        $render['title'] = 
+            $blocks['title']?$blocks['title']:$page->getTitle();
         $render['blocks'] = $blocks;
 
         if (isset($blocks['form'])) {
@@ -208,7 +214,9 @@ class DefaultController extends Controller
                     $this->renderView(
                         'AppBundle:mail:feedback.txt.twig', 
                         ['entity' => $entity]
-                    ))
+                    ),
+                    'text/plain'
+                )
             ;
             $this->get('mailer')->send($message);
             

@@ -940,4 +940,13 @@ class Artist implements RouteReferrersInterface
     {
         return $this->parent;
     }
+
+    public function getLaveledTitle()
+    {
+        $prefix = "";
+        for ($i=1; $i<= $this->lvl; $i++){
+            $prefix .= "--";
+        }
+        return $prefix . $this->title;
+    }
 }

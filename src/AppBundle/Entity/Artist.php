@@ -949,4 +949,91 @@ class Artist implements RouteReferrersInterface
         }
         return $prefix . $this->title;
     }
+    /**
+     * @var string
+     */
+    private $page_keywords;
+
+    /**
+     * @var string
+     */
+    private $page_description;
+
+    /**
+     * @var string
+     */
+    private $page_title;
+
+
+    /**
+     * Set pageKeywords.
+     *
+     * @param string $pageKeywords
+     *
+     * @return Artist
+     */
+    public function setPageKeywords($pageKeywords)
+    {
+        $this->page_keywords = $pageKeywords;
+
+        return $this;
+    }
+
+    /**
+     * Get pageKeywords.
+     *
+     * @return string
+     */
+    public function getPageKeywords()
+    {
+        return $this->page_keywords;
+    }
+
+    /**
+     * Set pageDescription.
+     *
+     * @param string $pageDescription
+     *
+     * @return Artist
+     */
+    public function setPageDescription($pageDescription)
+    {
+        $this->page_description = $pageDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get pageDescription.
+     *
+     * @return string
+     */
+    public function getPageDescription()
+    {
+        return $this->page_description;
+    }
+
+    /**
+     * Set pageTitle.
+     *
+     * @param string $pageTitle
+     *
+     * @return Artist
+     */
+    public function setPageTitle($pageTitle)
+    {
+        $this->page_title = $pageTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get pageTitle.
+     *
+     * @return string
+     */
+    public function getPageTitle()
+    {
+        return $this->page_title;
+    }
 }

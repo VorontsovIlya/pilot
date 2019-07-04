@@ -54,6 +54,13 @@ AppBundle\Entity\Artist:
       gedmo:
         - treeLevel
 
+    page_keywords:
+      type: string      
+    page_description:
+      type: string        
+    page_title:
+      type: string        
+
   manyToMany:
     slides01:
       targetEntity: Slide
