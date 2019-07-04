@@ -138,7 +138,7 @@ sonata_media:
 
             formats:
                 preview: { width: 50, quality: 70}
-                big:   { width: 1000, quality: 95}
+                big:   { width: 760, quality: 95}
 
         release:
             providers:
@@ -259,9 +259,8 @@ fos_ck_editor:
             - [Bold, Italic, Underline, -, Cut, Copy, Paste,
               PasteText, PasteFromWord, -, Undo, Redo, -,
               NumberedList, BulletedList, -, Outdent, Indent, JustifyLeft, JustifyRight, JustifyCenter, JustifyBlock, -,
-              Blockquote, -, Image, Link, Unlink, Table, Youtube]
+              Blockquote, -, Image, Link, Unlink, Table, Youtube, Iframe]
             - [Format, Maximize, Source]
-
 
             filebrowserBrowseRoute: admin_sonata_media_media_ckeditor_browser
             filebrowserImageBrowseRoute: admin_sonata_media_media_ckeditor_browser
@@ -279,7 +278,7 @@ fos_ck_editor:
                 context: default # Optional, to upload in a custom context
                 format: big # Optional, media format or original size returned to editor
 
-            extraPlugins: ["youtube", "justify"]
+            extraPlugins: ["youtube", "justify", "iframedialog"]
 
     styles:
         my_styles:
@@ -294,6 +293,9 @@ fos_ck_editor:
             filename: "plugin.js"
         justify:
             path:     "/ckeditor/plugins/justify/" # with trailing slash
+            filename: "plugin.js"
+        iframedialog:
+            path:     "/ckeditor/plugins/iframedialog/" # with trailing slash
             filename: "plugin.js"
 
 # sonata_admin:
