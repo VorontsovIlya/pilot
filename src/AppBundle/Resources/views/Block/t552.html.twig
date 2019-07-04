@@ -23,10 +23,10 @@
         {% endif %}
           <div class="t552__tile {{slide_size}}" itemscope itemtype="http://schema.org/ImageObject">
             <div class="t552__blockimg t552__blockimg_animated t-bgimg" bgimgfield="gi_img__{{ i }}" data-zoom-target="{{ i }}" data-zoomable="{{ zoomable }}"
-              title="{{ slide.slidetitle }}" data-img-zoom-url="{% path slide.image, 'reference' %}" data-original="{% path slide.image, 'reference' %}"
+              title="{{ slide.slidetitle }}" data-img-zoom-url="{% path slide.image, 'poster' %}" data-original="{% path slide.image, 'poster' %}"
               style="background: url({% path slide.image, 'preview' %}) center center no-repeat; background-size:cover; height:25vw;"
               data-img-zoom-descr="{{ slide.slidedescr }}">
-              <meta itemprop="image" content="{% path slide.image, 'reference' %}">
+              <meta itemprop="image" content="{% path slide.image, 'poster' %}">
               <meta itemprop="caption" content="{{ slide.slidetitle }}">
             </div>
           </div>

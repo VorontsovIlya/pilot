@@ -15,11 +15,11 @@
                 <div class="t-slds__item {{ class }}" data-slide-index="{{i}}">
                   <div class="t-width t-width_9 t-margin_auto" itemscope itemtype="http://schema.org/ImageObject">
                     <div class="t-slds__wrapper t-align_center">
-                      <meta itemprop="image" content="{% path slide.image, 'reference' %}">
+                      <meta itemprop="image" content="{% path slide.image, 'slider' %}">
                       <meta itemprop="caption" content="{{ slide.title }}">
                       <a href="{{ relative_path(['/', 'artist', '/', slide.path]|join) }}">
                       <div class="t604__imgwrapper" bgimgfield="gi_img__{{i}}">
-                        <div class="t-slds__bgimg t-bgimg" data-original="{% path slide.image, 'reference' %}"
+                        <div class="t-slds__bgimg t-bgimg" data-original="{% path slide.image, 'slider' %}"
                           style="background-image: url({% path slide.image, 'preview' %});"></div>
                         <div class="t604__separator" data-slider-image-width="860" data-slider-image-height="550"></div>
                       </div>

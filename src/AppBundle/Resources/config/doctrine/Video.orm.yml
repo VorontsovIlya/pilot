@@ -21,9 +21,7 @@ AppBundle\Entity\Video:
     releasedate:
       type: date
       nullable: true
-      options:
-        default: '2018-01-01'
-
+      
   manyToOne:
     artist:
       targetEntity: Artist
