@@ -107,6 +107,8 @@ AppBundle\Entity\Block:
   manyToMany:
     slides01:
       targetEntity: Slide      
+      orderBy:
+        lft: ASC
       joinTable:
         name: null
         joinColumns:

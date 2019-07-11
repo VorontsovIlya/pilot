@@ -100,8 +100,7 @@ AppBundle\Entity\Artist:
         referencedColumnName: id
         onDelete: CASCADE
       gedmo:
-        - treeRoot
-          # identifierMethod: getRoot2
+        - treeRoot          
 
     parent:
       targetEntity: Artist

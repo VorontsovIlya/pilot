@@ -236,4 +236,206 @@ class Slide
     {
         return $this->video;
     }
+    /**
+     * @var int
+     */
+    private $lft;
+
+    /**
+     * @var int
+     */
+    private $rgt;
+
+    /**
+     * @var int
+     */
+    private $lvl;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $children;
+
+    /**
+     * @var \AppBundle\Entity\Slide
+     */
+    private $root;
+
+    /**
+     * @var \AppBundle\Entity\Slide
+     */
+    private $parent;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set lft.
+     *
+     * @param int $lft
+     *
+     * @return Slide
+     */
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
+
+        return $this;
+    }
+
+    /**
+     * Get lft.
+     *
+     * @return int
+     */
+    public function getLft()
+    {
+        return $this->lft;
+    }
+
+    /**
+     * Set rgt.
+     *
+     * @param int $rgt
+     *
+     * @return Slide
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+
+        return $this;
+    }
+
+    /**
+     * Get rgt.
+     *
+     * @return int
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * Set lvl.
+     *
+     * @param int $lvl
+     *
+     * @return Slide
+     */
+    public function setLvl($lvl)
+    {
+        $this->lvl = $lvl;
+
+        return $this;
+    }
+
+    /**
+     * Get lvl.
+     *
+     * @return int
+     */
+    public function getLvl()
+    {
+        return $this->lvl;
+    }
+
+    /**
+     * Add child.
+     *
+     * @param \AppBundle\Entity\Slide $child
+     *
+     * @return Slide
+     */
+    public function addChild(\AppBundle\Entity\Slide $child)
+    {
+        $this->children[] = $child;
+
+        return $this;
+    }
+
+    /**
+     * Remove child.
+     *
+     * @param \AppBundle\Entity\Slide $child
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeChild(\AppBundle\Entity\Slide $child)
+    {
+        return $this->children->removeElement($child);
+    }
+
+    /**
+     * Get children.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set root.
+     *
+     * @param \AppBundle\Entity\Slide|null $root
+     *
+     * @return Slide
+     */
+    public function setRoot(\AppBundle\Entity\Slide $root = null)
+    {
+        $this->root = $root;
+
+        return $this;
+    }
+
+    /**
+     * Get root.
+     *
+     * @return \AppBundle\Entity\Slide|null
+     */
+    public function getRoot()
+    {
+        return $this->root;
+    }
+
+    /**
+     * Set parent.
+     *
+     * @param \AppBundle\Entity\Slide|null $parent
+     *
+     * @return Slide
+     */
+    public function setParent(\AppBundle\Entity\Slide $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent.
+     *
+     * @return \AppBundle\Entity\Slide|null
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    public function getLaveledTitle()
+    {
+        $prefix = "";
+        for ($i=1; $i<= $this->lvl; $i++){
+            $prefix .= "--";
+        }
+        return $prefix . $this->title;
+    }
 }

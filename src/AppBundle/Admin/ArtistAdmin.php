@@ -16,7 +16,7 @@ class ArtistAdmin extends AbstractAdmin
             ->add('up', 'text', array('template' => 'AppBundle:admin:field_artist_up.html.twig', 'label'=>' '))
             ->add('down', 'text', array('template' => 'AppBundle:admin:field_artist_down.html.twig', 'label'=>' '))
             ->addIdentifier('id')
-            ->addIdentifier('laveled_title', null, array('sortable'=>false, 'label'=>'Пункт меню'))
+            ->addIdentifier('laveled_title', null, array('sortable'=>false, 'label'=>'Заголовок'))
         ;
     }
 

@@ -1,6 +1,10 @@
 AppBundle\Entity\Slide:
   type: entity
+  repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
   table: null
+  gedmo:
+    tree:
+      type: nested  
   id:
     id:
       type: integer
@@ -27,6 +31,19 @@ AppBundle\Entity\Slide:
       type: string
       length: 255
       nullable: true
+    lft:
+      type: integer
+      gedmo:
+        - treeLeft
+    rgt:
+      type: integer
+      gedmo:
+        - treeRight
+    lvl:
+      type: integer
+      gedmo:
+        - treeLevel
+
   manyToOne:
     image:
       targetEntity: Application\Sonata\MediaBundle\Entity\Media
@@ -39,3 +56,29 @@ AppBundle\Entity\Slide:
       joinColumn:
         name: video
         referencedColumnName: id
+    
+    root:
+      targetEntity: Slide
+      joinColumn:
+        name: tree_root
+        referencedColumnName: id
+        onDelete: CASCADE
+      gedmo:
+        - treeRoot          
+
+    parent:
+      targetEntity: Slide
+      inversedBy: children
+      joinColumn:
+        name: parent_id
+        referencedColumnName: id
+        onDelete: CASCADE
+      gedmo:
+        - treeParent      
+
+  oneToMany:
+    children:
+      targetEntity: Slide
+      mappedBy: parent
+      orderBy:
+        lft: ASC

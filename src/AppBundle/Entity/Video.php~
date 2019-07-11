@@ -170,7 +170,7 @@ class Video
     /**
      * @var \DateTime|null
      */
-    private $releasedate = '2018-01-01';
+    private $releasedate; # = '2018-01-01';
 
 
     /**
