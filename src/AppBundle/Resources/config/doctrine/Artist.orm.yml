@@ -120,6 +120,7 @@ AppBundle\Entity\Artist:
     video:
       targetEntity: Video
       mappedBy: artist
+      orderBy: { 'releasedate': 'DESC' }
 
     children:
       targetEntity: Artist
