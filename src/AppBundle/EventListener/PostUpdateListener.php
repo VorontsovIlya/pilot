@@ -20,6 +20,11 @@ class PostUpdateListener
         $this->container = $container;
     }
 
+    public function postPersist(LifecycleEventArgs $args)
+    {
+        $this->postUpdate($args);
+    }
+
     public function postUpdate(LifecycleEventArgs $args)
     {
         $entity = $args->getObject();

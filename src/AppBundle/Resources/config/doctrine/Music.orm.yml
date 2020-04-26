@@ -84,7 +84,19 @@ AppBundle\Entity\Music:
     social_inst:
       type: string
       length: 255
-      nullable: true      
+      nullable: true
+    social_boom:
+      type: string
+      length: 255
+      nullable: true
+    social_zvooq:
+      type: string
+      length: 255
+      nullable: true
+    social_tiktok:
+      type: string
+      length: 255
+      nullable: true
   manyToOne:
     artist:
       targetEntity: Artist

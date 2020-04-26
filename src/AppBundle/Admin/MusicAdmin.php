@@ -39,7 +39,7 @@ class MusicAdmin extends AbstractAdmin
           ->add('title', TextType::class, array('required' => false, 'label' => 'Название'))
           ->add('releasedate', null, array('required' => false, 'label' => 'Дата релиза'))
           ->add('video', 'sonata_type_model_list', array('required' => false, 'label' => 'Ссылка на видео'))
-          ->add('image', 'sonata_type_model_list', array('required' => false, 'label' => 'Постер'), 
+          ->add('image', 'sonata_type_model_list', array('required' => false, 'label' => 'Постер'),
             array('link_parameters' => array('context' => 'release', 'hide_context' => true)))
         ->end()
         ->with("Медиа хостинги", array('class' => 'col-md-7'))
@@ -49,7 +49,10 @@ class MusicAdmin extends AbstractAdmin
           ->add('link_vk', null, array('required' => false, 'label' => 'VK Music'))
           ->add('link_spotify', null, array('required' => false, 'label' => 'Spotify'))
           ->add('link_deezer', null, array('required' => false, 'label' => 'Deezer'))
-          ->add('link_yam', null, array('required' => false, 'label' => 'Yandex Music'))          
+          ->add('link_yam', null, array('required' => false, 'label' => 'Yandex Music'))
+          ->add('social_boom', null, array('required' => false, 'label' => 'BOOM'))
+          ->add('social_zvooq', null, array('required' => false, 'label' => 'Zvooq'))
+          ->add('social_tiktok', null, array('required' => false, 'label' => 'TikTok'))
         ->end()
         ->with("Социальные сети", array('class' => 'col-md-7'))
           ->add('social_fb', null, array('required' => false, 'label' => 'Facebook'))

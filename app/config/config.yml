@@ -129,6 +129,7 @@ sonata_media:
                 big:   { width: 500 , quality: 70}
                 preview: { width: 20, quality: 70}
                 video:   { width: 375, quality: 95}
+                poster:  { width: 500, height: 500, quality: 95 }
 
         news:
             providers:

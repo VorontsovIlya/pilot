@@ -22,4 +22,9 @@ class AppRuntime
     {
       return preg_split('/\r\n|\r|\n/', $text);
     }
+
+    public function checkDomain($text){
+        if ($text[0] == '/') return true;
+        else return false;
+    }
 }

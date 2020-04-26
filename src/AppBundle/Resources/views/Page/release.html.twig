@@ -56,6 +56,7 @@
                     </div>
                   </div>
                 </section>
+                {# {{ dump(release) }} #}
                 <section class="videos videos-from-links">
                   {% media release.video, 'video' %}
                 </section>
@@ -80,6 +81,11 @@
                     <a href="{{ release.link_vk }}" target="_blank" class="link vk" style="border-color: #DEDEDE;">VK Music<span class="action">Слушать</span></a>
                   </div>
                   {% endif %}
+                  {% if release.social_boom != '' %}
+                  <div rel="nofollow" class="order-block">
+                    <a href="{{ release.social_boom }}" target="_blank" class="link boom" style="border-color: #DEDEDE;">BOOM<span class="action">Слушать</span></a>
+                  </div>
+                  {% endif %}
                   {% if release.link_spotify != '' %}
                   <div rel="nofollow" class="order-block">
                     <a href="{{ release.link_spotify }}" target="_blank" class="link spotify" style="border-color: #DEDEDE;">Spotify<span class="action">Слушать</span></a>
@@ -93,6 +99,16 @@
                   {% if release.link_yam != '' %}
                   <div rel="nofollow" class="order-block">
                     <a href="{{ release.link_yam }}" target="_blank" class="link yandex" style="border-color: #DEDEDE;">Yandex Music<span class="action">Слушать</span></a>
+                  </div>
+                  {% endif %}
+                  {% if release.social_zvooq != '' %}
+                  <div rel="nofollow" class="order-block">
+                    <a href="{{ release.social_zvooq }}" target="_blank" class="link zvooq" style="border-color: #DEDEDE;">Zvooq<span class="action">Слушать</span></a>
+                  </div>
+                  {% endif %}
+                  {% if release.social_tiktok != '' %}
+                  <div rel="nofollow" class="order-block">
+                    <a href="{{ release.social_tiktok }}" target="_blank" class="link tiktok" style="border-color: #DEDEDE;">TikTok<span class="action">Слушать</span></a>
                   </div>
                   {% endif %}
                 </div>

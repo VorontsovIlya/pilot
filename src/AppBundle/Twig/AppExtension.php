@@ -12,6 +12,7 @@ class AppExtension extends \Twig_Extension
       // the logic of this filter is now implemented in a different class
       new \Twig_SimpleFilter('price', array(AppRuntime::class, 'priceFilter')),
       new \Twig_SimpleFilter('splitlines', array(AppRuntime::class, 'splitLines')),      
+      new \Twig_SimpleFilter('checkdomain', array(AppRuntime::class, 'checkDomain')),      
     );
   }
 }

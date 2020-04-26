@@ -25,8 +25,11 @@
             <div class="t552__blockimg t552__blockimg_animated t-bgimg" bgimgfield="gi_img__{{ i }}" data-zoom-target="{{ i }}" data-zoomable="{{ zoomable }}"
               data-img-zoom-url="{% path slide.poster_sq, 'poster' %}" data-original="{% path slide.poster_sq, 'poster' %}"
               style="background: url({% path slide.poster_sq, 'preview' %}) center center no-repeat; background-size:cover; height:25vw;">
+              <div class="t1522__title">
+                <p>{{ slide.title }}</p>
+              </div>
               <meta itemprop="image" content="{% path slide.poster_sq, 'poster' %}">              
-            </div>
+            </div>            
           </div>
         {% set i = i + 1 %}
         {% if slide.path != '' %}

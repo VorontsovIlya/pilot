@@ -2,6 +2,7 @@
     "name": "ilya/pilot",
     "license": "proprietary",
     "type": "project",
+    "description": "",
     "autoload": {
         "psr-4": {
             "": "src/"
