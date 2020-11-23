@@ -49,8 +49,14 @@ class PostUpdateListener
         }
 
         if ($entity instanceof Music) {
-            $route->setName($entity->getArtist()->getPath() . '/' . $entity->getLink());
-            $route->setStaticPrefix('/' . $entity->getArtist()->getPath() . '/' . $entity->getLink() );
+
+            if ($entity->getArtist()){
+                $route->setName($entity->getArtist()->getPath() . '/' . $entity->getLink());
+                $route->setStaticPrefix('/' . $entity->getArtist()->getPath() . '/' . $entity->getLink() );
+            } else {
+                $route->setName("/release/" . $entity->getLink());
+                $route->setStaticPrefix('/release/' . $entity->getLink() );
+            }
             $route->setDefault(RouteObjectInterface::CONTENT_ID, $contentRepository->getContentId($entity));
             $route->setContent($entity);
         }

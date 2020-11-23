@@ -265,10 +265,17 @@ class DefaultController extends Controller
             $render['release']['social_zvooq'] = $music[0]->getSocialZvooq();
             $render['release']['social_tiktok'] = $music[0]->getSocialTiktok();
 
-            $render['release']['social_fb'] = $music[0]->getArtist()->getSocialFB();
-            $render['release']['social_vk'] = $music[0]->getArtist()->getSocialVK();
-            $render['release']['social_ytube'] = $music[0]->getArtist()->getSocialYTube();
-            $render['release']['social_inst'] = $music[0]->getArtist()->getSocialInst();            
+            if($music[0]->getArtist()){
+                $render['release']['social_fb'] = $music[0]->getArtist()->getSocialFB();
+                $render['release']['social_vk'] = $music[0]->getArtist()->getSocialVK();
+                $render['release']['social_ytube'] = $music[0]->getArtist()->getSocialYTube();
+                $render['release']['social_inst'] = $music[0]->getArtist()->getSocialInst();            
+            } else {
+                $render['release']['social_fb'] = $music[0]->getSocialFb();
+                $render['release']['social_vk'] = $music[0]->getSocialVk();
+                $render['release']['social_ytube'] = $music[0]->getSocialYtube();
+                $render['release']['social_inst'] = $music[0]->getSocialInst();           
+            }
 
         } else {
             return $this->redirectToRoute('page_level0');
