@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700&subset=latin,cyrillic);
+
 @font-face {
   font-family: 'Proxima-Nova';
   src: url(/static/fonts/ProximaNova-Regular.8a7798b.eot) format("eot"),
@@ -54,12 +56,14 @@
 
 body {
   margin: 0;
-  font-family: Proxima-Nova, sans-serif;
+  /* font-family: Proxima-Nova, sans-serif; */
+  font-family: Roboto, serif;
 }
 
 b {
   font-weight: normal;
-  font-family: Proxima-Nova-Bold, sans-serif;
+  /* font-family: Proxima-Nova-Bold, sans-serif; */
+  font-family: Roboto, serif;
 }
 
 h1.no-default-styles,
@@ -1041,8 +1045,10 @@ h2.no-default-styles {
 
 .tabs__tab {
   color: #999999;
-  font-family: Proxima-Nova-Bold, sans-serif;
+  /* font-family: Proxima-Nova-Bold, sans-serif; */
+  font-family: Roboto, serif;
   font-size: 22px;
+  font-weight: 700;;
   line-height: 27px;
   display: inline-block;
   margin: 0 15px;
@@ -1110,7 +1116,9 @@ h2.no-default-styles {
 
 .event-info__artist {
   color: #3C3C3C;
-  font-family: Proxima-Nova-Bold, sans-serif;
+  /* font-family: Proxima-Nova-Bold, sans-serif; */
+  font-family: Roboto, serif;
+  font-weight: 700;
   font-size: 22px;
   line-height: 27px;
   max-width: calc(100% - 25px);
@@ -1139,7 +1147,8 @@ h2.no-default-styles {
   text-decoration: none;
   text-align: left;
   border-top: 1px solid #dedede;
-  font-family: Proxima-Nova, sans-serif;
+  /* font-family: Proxima-Nova, sans-serif; */
+  font-family: Roboto, serif;
   background-size: 30px auto;
   background-repeat: no-repeat;
   background-position: 18px center;
@@ -1170,12 +1179,17 @@ h2.no-default-styles {
   position: absolute;
   right: 20px;
   top: 15px;
-  border-radius: 4px;
-  background: #d81946;
+  border-radius: 10px;
+  background: #363064;
   color: #fff;
   text-align: center;
   font-size: 14px;
-  font-family: Proxima-Nova, sans-serif;
+  /* font-family: Proxima-Nova, sans-serif; */
+  font-family: Roboto, serif;
+}
+
+.link .action:hover {
+ 	background: #fe4f76;
 }
 
 .powered-by {
