@@ -8,9 +8,8 @@ require __DIR__.'/../vendor/autoload.php';
 $env = 'prod';
 $debug = false;
 
-if (isset($_SERVER['HTTP_CLIENT_IP'])
-    || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-    || (in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1', '192.168.88.11', '85.140.35.16'], true) || PHP_SAPI === 'cli-server')
+if (
+    (in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1', '192.168.88.11', '85.140.35.16'], true) || PHP_SAPI === 'cli-server')
 ) {
     $env = 'dev';
     Debug::enable();
