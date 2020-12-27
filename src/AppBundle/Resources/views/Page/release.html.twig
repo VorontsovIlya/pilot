@@ -63,57 +63,96 @@
                   {% media release.video, 'video' %}
                 </section>
                 <div class="links-wrapper">
+                  
                   {% if release.link_itunes != '' %}
-                  <div rel="nofollow" class="order-block">
-                    <a href="{{ release.link_itunes }}" target="_blank" class="link itunes" style="border-color: #DEDEDE;">iTunes<span class="action">Купить</span></a>
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.link_itunes }}" target="_blank" class="link itunes" style="border-color: #DEDEDE;" alt="iTunes">Слушайте в Apple Music</a>
+                    </div>
                   </div>
                   {% endif %}
+
                   {% if release.link_apple != '' %}
-                  <div rel="nofollow" class="order-block">
-                    <a href="{{ release.link_apple }}"target="_blank" class="link apple-music" style="border-color: #DEDEDE;">Apple Music<span class="action">Слушать</span></a>
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.link_apple }}"target="_blank" class="link apple-music" style="border-color: #DEDEDE;" alt="Apple Music">Слушайте в Apple Music</a>
+                    </div>
                   </div>
                   {% endif %}
+
                   {% if release.link_gplay != '' %}
-                  <div rel="nofollow" class="order-block">
-                    <a href="{{ release.link_gplay }}" target="_blank" class="link googleplay" style="border-color: #DEDEDE;">Google Play<span class="action">Купить</span></a>
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.link_gplay }}" target="_blank" class="link googleplay" style="border-color: #DEDEDE;">Google Play<span class="action">Купить</span></a>
+                    </div>
                   </div>
                   {% endif %}
+
                   {% if release.link_vk != '' %}
-                  <div rel="nofollow" class="order-block">
-                    <a href="{{ release.link_vk }}" target="_blank" class="link vk" style="border-color: #DEDEDE;">VK Music<span class="action">Слушать</span></a>
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.link_vk }}" target="_blank" class="link vk" style="border-color: #DEDEDE;">VK Music<span class="action">Слушать</span></a>
+                    </div>
                   </div>
                   {% endif %}
+
                   {% if release.social_boom != '' %}
-                  <div rel="nofollow" class="order-block">
-                    <a href="{{ release.social_boom }}" target="_blank" class="link boom" style="border-color: #DEDEDE;">BOOM<span class="action">Слушать</span></a>
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.social_boom }}" target="_blank" class="link boom" style="border-color: #DEDEDE;">BOOM<span class="action">Слушать</span></a>
+                    </div>
                   </div>
                   {% endif %}
+
                   {% if release.link_spotify != '' %}
-                  <div rel="nofollow" class="order-block">
-                    <a href="{{ release.link_spotify }}" target="_blank" class="link spotify" style="border-color: #DEDEDE;">Spotify<span class="action">Слушать</span></a>
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.link_spotify }}" target="_blank" class="link spotify" style="border-color: #DEDEDE;">Spotify<span class="action">Слушать</span></a>
+                    </div>
                   </div>
-                  {% endif %}
-                  {% if release.link_deezer != '' %}
-                  <div rel="nofollow" class="order-block">
-                    <a href="{{ release.link_deezer }}" target="_blank" class="link deezer" style="border-color: #DEDEDE;">Deezer<span class="action">Слушать</span></a>
-                  </div>
-                  {% endif %}
+                  {% endif %}  
+
                   {% if release.link_yam != '' %}
-                  <div rel="nofollow" class="order-block">
-                    <a href="{{ release.link_yam }}" target="_blank" class="link yandex" style="border-color: #DEDEDE;">Yandex Music<span class="action">Слушать</span></a>
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.link_yam }}" target="_blank" class="link yandex" style="border-color: #DEDEDE;">Yandex Music<span class="action">Слушать</span></a>
+                    </div>
                   </div>
                   {% endif %}
+
+                  {% if release.link_ytubem != '' %}
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.link_ytubem }}" target="_blank" class="link ytmusic" style="border-color: #DEDEDE;">YouTube Music<span class="action">Слушать</span></a>
+                    </div>
+                  </div>
+                  {% endif %}
+
                   {% if release.social_zvooq != '' %}
-                  <div rel="nofollow" class="order-block">
-                    <a href="{{ release.social_zvooq }}" target="_blank" class="link zvooq" style="border-color: #DEDEDE;">Zvooq<span class="action">Слушать</span></a>
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.social_zvooq }}" target="_blank" class="link zvooq" style="border-color: #DEDEDE;">Zvooq<span class="action">Слушать</span></a>
+                    </div>
                   </div>
                   {% endif %}
+
                   {% if release.social_tiktok != '' %}
-                  <div rel="nofollow" class="order-block">
-                    <a href="{{ release.social_tiktok }}" target="_blank" class="link tiktok" style="border-color: #DEDEDE;">TikTok<span class="action">Слушать</span></a>
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.social_tiktok }}" target="_blank" class="link tiktok" style="border-color: #DEDEDE;">TikTok<span class="action">Слушать</span></a>
+                    </div>
                   </div>
                   {% endif %}
-                </div>
+
+                  {% if release.link_deezer != '' %}
+                  <div class="lnks">
+                    <div rel="nofollow" class="order-block">
+                      <a href="{{ release.link_deezer }}" target="_blank" class="link deezer" style="border-color: #DEDEDE;">Deezer<span class="action">Слушать</span></a>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                </div>                
                 <section class="footer">
                   {% if release.social_vk != '' %}
                   <a rel="nofollow" href="{{ release.social_vk }}" target="_blank" class="vk">

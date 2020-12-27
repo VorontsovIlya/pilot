@@ -65,6 +65,10 @@ AppBundle\Entity\Music:
       type: string
       length: 255
       nullable: true
+    link_ytubem:
+      type: string
+      length: 255
+      nullable: true      
     social_fb:
       type: string
       length: 255

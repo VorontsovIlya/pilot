@@ -50,6 +50,7 @@ class MusicAdmin extends AbstractAdmin
           ->add('link_spotify', null, array('required' => false, 'label' => 'Spotify'))
           ->add('link_deezer', null, array('required' => false, 'label' => 'Deezer'))
           ->add('link_yam', null, array('required' => false, 'label' => 'Yandex Music'))
+          ->add('link_ytubem', null, array('required' => false, 'label' => 'YouTube Music'))
           ->add('social_boom', null, array('required' => false, 'label' => 'BOOM'))
           ->add('social_zvooq', null, array('required' => false, 'label' => 'Zvooq'))
           ->add('social_tiktok', null, array('required' => false, 'label' => 'TikTok'))

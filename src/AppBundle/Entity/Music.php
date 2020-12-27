@@ -830,4 +830,33 @@ class Music
     {
         return $this->social_tiktok;
     }
+    /**
+     * @var string|null
+     */
+    private $link_ytubem;
+
+
+    /**
+     * Set linkYtubem.
+     *
+     * @param string|null $linkYtubem
+     *
+     * @return Music
+     */
+    public function setLinkYtubem($linkYtubem = null)
+    {
+        $this->link_ytubem = $linkYtubem;
+
+        return $this;
+    }
+
+    /**
+     * Get linkYtubem.
+     *
+     * @return string|null
+     */
+    public function getLinkYtubem()
+    {
+        return $this->link_ytubem;
+    }
 }
