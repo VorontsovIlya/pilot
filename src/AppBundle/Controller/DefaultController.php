@@ -251,7 +251,9 @@ class DefaultController extends Controller
 
         if (count($music) == 1) {
             $render['release']['image'] = $music[0]->getImage();
+            
             $render['release']['artist'] = $music[0]->getArtist();
+            
             $render['release']['title'] = $music[0]->getTitle();
             $render['release']['video'] = $music[0]->getVideo();
             $render['release']['link_itunes'] = $music[0]->getLinkiTunes();
