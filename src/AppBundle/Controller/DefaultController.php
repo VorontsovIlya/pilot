@@ -263,6 +263,7 @@ class DefaultController extends Controller
             $render['release']['link_spotify'] = $music[0]->getLinkSpotify();
             $render['release']['link_deezer'] = $music[0]->getLinkDeezer();
             $render['release']['link_yam'] = $music[0]->getLinkYaM();
+            $render['release']['link_ytm'] = $music[0]->getLinkYtm();
             $render['release']['social_boom'] = $music[0]->getSocialBoom();
             $render['release']['social_zvooq'] = $music[0]->getSocialZvooq();
             $render['release']['social_tiktok'] = $music[0]->getSocialTiktok();
