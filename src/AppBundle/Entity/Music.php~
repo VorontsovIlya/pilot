@@ -743,4 +743,91 @@ class Music
     {
         return $this->hidden;
     }
+    /**
+     * @var string|null
+     */
+    private $social_boom;
+
+    /**
+     * @var string|null
+     */
+    private $social_zvooq;
+
+    /**
+     * @var string|null
+     */
+    private $social_tiktok;
+
+
+    /**
+     * Set socialBoom.
+     *
+     * @param string|null $socialBoom
+     *
+     * @return Music
+     */
+    public function setSocialBoom($socialBoom = null)
+    {
+        $this->social_boom = $socialBoom;
+
+        return $this;
+    }
+
+    /**
+     * Get socialBoom.
+     *
+     * @return string|null
+     */
+    public function getSocialBoom()
+    {
+        return $this->social_boom;
+    }
+
+    /**
+     * Set socialZvooq.
+     *
+     * @param string|null $socialZvooq
+     *
+     * @return Music
+     */
+    public function setSocialZvooq($socialZvooq = null)
+    {
+        $this->social_zvooq = $socialZvooq;
+
+        return $this;
+    }
+
+    /**
+     * Get socialZvooq.
+     *
+     * @return string|null
+     */
+    public function getSocialZvooq()
+    {
+        return $this->social_zvooq;
+    }
+
+    /**
+     * Set socialTiktok.
+     *
+     * @param string|null $socialTiktok
+     *
+     * @return Music
+     */
+    public function setSocialTiktok($socialTiktok = null)
+    {
+        $this->social_tiktok = $socialTiktok;
+
+        return $this;
+    }
+
+    /**
+     * Get socialTiktok.
+     *
+     * @return string|null
+     */
+    public function getSocialTiktok()
+    {
+        return $this->social_tiktok;
+    }
 }

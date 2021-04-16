@@ -14,6 +14,7 @@ Encore
     .enableSassLoader()
 
     .addStyleEntry('global', './assets/css/global.scss')
+    .addStyleEntry('release', './assets/css/release.scss')
 
     // allow legacy applications to use $/jQuery as a global variable
     // .autoProvidejQuery()
