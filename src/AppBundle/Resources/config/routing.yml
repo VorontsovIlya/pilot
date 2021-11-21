@@ -25,6 +25,9 @@ page_slide_down:
     path: /admin/page_slide_down/{page_id}
     defaults:  { _controller: "AppBundle:SlideTreeSort:down" }    
 
+chertovskaya:
+    path: /chertovskaya/
+    defaults: { _controller: "AppBundle:Chertovskaya:default" }
 
 page_level0:
     path:   /
