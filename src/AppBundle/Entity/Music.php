@@ -833,6 +833,7 @@ class Music
     /**
      * @var string|null
      */
+
     private $link_ytm;
 
 
@@ -847,10 +848,12 @@ class Music
     {
         $this->link_ytm = $linkYtm;
 
+
         return $this;
     }
 
     /**
+
      * Get linkYtm.
      *
      * @return string|null
@@ -858,5 +861,6 @@ class Music
     public function getLinkYtm()
     {
         return $this->link_ytm;
+
     }
 }
