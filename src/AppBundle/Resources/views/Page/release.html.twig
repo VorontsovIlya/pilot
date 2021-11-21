@@ -6,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">  
-  <title>{{ release.artist }} / {{ release.title }}</title>
+  <title>
+    {% if release.artist %}
+      {{ release.artist }} / 
+    {% endif %}
+    {{ release.title }}
+  </title>
 
   <meta property="og:url"          content="{{app.request.uri}}"/>
   <meta property="og:title"        content="{{ release.artist }} - {{ release.title }} / Pilot-Promo" />
@@ -24,7 +29,7 @@
   <meta name="twitter:image:width" content="200">
   <meta name="twitter:image:height" content="200">
 
-  <link href="{{ asset('template2/band.css') }}" rel="stylesheet">
+  <link href="{{ asset('build/release.css?v.1.0') }}" rel="stylesheet">
   <script src="{{ asset('template2/jquery-1.10.2.min.js') }}" type="text/javascript"></script>
 </head>
 
@@ -35,7 +40,7 @@
         <div class="blur-wrapper">
           <div class="blur" style="background-image: url({% path release.image, 'poster' %});"></div>
           <div class="release-box">
-            <div class="container-event" style="background: rgb(255, 255, 255);">
+            <div class="container-event">
               <div id="release-block">
                 <section class="image" style="background-image: url({% path release.image, 'poster' %});">
                 </section>
@@ -128,11 +133,14 @@
                   </div>
                   {% endif %}
 
+                  {% if release.link_ytm != '' %}
+                  <div rel="nofollow" class="order-block">
+                    <a href="{{ release.link_ytm }}" target="_blank" class="link music-youtube" style="border-color: #DEDEDE;">Youtube Music<span class="action">Слушать</span></a>
+                  </div>
+                  {% endif %}
                   {% if release.social_zvooq != '' %}
-                  <div class="lnks">
-                    <div rel="nofollow" class="order-block">
-                      <a href="{{ release.social_zvooq }}" target="_blank" class="link zvooq" style="border-color: #DEDEDE;">Zvooq<span class="action">Слушать</span></a>
-                    </div>
+                  <div rel="nofollow" class="order-block">
+                    <a href="{{ release.social_zvooq }}" target="_blank" class="link zvooq" style="border-color: #DEDEDE;">СберЗвук<span class="action">Слушать</span></a>
                   </div>
                   {% endif %}
 
@@ -192,7 +200,7 @@
               </div>
             </div>
           </div>
-          <a href="https://pilot-promo.ru" style="color: #ededed; font-size: 14px; display: block; text-align: center; position: relative; margin-top: 20px; z-index: 5; text-decoration: none;">Produced by Pilot Promo</a>
+          <a href="https://pilot-promo.ru" style="color: #ededed; font-size: 14px; display: block; text-align: center; position: relative; margin-top: 20px; z-index: 5; text-decoration: none;">Label Pilot Promo</a>
         </div>
       </div>
     </div>

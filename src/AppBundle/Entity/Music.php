@@ -833,30 +833,34 @@ class Music
     /**
      * @var string|null
      */
-    private $link_ytubem;
+
+    private $link_ytm;
 
 
     /**
-     * Set linkYtubem.
+     * Set linkYtm.
      *
-     * @param string|null $linkYtubem
+     * @param string|null $linkYtm
      *
      * @return Music
      */
-    public function setLinkYtubem($linkYtubem = null)
+    public function setLinkYtm($linkYtm = null)
     {
-        $this->link_ytubem = $linkYtubem;
+        $this->link_ytm = $linkYtm;
+
 
         return $this;
     }
 
     /**
-     * Get linkYtubem.
+
+     * Get linkYtm.
      *
      * @return string|null
      */
-    public function getLinkYtubem()
+    public function getLinkYtm()
     {
-        return $this->link_ytubem;
+        return $this->link_ytm;
+
     }
 }

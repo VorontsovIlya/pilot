@@ -251,7 +251,9 @@ class DefaultController extends Controller
 
         if (count($music) == 1) {
             $render['release']['image'] = $music[0]->getImage();
+            
             $render['release']['artist'] = $music[0]->getArtist();
+            
             $render['release']['title'] = $music[0]->getTitle();
             $render['release']['video'] = $music[0]->getVideo();
             $render['release']['link_itunes'] = $music[0]->getLinkiTunes();
@@ -261,7 +263,7 @@ class DefaultController extends Controller
             $render['release']['link_spotify'] = $music[0]->getLinkSpotify();
             $render['release']['link_deezer'] = $music[0]->getLinkDeezer();
             $render['release']['link_yam'] = $music[0]->getLinkYaM();
-            $render['release']['link_ytubem'] = $music[0]->getLinkYtubem();
+            $render['release']['link_ytm'] = $music[0]->getLinkYtm();
             $render['release']['social_boom'] = $music[0]->getSocialBoom();
             $render['release']['social_zvooq'] = $music[0]->getSocialZvooq();
             $render['release']['social_tiktok'] = $music[0]->getSocialTiktok();

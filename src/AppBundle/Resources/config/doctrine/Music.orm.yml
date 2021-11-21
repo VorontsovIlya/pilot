@@ -65,10 +65,10 @@ AppBundle\Entity\Music:
       type: string
       length: 255
       nullable: true
-    link_ytubem:
+    link_ytm:
       type: string
       length: 255
-      nullable: true      
+      nullable: true
     social_fb:
       type: string
       length: 255
@@ -76,7 +76,7 @@ AppBundle\Entity\Music:
     social_vk:
       type: string
       length: 255
-      nullable: true    
+      nullable: true
     social_tw:
       type: string
       length: 255
@@ -121,4 +121,4 @@ AppBundle\Entity\Music:
   manyToMany:
     routes:
       targetEntity: Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Orm\Route
-      cascade: ["persist", "remove"]      
+      cascade: ["persist", "remove"]
